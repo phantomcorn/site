@@ -5,9 +5,7 @@
     background-color: transparent;
     perspective: 1000px; /* important */
     cursor: pointer;
-
-    margin-top: 8rem;
-    margin-left: 8rem;
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 .card-inner {
@@ -16,8 +14,6 @@
     position: relative;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-
-
 }
 
 .card-inner > * {
