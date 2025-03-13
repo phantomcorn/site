@@ -2,6 +2,10 @@
   --primary-one: #E1D9C1;
   --primary-two: #C7C9BB;
   --secondary-one: #5E5E31;
+  --secondary-one-two: #C3C747;
+  --secondary-one-three: #F99177;
+  --secondary-one-four: #FF7070;
+
   --secondary-two: #3D6DD6;
   --secondary-three: #8F70C7;
   --secondary-four: #894E38;
@@ -33,6 +37,10 @@ body {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#filters {
+  display: none; /* Hide the SVG filter for text morph */
 }
 
 * {
