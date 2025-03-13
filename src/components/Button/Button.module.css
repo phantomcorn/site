@@ -1,0 +1,30 @@
+.button {
+    aspect-ratio: 2.2 / 1;
+    width: 11rem;
+    height: 5rem;
+    border-radius: 100px;
+    border: solid 10px var(--primary-two);
+    background: var(--primary-one);
+    font-size: 22px;
+    
+    /* Centering the text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color1 {
+    color: var(--secondary-one);
+}
+
+.color2 {
+    color: var(--secondary-two);
+}
+
+.color3 {
+    color: var(--secondary-three);
+}
+
+.color4 {
+    color: var(--secondary-four);
+}
