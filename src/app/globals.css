@@ -1,6 +1,20 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-one: #E1D9C1;
+  --primary-two: #C7C9BB;
+  --secondary-one: #5E5E31;
+  --secondary-two: #3D6DD6;
+  --secondary-three: #8F70C7;
+  --secondary-four: #894E38;
+
+  --dial-active: #87DEBE;
+  --title-color: var(--primary-two);
+
+}
+
+.unselect {
+  /* Make disable text selection */
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,9 +31,6 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
