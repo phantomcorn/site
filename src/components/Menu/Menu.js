@@ -1,3 +1,4 @@
+"use client"
 import styles from "./Menu.module.css"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
