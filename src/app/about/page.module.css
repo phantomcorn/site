@@ -1,0 +1,32 @@
+.page {
+    width: 100vw;
+    height: 100vh; /* Fullscreen */
+    display: flex;
+    column-gap: 10rem;
+    background: var(--primary-one);
+
+    box-sizing: border-box;
+    padding: 8rem;
+    position: relative;
+}
+
+.media-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 6rem;
+
+}
+
+.background {
+    background-color: black;
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
