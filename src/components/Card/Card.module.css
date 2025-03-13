@@ -1,0 +1,43 @@
+
+.card {
+    width: 32rem;
+    height: 16rem;
+    background-color: transparent;
+    perspective: 1000px; /* important */
+    cursor: pointer;
+
+    margin-top: 8rem;
+    margin-left: 8rem;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+
+}
+
+.card-inner > * {
+    width: 100%;
+    height: 100%;
+    /* width: 100%;
+    height: 100%; */
+    position: absolute;
+    border-radius: 2rem;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden; /* Hide when object flipped ons its back */
+    box-shadow : 0 1px 10px #5F5F5D;
+    background-color: var(--primary-two);
+}   
+
+.card-back {
+    transform: rotateY(180deg); /* Flip so the back is facing the correct way */
+}
+
+.card:hover .card-inner {
+    transform: rotateY(-180deg);
+}
+  
