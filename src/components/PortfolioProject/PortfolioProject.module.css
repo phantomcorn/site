@@ -1,0 +1,25 @@
+.portfolio-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    display: flex;
+    flex-direction: row-reverse;
+    column-gap: 5rem;
+    align-items: center;
+}
+
+.textbox {
+    height: 30%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.textbox > div {
+    display: flex;
+    column-gap: 5rem;
+    justify-content: space-around;
+}
