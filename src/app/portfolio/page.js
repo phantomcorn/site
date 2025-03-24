@@ -1,39 +1,69 @@
 "use client"
 import Button from "@/components/Button/Button"
 import Menu from "@/components/Menu/Menu";
-import { useState } from "react";
+import PortfolioPage from "@/components/PortfolioProject/PortfolioProject";
+import { useState, useRef, useEffect } from "react";
 import styles from "./page.module.css"
+import gsap from "gsap"
+import { useRouter } from "next/navigation";
+
+import projects from "@/components/PortfolioProject/Projects"
 
 export default function Portfolio() {
 
-    const [menuActive, setMenuActive] = useState(false)
-    const showMenu = (e) => {
+    const router = useRouter()
+
+    const [pageActive, setPageActive] = useState(null)
+    const portPageRef = useRef()
+    const gridRef = useRef()
+    const showMenu = (e, title) => {
         e.preventDefault()
-        setMenuActive(true)
+        setPageActive(projects[title])
+    }
+
+    useEffect(() => {
+        gsap.to(gridRef.current, {
+            filter: pageActive ? "blur(7px)" : "none",
+            ease: "power1.inOut",
+            scale: pageActive ? 0.3 : 1,
+            duration: 0.2
+        })
+
+        if (portPageRef.current) {
+            gsap.to(portPageRef.current, {
+                autoAlpha: pageActive ? 1 : 0,
+                ease: "power1.inOut",
+                duration: 0.2
+            })
+        }
+    }, [pageActive])
+
+    const onBackClick = (e) => {
+        e.preventDefault()
+        router.back()
     }
 
     return (
         <div className={styles.page}>
             
-            <div className={`${styles.grid} ${menuActive ? styles.blur : styles.active} unselect`} >
-                {[...Array(2)].map((_, index) => (
-                    <Button key={index}/>
-                ))}
-                <Button variant="color4" onClick={showMenu}> Button </Button>
+            <div ref={gridRef} className={`${styles.grid} unselect`} >
+                <Button back onClick={onBackClick}/>
+                <Button/>
+                <Button variant="color4" onClick={(e) => showMenu(e, "oasis-residence")}> Oasis Residence </Button>
                 {[...Array(11)].map((_, index) => (
                     <Button key={index}/> 
                 ))}
-                <Button variant="color3" onClick={showMenu}> Button </Button>
+                <Button variant="color3" onClick={(e) => showMenu(e, "tonamn-portfolio")}> Tonamn Porfolio </Button>
 
                 {[...Array(16)].map((_, index) => (
                     <Button key={index}/> 
                 ))}
-                <Button variant="color2" onClick={showMenu}> Button </Button>
+                <Button variant="color2" onClick={(e) => showMenu(e, "broked")}> Broked </Button>
                 {[...Array(16)].map((_, index) => (
                     <Button key={index}/>
                 ))}
             </div>
-            <Menu menuActive={menuActive} setMenuActive={setMenuActive}/>
+            {pageActive && <PortfolioPage ref={portPageRef} imgs={["helllo", "hello"]} pageActive={pageActive} setPageActive={setPageActive}></PortfolioPage>}
         </div>
     )
 }

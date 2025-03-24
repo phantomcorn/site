@@ -20,18 +20,6 @@
     justify-content: center;
     align-content: center;
     grid-auto-flow: dense;
-    transition: transform 0.5s, filter 0.5s;
 }
 
-.blur {
-    filter: blur(7px);
-    transform: scale(80%);
-    transition-timing-function: ease-out;
-}
-  
-.active {
-    transform: scale(100%);
-    transition-timing-function: ease-out;
-}
-  
 
