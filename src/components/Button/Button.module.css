@@ -11,6 +11,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    text-align: center;
+}
+
+.select {
+    cursor: pointer;
+}
+
+.none {
+    cursor: inherit;
 }
 
 .color1 {
