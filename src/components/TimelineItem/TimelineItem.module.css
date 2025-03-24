@@ -1,0 +1,25 @@
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+    font-size: 1.4rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+
+.header > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.role {
+    font-size: 2.5rem;
+}
+
+/* .place {
+    font-size: 2rem;
+} */
