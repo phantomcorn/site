@@ -1,7 +1,7 @@
 
 .card {
-    width: 32rem;
-    height: 16rem;
+    width: 34rem;
+    height: 19rem;
     background-color: transparent;
     perspective: 1000px; /* important */
     cursor: pointer;
@@ -26,6 +26,10 @@
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden; /* Hide when object flipped ons its back */
     box-shadow : 0 1px 10px #5F5F5D;
+    padding:0.6rem;
+    font-size: .9rem;
+
+    color: var(--secondary-one);
     background-color: var(--primary-two);
 }   
 
@@ -37,3 +41,148 @@
     transform: rotateY(-180deg);
 }
   
+.card-front {
+    display: grid;
+    grid-template-columns: 3fr 2fr 4fr 1fr 3fr 3fr 4fr 6fr;
+    grid-template-rows: repeat(13,1fr);
+    flex-direction: column;
+    row-gap: 0.2rem;
+}
+
+.eng {
+    color: var(--secondary-two);
+}
+
+.card-info:nth-child(1) { /* Logo */ 
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    background: blue;
+}
+
+.card-info:nth-child(2) { /* บัตรประจำตัวอิเล็กทรอนนิค Digital ID */ 
+    grid-row: 1 ;
+    grid-column: 3 / -1 ;
+    font-size: 1rem;
+}
+
+.card-info:nth-child(3) { /* เลขบัตรประจำตัว */ 
+    grid-row: 2 ;
+    grid-column: 3 / end ;
+}
+
+.card-info:nth-child(n + 3) {
+    font-size: 0.6rem;
+}
+
+.card-info:nth-child(n + 3) > span {
+    font-size: 0.8rem;
+}
+
+.card-info:nth-child(4) { /* Identification Number */ 
+    grid-row: 3 ;
+    grid-column: 3 / end ;
+}
+
+.card-info:nth-child(5) { /* X XXXX XXXXX 74 2 */ 
+    grid-row: 2 / span 2 ;
+    grid-column: 6 / end ;
+    align-self: center;
+    font-size: 0.9rem;
+}
+
+.card-info:nth-child(6) { /* ชื่อตัวและชื่อสกุล <span>นาย พันธกรณ์ ปรุศุดำเกิง</span> */
+    grid-row: 4;
+    grid-column: 2 / end;
+}
+
+.card-info:nth-child(6) > span { /* นาย พันธกรณ์ ปรุศุดำเกิง */
+    font-size: 1.1rem;
+}
+
+.card-info:nth-child(7) { /* Name Mr. Phantakorn */
+    grid-row: 5;
+    grid-column: 4 / -1;
+}
+
+.card-info:nth-child(8) { /* Last name Prarusudamkerng */
+    grid-row: 6;
+    grid-column: 4 / -1;
+}
+
+
+.card-info:nth-child(9) { /* เกิดวันที่ 19 ส.ค. 2544 */
+    grid-row: 7;
+    grid-column: 5 / -1;
+}
+
+
+.card-info:nth-child(10) { /* Date of Birth 19 Aug. 2001 */
+    grid-row: 8;
+    grid-column: 5 / -1;
+}
+
+
+.card-info:nth-child(11) { /* ที่อยู่ XX XXXX XXXX XXXX */
+    grid-row: 9;
+    grid-column: 2 / span 6;
+    font-size: 0.8rem;
+}
+
+.card-info:nth-child(12) { /* 15 มี.ค 2568  */
+    grid-row: 10;
+    grid-column: 2 / span 2;
+}
+
+.card-info:nth-child(13) { /* วันออกบัตร */
+    grid-row: 11;
+    grid-column: 2 / span 2;
+}
+
+.card-info:nth-child(14) { /* 15 Mar. 2025 */
+    grid-row: 12;
+    grid-column: 2 / span 3;
+}
+
+.card-info:nth-child(15) { /* Date of Issue */
+    grid-row: 13;
+    grid-column: 2 / span 2;
+}
+
+.card-info:nth-child(16) { /* 26 มี.ค 2576  */
+    grid-row: 10;
+    grid-column: 8;
+}
+
+.card-info:nth-child(17) { /* วันบัตรหมดอายุ */
+    grid-row: 11;
+    grid-column: 8;
+}
+
+.card-info:nth-child(18) { /* 26 Mar. 2033 */
+    grid-row: 12;
+    grid-column: 8;
+}
+
+.card-info:nth-child(19) { /* Date of Expiry */
+    grid-row: 13;
+    grid-column: 8;
+}
+
+.card-info:nth-child(20) { /* Image */
+    grid-row: 7 / span 7;
+    grid-column: end;
+    align-self: center;
+}
+
+.card-info:nth-child(21) { /*  XXXX-XX-XXXXXXXX */
+    grid-row: 13;
+    grid-column: end;
+    font-size: 0.5rem;
+    align-self: center;
+}
+
+.card-info:nth-child(22) { /* Chip */
+    grid-row: 5 / span 4;
+    grid-column: 2 / span 2;
+    background-color: aqua;
+}
