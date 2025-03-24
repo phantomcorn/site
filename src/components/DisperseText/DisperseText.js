@@ -5,7 +5,7 @@ import { disperse } from "./animation"
 
 import style from "./DisperseText.module.css"
 
-export default function TextDisperse({children, setBackground, variant = "variant1"}) {
+export default function TextDisperse({children, setBackground, variant = "variant1", onClick}) {
 
     const [isAnimated, setIsAnimated] = useState(false)
 
@@ -28,7 +28,7 @@ export default function TextDisperse({children, setBackground, variant = "varian
     }
 
     return (
-        <div className={`${style[variant]} ${style.media}`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <div className={`${style[variant]} ${style.media}`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick}>
             {getChars(children)}
         </div>
     )
