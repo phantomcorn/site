@@ -26,7 +26,7 @@ const projects = {
     },
     "broked": {
         type: "app",
-        media: ["https://youtube.com/shorts/HwFZy7ydrKM?feature=share"],
+        media: ["https://youtube.com/embed/HwFZy7ydrKM?feature=share"],
         alt: "Broked demo",
         source: null
     }
