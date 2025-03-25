@@ -22,7 +22,6 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
     return (
         <div ref={ref} className={`${styles["portfolio-page"]}`} 
         >
-            {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>}
             <div className={styles["textbox"]}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -33,6 +32,11 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
                     {pageActive.type !== "app" && <Button onClick={onClickSource}> Source </Button>}
                 </div>
             </div>
+            {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>}
+            {pageActive.type === "app" && 
+                <div className={styles["yt-shorts-container"]}>
+                    <iframe className={styles["yt-shorts"]} src={pageActive.media} allowFullScreen> </iframe>
+                </div>}
         </div>
     )
 }
