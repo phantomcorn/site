@@ -10,6 +10,13 @@
     position: relative;
 }
 
+.section-one {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
 .media-container {
     height: 100%;
     width: 100%;

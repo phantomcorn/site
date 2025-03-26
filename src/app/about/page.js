@@ -4,9 +4,12 @@ import TextDisperse from "@/components/DisperseText/DisperseText"
 import styles from "./page.module.css"
 import gsap from "gsap"
 import { useRef } from "react"
+import { useRouter } from "next/navigation"
+import Button from "@/components/Button/Button"
 
 export default function About() {
     
+    const router = useRouter()
     const backgroundRef = useRef(null)
 
     const setBackground = (isActive) => {
@@ -37,9 +40,17 @@ export default function About() {
         window.open(link, "_blank");
     }
 
+    const onBackClick = (e) => {
+        e.preventDefault()
+        router.back()
+    }
+
     return (
         <div className={styles.page}>
-            <Card/>
+            <div className={styles["section-one"]}>
+                <Card/>
+                <Button back onClick={onBackClick}/>
+            </div>
             <div className={styles["media-container"]}>
                 {media.map((item, i) => 
                     <TextDisperse variant={`variant${i + 1}`} key={`media${i+1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>)
