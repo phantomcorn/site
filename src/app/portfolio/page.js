@@ -48,7 +48,7 @@ export default function Portfolio() {
             
             <div ref={gridRef} className={`${styles.grid} unselect`} >
                 <Button back onClick={onBackClick}/>
-                <Button/>
+                <Button variant="color1" onClick={(e) => showMenu(e, "imaudible")}> ImAudible Gallery </Button>
                 <Button variant="color4" onClick={(e) => showMenu(e, "oasis-residence")}> Oasis Residence </Button>
                 {[...Array(11)].map((_, index) => (
                     <Button key={index}/> 

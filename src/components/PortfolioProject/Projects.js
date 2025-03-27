@@ -28,7 +28,21 @@ const projects = {
         type: "app",
         media: ["https://youtube.com/embed/HwFZy7ydrKM?feature=share"],
         alt: "Broked demo",
-        source: null
+        src: null,
+        copy: "This app was created in order to track budgets. The creator had a curiousity whether his money actually disappeared into thin air so he created this app in order to test out the following theorem."
+    },
+    "imaudible": {
+        type: "web",
+        media: ["https://res.cloudinary.com/dmg2dllnz/image/upload/v1742911883/ia_0_lwcvrb.png",
+                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1742911883/ia_1_dydiev.png",
+                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1742911883/ia_2_v4yo6j.png",
+                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1742911883/ia_3_qibjzr.png",
+                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1742911882/ia_4_wxg4ow.png"],
+        width: 3840,
+        height: 2240,
+        src: "https://imaudible.netlify.app/",
+        alt: "ImAudible media",
+        copy: "ImAudible (Image Audible) gallery is an online 3d gallery which users can navigate, view and listen to generative audio generated from images. This is a UI as part of my final year project. All images are not made by me. You can also read more about the project within the gallery introduction."
     }
 }
 
