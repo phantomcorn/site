@@ -31,7 +31,7 @@ export default function About() {
         },
         { 
             alt: "Email",
-            link: "https://github.com/phantomcorn/"
+            link: "mailto:jj.phantakorn@outlook.com"
         }
     ]
 
