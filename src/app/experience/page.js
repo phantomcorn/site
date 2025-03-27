@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import Timeline from "@/components/Timeline/Timeline" 
 import TimelineItem from "@/components/TimelineItem/TimelineItem"
 import styles from "./page.module.css"
+import { useRouter } from "next/navigation"
+import BackArrow from "@/components/BackArrow/BackArrow"
 
 export default function Experience() {
 
@@ -49,6 +51,9 @@ export default function Experience() {
 
     return (
         <div className={styles.page}>
+            <div className={styles["backarrow-container"]} onClick={onClickBack}>
+                <BackArrow/>
+            </div>
             <div className={styles.view}>{activeView ? activeView : startView}</div>
             <Timeline setActiveView={setActiveView}>
                 {experiences.map((exp, i) => 
