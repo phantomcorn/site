@@ -9,7 +9,8 @@ const projects = {
         width: 3840,
         height: 2240,
         alt: "Oasis residence media",
-        source: "https://oasisresidences.netlify.app/"
+        src: "https://oasisresidences.netlify.app/",
+        copy: '"It ain\'t much but it\'s honest work."'
     },
     "tonamn-portfolio": {
         type: "web",
@@ -22,10 +23,16 @@ const projects = {
         width: 3840,
         height: 2240,
         alt: "Tonamn portfolio media",
-        source: "https://tonamn.github.io/tonamn-portfolio/"
+        src: "https://tonamn.github.io/tonamn-portfolio/",
+        copy: {
+            type: "media", 
+            src : "https://res.cloudinary.com/dmg2dllnz/image/upload/v1743006701/tp_0_cin9oz.png",
+            width: 2654,
+            height: 882
+        }
     },
     "broked": {
-        type: "app",
+        type: "demo",
         media: ["https://youtube.com/embed/HwFZy7ydrKM?feature=share"],
         alt: "Broked demo",
         src: null,

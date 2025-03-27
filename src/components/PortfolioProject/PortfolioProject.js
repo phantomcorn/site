@@ -1,7 +1,7 @@
 import styles from "./PortfolioProject.module.css"
 import Slideshow from "../Slideshow/Slideshow"
 import Button from "../Button/Button"
-
+import Image from "next/image"
 
 export default function PortfolioPage({pageActive, setPageActive, ref}) {
 
@@ -14,7 +14,21 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
     const onClickSource = (e) => {
         e.preventDefault()
         e.stopPropagation()
-        window.open(pageActive.source, "_blank");
+        window.open(pageActive.src, "_blank");
+    }
+
+    const getCopy = () => {
+        if (!pageActive.copy.type) {
+            return pageActive.copy
+        } else if (pageActive.copy.type === "media") {
+            return  <Image  className={styles["copy-media"]}
+                            src={pageActive.copy.src} 
+                            alt={pageActive.alt + " copy"}
+                            width={pageActive.copy.width}
+                            height={pageActive.height}/>
+        }
+    
+           
     }
 
 
@@ -23,17 +37,14 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
         <div ref={ref} className={`${styles["portfolio-page"]}`} 
         >
             <div className={styles["textbox"]}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {getCopy()}
                 <div>
                     <Button onClick={onClick} back/>
-                    {pageActive.type !== "app" && <Button onClick={onClickSource}> Source </Button>}
+                    {pageActive.type !== "demo" && <Button onClick={onClickSource}> src </Button>}
                 </div>
             </div>
             {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>}
-            {pageActive.type === "app" && 
+            {pageActive.type === "demo" && 
                 <div className={styles["yt-shorts-container"]}>
                     <iframe className={styles["yt-shorts"]} src={pageActive.media} allowFullScreen> </iframe>
                 </div>}
