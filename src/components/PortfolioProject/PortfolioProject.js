@@ -14,7 +14,7 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
     const onClickSource = (e) => {
         e.preventDefault()
         e.stopPropagation()
-        window.open(pageActive.src, "_blank");
+        window.open(pageActive.site, "_blank");
     }
 
     const getCopy = () => {
@@ -27,8 +27,6 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
                             width={pageActive.copy.width}
                             height={pageActive.height}/>
         }
-    
-           
     }
 
 
@@ -40,7 +38,7 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
                 {getCopy()}
                 <div>
                     <Button onClick={onClick} back/>
-                    {pageActive.type !== "demo" && <Button onClick={onClickSource}> src </Button>}
+                    {pageActive.type !== "demo" && <Button onClick={onClickSource}> Visit site </Button>}
                 </div>
             </div>
             {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>}

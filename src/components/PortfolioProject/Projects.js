@@ -9,7 +9,7 @@ const projects = {
         width: 3840,
         height: 2240,
         alt: "Oasis residence media",
-        src: "https://oasisresidences.netlify.app/",
+        site: "https://oasisresidences.netlify.app/",
         copy: '"It ain\'t much but it\'s honest work."'
     },
     "tonamn-portfolio": {
@@ -23,7 +23,7 @@ const projects = {
         width: 3840,
         height: 2240,
         alt: "Tonamn portfolio media",
-        src: "https://tonamn.github.io/tonamn-portfolio/",
+        site: "https://tonamn.github.io/tonamn-portfolio/",
         copy: {
             type: "media", 
             src : "https://res.cloudinary.com/dmg2dllnz/image/upload/v1743006701/tp_0_cin9oz.png",
@@ -35,7 +35,7 @@ const projects = {
         type: "demo",
         media: ["https://youtube.com/embed/HwFZy7ydrKM?feature=share"],
         alt: "Broked demo",
-        src: null,
+        site: null,
         copy: "This app was created in order to track budgets. The creator had a curiousity whether his money actually disappeared into thin air so he created this app in order to test out the following theorem."
     },
     "imaudible": {
@@ -47,9 +47,12 @@ const projects = {
                 "https://res.cloudinary.com/dmg2dllnz/image/upload/v1742911882/ia_4_wxg4ow.png"],
         width: 3840,
         height: 2240,
-        src: "https://imaudible.netlify.app/",
+        site: "https://imaudible.netlify.app/",
         alt: "ImAudible media",
         copy: "ImAudible (Image Audible) gallery is an online 3d gallery which users can navigate, view and listen to generative audio generated from images. This is a UI as part of my final year project. All images are not made by me. You can also read more about the project within the gallery introduction."
+    },
+    "askdoc" : {
+        type: "web"
     }
 }
 
