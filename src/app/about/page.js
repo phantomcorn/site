@@ -5,7 +5,7 @@ import styles from "./page.module.css"
 import gsap from "gsap"
 import { useRef } from "react"
 import { useRouter } from "next/navigation"
-import Button from "@/components/Button/Button"
+import BackArrow from "@/components/BackArrow/BackArrow"
 
 export default function About() {
     
@@ -47,9 +47,11 @@ export default function About() {
 
     return (
         <div className={styles.page}>
-            <div className={styles["section-one"]}>
+             <div className={styles["backarrow-container"]} onClick={onBackClick}>
+                <BackArrow/>
+            </div>
+            <div className={styles["card-container"]}>
                 <Card/>
-                <Button back onClick={onBackClick}/>
             </div>
             <div className={styles["media-container"]}>
                 {media.map((item, i) => 

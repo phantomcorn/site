@@ -6,15 +6,15 @@
     background: var(--primary-one);
 
     box-sizing: border-box;
-    padding: 8rem;
     position: relative;
 }
 
-.section-one {
+.card-container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    padding: 8rem;
+    padding-right: 0;
 }
 
 .media-container {
@@ -24,7 +24,8 @@
     flex-direction: column;
     justify-content: space-between;
     font-size: 6rem;
-
+    padding: 8rem;
+    padding-left: 0;
 }
 
 .background {
@@ -36,4 +37,11 @@
     top: 0;
     left: 0;
     opacity: 0;
+}
+
+.backarrow-container {
+    position: absolute;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    cursor: pointer;
 }
