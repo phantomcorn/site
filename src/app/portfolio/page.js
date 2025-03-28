@@ -63,7 +63,7 @@ export default function Portfolio() {
                     <Button key={index}/>
                 ))}
             </div>
-            {pageActive && <PortfolioPage ref={portPageRef} imgs={["helllo", "hello"]} pageActive={pageActive} setPageActive={setPageActive}></PortfolioPage>}
+            {pageActive && <PortfolioPage ref={portPageRef} pageActive={pageActive} setPageActive={setPageActive}></PortfolioPage>}
         </div>
     )
 }
