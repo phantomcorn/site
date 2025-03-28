@@ -11,7 +11,7 @@ export default function Experience() {
     const [activeView, setActiveView] = useState(<></>)
     const router = useRouter()
 
-    const onClickBack = (e) => {
+    const onBackClick = (e) => {
         e.preventDefault()
         router.back()
     }
@@ -57,7 +57,7 @@ export default function Experience() {
 
     return (
         <div className={styles.page}>
-            <div className={styles["backarrow-container"]} onClick={onClickBack}>
+            <div className={styles["backarrow-container"]} onClick={onBackClick}>
                 <BackArrow/>
             </div>
             <div className={styles.view}>{activeView ? activeView : startView}</div>
