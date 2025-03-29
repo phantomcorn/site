@@ -3,17 +3,17 @@ import { useState } from "react"
 import Timeline from "@/components/Timeline/Timeline" 
 import TimelineItem from "@/components/TimelineItem/TimelineItem"
 import styles from "./page.module.css"
-import { useRouter } from "next/navigation"
 import BackArrow from "@/components/BackArrow/BackArrow"
+import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper"
 
 export default function Experience() {
 
     const [activeView, setActiveView] = useState(<></>)
-    const router = useRouter()
+    const {routeBack} = useTransitionContext()
 
     const onBackClick = (e) => {
         e.preventDefault()
-        router.back()
+        routeBack()
     }
 
     const experiences = [

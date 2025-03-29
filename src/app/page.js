@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation"
 import styles from "./page.module.css";
 import Dial from "@/components/Dial/Dial";
+import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper";
 
 const filterConst = {
   opacity: 0.4,
@@ -11,7 +12,7 @@ const filterConst = {
 
 export default function Home() {
 
-  const router = useRouter();
+  const { routePush } = useTransitionContext()
 
   const titleRef1 = useRef(null)
   const titleRef2 = useRef(null)
@@ -70,7 +71,7 @@ export default function Home() {
     e.preventDefault();
     e.stopPropagation();
     if (activeDial) {
-      router.push(dials[activeDial].route)
+      routePush(dials[activeDial].route)
     }
   }
 

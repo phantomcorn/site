@@ -4,13 +4,13 @@ import TextDisperse from "@/components/DisperseText/DisperseText"
 import styles from "./page.module.css"
 import gsap from "gsap"
 import { useRef } from "react"
-import { useRouter } from "next/navigation"
 import BackArrow from "@/components/BackArrow/BackArrow"
+import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper"
 
 export default function About() {
     
-    const router = useRouter()
     const backgroundRef = useRef(null)
+    const {routeBack} = useTransitionContext()
 
     const setBackground = (isActive) => {
         gsap.to(backgroundRef.current, {opacity: isActive? 0.8 : 0})
@@ -42,23 +42,23 @@ export default function About() {
 
     const onBackClick = (e) => {
         e.preventDefault()
-        router.back()
+        routeBack()
     }
 
     return (
-        <div className={styles.page}>
-             <div className={styles["backarrow-container"]} onClick={onBackClick}>
-                <BackArrow/>
+            <div className={styles.page}>
+                <div className={styles["backarrow-container"]} onClick={onBackClick}>
+                    <BackArrow/>
+                </div>
+                <div className={styles["card-container"]}>
+                    <Card/>
+                </div>
+                <div className={styles["media-container"]}>
+                    {media.map((item, i) => 
+                        <TextDisperse variant={`variant${i + 1}`} key={`media${i+1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>)
+                    }
+                    <div ref={backgroundRef} className={styles.background}></div>
+                </div>
             </div>
-            <div className={styles["card-container"]}>
-                <Card/>
-            </div>
-            <div className={styles["media-container"]}>
-                {media.map((item, i) => 
-                    <TextDisperse variant={`variant${i + 1}`} key={`media${i+1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>)
-                }
-                <div ref={backgroundRef} className={styles.background}></div>
-            </div>
-        </div>
     )
 }

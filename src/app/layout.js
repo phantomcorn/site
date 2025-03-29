@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Libre_Baskerville } from "next/font/google";
+import {TransitionWrapper} from "@/components/TransitionWrapper/TransitionWrapper";
 
 const libreBaskerville = Libre_Baskerville({
   weight: ["400"], // Select available font weights
@@ -18,8 +19,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={libreBaskerville.className}>
-        {children}
-        
+        <TransitionWrapper>
+          {children}
+        </TransitionWrapper>
         {/* Morph filter */}
         <svg id="filters">
           <defs>

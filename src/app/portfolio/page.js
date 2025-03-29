@@ -5,13 +5,13 @@ import PortfolioPage from "@/components/PortfolioProject/PortfolioProject";
 import { useState, useRef, useEffect } from "react";
 import styles from "./page.module.css"
 import gsap from "gsap"
-import { useRouter } from "next/navigation";
 
 import projects from "@/components/PortfolioProject/Projects"
+import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper";
 
 export default function Portfolio() {
 
-    const router = useRouter()
+    const {routeBack} = useTransitionContext()
 
     const [pageActive, setPageActive] = useState(null)
     const portPageRef = useRef()
@@ -40,7 +40,7 @@ export default function Portfolio() {
 
     const onBackClick = (e) => {
         e.preventDefault()
-        router.back()
+        routeBack()
     }
 
     return (
