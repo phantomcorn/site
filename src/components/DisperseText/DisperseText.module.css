@@ -2,7 +2,8 @@
     cursor: pointer;
     display: inline-flex;
     padding: 1rem;
-    border-radius: 2rem ;
+    border-radius: 2rem;
+    position: absolute;
 }
 
 .media:hover{
@@ -12,7 +13,9 @@
 .variant1 {
     color: var(--secondary-one);
     /* background: var(--secondary-one); */
-    transform: rotate(-5deg)
+    transform: rotate(-5deg);
+    top: 10vh;
+    left: 50vw;
 }
 
 .variant2 {
@@ -20,12 +23,16 @@
     /* background: var(--secondary-one-two); */
     justify-content: flex-end;
     transform: translateX(2rem) rotate(-10deg);
+    top: 27vh;
+    left: 60vw;
 }
 
 .variant3 {
     color: var(--secondary-one-three);
     /* background: var(--secondary-one-three); */
     transform: translateX(-2rem) rotate(10deg);
+    top: 50vh;
+    left: 55vw;
 }
 
 .variant4 {
@@ -33,4 +40,6 @@
     /* background: var(--secondary-one-four); */
     justify-content: flex-end;
     transform: translateX(4rem) rotate(-5deg);
+    top: 72vh;
+    left: 65vw;
 }

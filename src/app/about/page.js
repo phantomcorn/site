@@ -46,19 +46,19 @@ export default function About() {
     }
 
     return (
-            <div className={styles.page}>
-                <div className={styles["backarrow-container"]} onClick={onBackClick}>
-                    <BackArrow/>
-                </div>
-                <div className={styles["card-container"]}>
-                    <Card/>
-                </div>
-                <div className={styles["media-container"]}>
-                    {media.map((item, i) => 
-                        <TextDisperse variant={`variant${i + 1}`} key={`media${i+1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>)
-                    }
-                    <div ref={backgroundRef} className={styles.background}></div>
-                </div>
+        <div className={styles.page}>
+            <div className={styles["backarrow-container"]} onClick={onBackClick}>
+                <BackArrow/>
             </div>
+            <div className={styles["card-container"]}>
+                <Card/>
+            </div>
+            <div className={styles["media-container"]}>
+                {media.map((item, i) => 
+                    <TextDisperse variant={`variant${i + 1}`} key={`media${i+1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>)
+                }
+                <div ref={backgroundRef} className={styles.background}></div>
+            </div>
+        </div>
     )
 }

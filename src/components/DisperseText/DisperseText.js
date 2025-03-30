@@ -12,7 +12,14 @@ export default function TextDisperse({children, setBackground, variant = "varian
     const getChars = (text) => {
         let chars = []
         text.split("").forEach((char, i) => {
-            chars.push(<motion.span custom={i} variants={disperse} animate={isAnimated? "open" : "closed"} key={char + i}>{char}</motion.span>)
+            chars.push(<motion.span 
+                            className="unselect"
+                            custom={i} 
+                            variants={disperse} 
+                            animate={isAnimated? "open" : "closed"} 
+                            key={char + i}>
+                                {char}
+                    </motion.span>)
         })
         return chars
     }
