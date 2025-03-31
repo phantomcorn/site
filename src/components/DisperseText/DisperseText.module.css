@@ -3,43 +3,32 @@
     display: inline-flex;
     padding: 1rem;
     border-radius: 2rem;
-    position: absolute;
-}
-
-.media:hover{
-    z-index: 1
+    flex-basis: 0; /* Ensures they take only required space */
+    box-sizing: border-box;
 }
 
 .variant1 {
     color: var(--secondary-one);
-    /* background: var(--secondary-one); */
-    transform: rotate(-5deg);
-    top: 10vh;
-    left: 50vw;
+    background: var(--secondary-one);
+    /* transform: rotate(-5deg); */
 }
 
 .variant2 {
     color: var(--secondary-one-two);
-    /* background: var(--secondary-one-two); */
+    background: var(--secondary-one-two);
     justify-content: flex-end;
-    transform: translateX(2rem) rotate(-10deg);
-    top: 27vh;
-    left: 60vw;
+    /* transform: translateX(2rem) rotate(-10deg); */
 }
 
 .variant3 {
     color: var(--secondary-one-three);
-    /* background: var(--secondary-one-three); */
-    transform: translateX(-2rem) rotate(10deg);
-    top: 50vh;
-    left: 55vw;
+    background: var(--secondary-one-three);
+    /* transform: translateX(-2rem) rotate(10deg); */
 }
 
 .variant4 {
     color: var(--secondary-one-four);
-    /* background: var(--secondary-one-four); */
+    background: var(--secondary-one-four);
     justify-content: flex-end;
-    transform: translateX(4rem) rotate(-5deg);
-    top: 72vh;
-    left: 65vw;
+    /* transform: translateX(4rem) rotate(-5deg); */
 }

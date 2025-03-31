@@ -3,7 +3,7 @@ import Card from "@/components/Card/Card"
 import TextDisperse from "@/components/DisperseText/DisperseText"
 import styles from "./page.module.css"
 import gsap from "gsap"
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 import BackArrow from "@/components/BackArrow/BackArrow"
 import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper"
 
@@ -44,21 +44,25 @@ export default function About() {
         e.preventDefault()
         routeBack()
     }
+    
+    
 
     return (
         <div className={styles.page}>
             <div className={styles["backarrow-container"]} onClick={onBackClick}>
                 <BackArrow/>
             </div>
-            <div className={styles["card-container"]}>
-                <Card/>
-            </div>
+            <Card/>
             <div className={styles["media-container"]}>
-                {media.map((item, i) => 
-                    <TextDisperse variant={`variant${i + 1}`} key={`media${i+1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>)
-                }
-                <div ref={backgroundRef} className={styles.background}></div>
+                {media.map((item, i) => (
+                    <>
+                        <TextDisperse variant={`variant${i + 1}`} key={`media${i+1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>
+                        {i === 1 && <div className={styles["child-break"]}/>}
+                    </>
+                ))}
+                
             </div>
+            <div ref={backgroundRef} className={styles.background}></div>
         </div>
     )
 }

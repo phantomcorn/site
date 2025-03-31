@@ -2,27 +2,35 @@
     width: 100vw;
     height: 100vh; /* Fullscreen */
     display: flex;
-    column-gap: 10rem;
+    row-gap: 5rem;
     background: var(--primary-one);
-
+    flex-direction: column;
+    align-items: center;
     box-sizing: border-box;
     position: relative;
+    padding-top: 8rem;
 }
 
-.card-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 8rem;
-    padding-right: 0;
+.backarrow-container {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    cursor: pointer;
 }
 
 .media-container {
     height: 100%;
-    width: 100%;
     font-size: 6rem;
-    padding: 8rem;
-    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.child-break {
+    flex-basis: 100%;
+    height: 0;
 }
 
 .background {
@@ -36,9 +44,3 @@
     opacity: 0;
 }
 
-.backarrow-container {
-    position: absolute;
-    padding-top: 2rem;
-    padding-left: 2rem;
-    cursor: pointer;
-}

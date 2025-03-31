@@ -24,8 +24,8 @@
 
 .backarrow-container {
     position: absolute;
-    padding-top: 2rem;
-    padding-left: 2rem;
+    top: 2rem;
+    left: 2rem;
     cursor: pointer;
 }
 
