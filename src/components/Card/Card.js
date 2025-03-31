@@ -8,7 +8,7 @@ export default function Card() {
         <div className={styles["card"]}>
             <div className={styles["card-inner"]}>
                 <div className={styles["card-back"]}>
-                    World!
+            
                 </div>
                 <div className={styles["card-front"]}>
                 
