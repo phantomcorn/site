@@ -57,7 +57,7 @@ export default function About() {
                 <div className={`${styles.brick} ${styles.reach} unselect`}> Reach </div>
                 <div className={`${styles.brick} ${styles.me} unselect`}> Me </div>
                 <div className={`${styles.brick} ${styles["reach-me-arrow"]} unselect`}> 
-                    <Image draggable="false" src={ReachMeArrow} width={0} height={0}/> 
+                    <Image draggable="false" src={ReachMeArrow} width={0} height={0} alt="Reach me arrow"/> 
                 </div>
                 <div className={styles["child-break"]}/>
                 {media.map((item, i) => (

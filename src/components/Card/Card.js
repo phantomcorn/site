@@ -41,7 +41,7 @@ export default function Card() {
                     <Image className={styles["card-info"]} src={profileImage} width={110} alt="Profile picture"/>
                     <div className={styles["card-info"]}> XXXX-XX-XXXXXXXX </div>
 
-                    <Image className={styles["card-info"]} src={chip} width={60}/>
+                    <Image className={styles["card-info"]} src={chip} alt="Card chip" width={60}/>
                     
                 </div>
             </div>
