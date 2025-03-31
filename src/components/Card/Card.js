@@ -1,6 +1,7 @@
 import styles from "./Card.module.css"
 import Image from 'next/image'
 import profileImage from "@/../public/media.jpg"
+import chip from "@/../public/chip.png"
 
 export default function Card() {
     return (
@@ -40,9 +41,7 @@ export default function Card() {
                     <Image className={styles["card-info"]} src={profileImage} width={110} alt="Profile picture"/>
                     <div className={styles["card-info"]}> XXXX-XX-XXXXXXXX </div>
 
-                    <div className={styles["card-info"]}>
-                        Chip
-                    </div>
+                    <Image className={styles["card-info"]} src={chip} width={60}/>
                     
                 </div>
             </div>

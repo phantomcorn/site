@@ -184,5 +184,5 @@
 .card-info:nth-child(22) { /* Chip */
     grid-row: 5 / span 4;
     grid-column: 2 / span 2;
-    background-color: aqua;
+    align-self: center;
 }
