@@ -3,9 +3,11 @@ import Card from "@/components/Card/Card"
 import TextDisperse from "@/components/DisperseText/DisperseText"
 import styles from "./page.module.css"
 import gsap from "gsap"
-import { useRef, useEffect } from "react"
+import { useRef } from "react"
 import BackArrow from "@/components/BackArrow/BackArrow"
+import ReachMeArrow from "@/../public/ReachMeArrow.svg"
 import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper"
+import Image from "next/image"
 
 export default function About() {
     
@@ -45,8 +47,6 @@ export default function About() {
         routeBack()
     }
     
-    
-
     return (
         <div className={styles.page}>
             <div className={styles["backarrow-container"]} onClick={onBackClick}>
@@ -54,6 +54,12 @@ export default function About() {
             </div>
             <Card/>
             <div className={styles["media-container"]}>
+                <div className={`${styles.brick} ${styles.reach} unselect`}> Reach </div>
+                <div className={`${styles.brick} ${styles.me} unselect`}> Me </div>
+                <div className={`${styles.brick} ${styles["reach-me-arrow"]} unselect`}> 
+                    <Image draggable="false" src={ReachMeArrow} width={0} height={0}/> 
+                </div>
+                <div className={styles["child-break"]}/>
                 {media.map((item, i) => (
                     <>
                         <TextDisperse variant={`variant${i + 1}`} key={`media${i+1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>
