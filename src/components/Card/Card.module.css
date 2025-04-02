@@ -19,17 +19,14 @@
 .card-inner > * {
     width: 100%;
     height: 100%;
-    /* width: 100%;
-    height: 100%; */
     position: absolute;
-    border-radius: 2rem;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden; /* Hide when object flipped ons its back */
     box-shadow : 0 1px 10px #5F5F5D;
     padding:0.6rem;
 
-    color: var(--secondary-one-three);
-    background-color: var(--secondary-three-three);
+    color: var(--card-text);
+    background-color: var(--card-bg);
 }   
 
 .card-back {
@@ -40,8 +37,10 @@
     transform: rotateY(-180deg);
 }
   
-.card-front {
+.card-front-grid {
     display: grid;
+    width: 100%;
+    height: 100%;
     grid-template-columns: 3fr 2fr 4fr 1fr 3fr 3fr 4fr 6fr;
     grid-template-rows: 2fr repeat(2,1fr) repeat(2,2fr) repeat(3,1fr) repeat(3,2fr) repeat(4,1fr);
     flex-direction: column;
@@ -49,7 +48,7 @@
 }
 
 .eng {
-    color: var(--secondary-one-two);
+    color: var(--card-eng-text);
 }
 
 .card-info:nth-child(1) { /* Logo */ 
@@ -187,4 +186,12 @@
     grid-row: 5 / span 5;
     grid-column: 2 / span 2;
     align-self: center;
+}
+
+.stamp {
+    position: absolute;
+    left: 51%;
+    top: 12%;
+    height: auto;
+    width: 250px;
 }
