@@ -52,7 +52,22 @@ const projects = {
         copy: "ImAudible (Image Audible) gallery is an online 3d gallery which users can navigate, view and listen to generative audio generated from images. This is a UI as part of my final year project. All images are not made by me. You can also read more about the project within the gallery introduction."
     },
     "askdoc" : {
-        type: "web"
+        type: "web",
+        media: ["https://res.cloudinary.com/dmg2dllnz/image/upload/v1743699003/askdoc_0_sg6izi.png",
+                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1743699002/askdoc_1_pkedcj.png",
+                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1743699001/askdoc_2_lekwje.png",
+                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1743699003/askdoc_3_f0fk1n.png",
+                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1743699005/askdoc_4_xgwc8s.png",
+                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1743699004/askdoc_5_apjkud.png"],
+        src: "https://github.com/phantomcorn/AskDoc",
+        alt: "AskDoc media",
+        copy: `Problem: A non-computing 
+            student may seek urgent help where the question requires further elaboration or difficult 
+            to explain on Imperial forum (EdStem) or even ones that require practical examples in order to 
+            get the gist of the problem.
+
+            Solution: MERN stack web app to assist non-computing students with 
+            computing-related assignments. Assisting is done via matching system followed by an in-person meetup.`
     }
 }
 
