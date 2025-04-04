@@ -3,6 +3,7 @@ import Image from 'next/image'
 import profileImage from "@/../public/media.jpg"
 import chip from "@/../public/chip.png"
 import stamp from "@/../public/stamp.PNG"
+import logo from "@/../public/logo.png"
 
 export default function Card() {
     return (
@@ -12,15 +13,16 @@ export default function Card() {
                     
                     Hi - I'm JJ.
 
-                    Strength: Great listener, Health conscious, Tidy (most of the time), Easygoing (with boundaries)
-                    Weakness: Spider, Yapper (it drains my energy)
+                    <div className={styles.green}> Great listener <br/> Health conscious <br/> Tidy (most of the time) <br/> Easygoing (with boundaries) </div>
+                    <div className={styles.red}> Spider <br/> Yapper (it drains my energy) </div>
+                   
 
                     Catch me in the corner at social events.
 
                 </div>
                 <div className={styles["card-front"]}>
                     <div className={styles["card-front-grid"]}>
-                        <div className={styles["card-info"]}>Logo</div>
+                        <Image src={logo} className={styles["card-info"]} alt="logo" width={0} height={0}/>
                         <div className={styles["card-info"]}>บัตรประจำตัวดิจิตอล <span className={styles.eng}>Digital ID Card</span> </div>
                         <div className={styles["card-info"]}>เลขบัตรประจำตัว</div>
                         <div className={`${styles["card-info"]} ${styles.eng}`}>Identification Number</div>
