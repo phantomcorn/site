@@ -38,7 +38,7 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
                 {getCopy()}
                 <div>
                     <Button onClick={onClick} back/>
-                    {pageActive.type !== "demo" && <Button onClick={onClickSource}> Visit site </Button>}
+                    {pageActive.type !== "demo" && <Button onClick={onClickSource}> {pageActive.src ? "Source" : "Visit site"} </Button>}
                 </div>
             </div>
             {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>}
