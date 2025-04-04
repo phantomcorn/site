@@ -24,9 +24,9 @@ const routes = {
     "/portfolio": "Portfolio"
 }
 
-export default function Curve({children, ref}) {
+export default function Curve({children}) {
 
-    const {key, transitionColor} = useTransitionContext()
+    const {key, transitionColor, fromExternal} = useTransitionContext()
     const [dimensions, setDimensions] = useState({
         width: null,
         height: null
@@ -48,10 +48,10 @@ export default function Curve({children, ref}) {
     }, [])
 
     return (
-        <div ref={ref}>
+        <div>
             <div style={{opacity: dimensions.width == null ? 1 : 0}} className={styles.background}/>
             <motion.p className={styles.route} {...anim(text)}>
-                    {routes[key]}
+                    {fromExternal ? "Welcome" : routes[key]}
             </motion.p>
             {dimensions.width != null && <SVG {...dimensions} fillColor={transitionColor[key]}/>}
             {children}
@@ -60,6 +60,8 @@ export default function Curve({children, ref}) {
 }
 
 const SVG = ({height, width, fillColor}) => {
+
+    const {fromExternal, setFromExternal} = useTransitionContext()
 
     const initialPath = `
         M0 300 
@@ -77,9 +79,12 @@ const SVG = ({height, width, fillColor}) => {
         L0 0
     `
 
+    const handleOnAnimationComplete = () => {
+        if (fromExternal) setFromExternal(false)
+    }
     return (
-        <motion.svg {...anim(translate)} className={styles.svg}>
-            <motion.path {...anim(curve(initialPath, targetPath))} fill={fillColor}/> 
+        <motion.svg {...anim(translate(fromExternal))} className={styles.svg}>
+            <motion.path {...anim(curve(initialPath, targetPath))} fill={fillColor} onAnimationComplete={handleOnAnimationComplete}/> 
         </motion.svg>
     )
 

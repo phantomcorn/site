@@ -16,6 +16,7 @@ export const text = {
 }
 
 export const curve = (initialPath, targetPath) => {
+
     return {
         initial: {
             d: initialPath
@@ -31,19 +32,26 @@ export const curve = (initialPath, targetPath) => {
     }
 }
 
-export const translate = {
-    initial: {
-        top: "-27vh"
-    },
-    enter: {
-        top: "-100vh",
-        transition: {duration: .75, delay: .35, ease: [0.76, 0, 0.24, 1]},
-        transitionEnd : {
-            top: "100vh"
+export const translate = (fromExternal) => {
+
+    const duration = fromExternal ? 1.3 : .75
+    // const ease = fromExternal ? [1,0.3,0.24,1] : [0.76, 0, 0.24, 1] 
+
+
+    return {
+        initial: {
+            top: "-27vh"
+        },
+        enter: {
+            top: "-100vh",
+            transition: {duration: duration, delay: .35, ease: [0.76, 0, 0.24, 1] },
+            transitionEnd : {
+                top: "100vh"
+            }
+        },
+        exit: {
+            top: "-27vh",
+            transition: {duration: .75, ease: [0.76, 0, 0.24, 1]}
         }
-    },
-    exit: {
-        top: "-27vh",
-        transition: {duration: .75, ease: [0.76, 0, 0.24, 1]}
     }
 }
