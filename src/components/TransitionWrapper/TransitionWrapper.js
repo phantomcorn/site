@@ -54,7 +54,7 @@ export function TransitionWrapper({ children }) {
         }
     }, []);
 
-    value = {
+    const value = {
         key, 
         setKey, 
         routePush, 
