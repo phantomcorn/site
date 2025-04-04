@@ -1,8 +1,7 @@
-"use client"; // ✅ Ensures we can use hooks like usePathname()
+"use client";
 import { AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
-import {motion} from "framer-motion"
+import { useState, useLayoutEffect } from "react";
 import Curve from "../Curve/Curve";
 import { createContext, useContext } from 'react';
 
@@ -24,7 +23,7 @@ const transitionColor = {
 export function TransitionWrapper({ children }) {
 
     const router = useRouter()
-    const curveRef = useRef()
+    const [fromExternal, setFromExternal] = useState(false);
     const [key, setKey] = useState("home")
 
     function routePush(path) {
@@ -36,11 +35,39 @@ export function TransitionWrapper({ children }) {
         setKey("/")
         setTimeout(() => router.back(), 500)
     }
+  
+
+    useLayoutEffect(() => {
+        let isExternal = false
+        let isRefresh = false
+        if (!document.referrer || !document.referrer.includes(window.location.origin)) {
+            isExternal = true
+        }
+
+        const entries = performance.getEntriesByType("navigation");
+        if (entries.length > 0 && entries[0].type === "reload") {
+            isRefresh = true
+        }
+
+        if (isExternal || isRefresh) {
+            setFromExternal(true)
+        }
+    }, []);
+
+    value = {
+        key, 
+        setKey, 
+        routePush, 
+        routeBack, 
+        transitionColor, 
+        fromExternal, 
+        setFromExternal
+    }
 
     return (
-        <TransitionContext.Provider value={{key, setKey, routePush, routeBack, transitionColor}}>
+        <TransitionContext.Provider value={value}>
             <AnimatePresence mode="wait">
-                <Curve key={key} ref={curveRef}>
+                <Curve key={key}>
                     {children}   
                 </Curve>
             </AnimatePresence>
