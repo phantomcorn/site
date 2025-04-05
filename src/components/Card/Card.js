@@ -22,7 +22,7 @@ export default function Card() {
                 </div>
                 <div className={styles["card-front"]}>
                     <div className={styles["card-front-grid"]}>
-                        <Image src={logo} className={styles["card-info"]} alt="logo" width={0} height={0}/>
+                        <Image src={logo} className={styles["card-info"]} alt="logo" width={0} height={0} priority={true}/>
                         <div className={styles["card-info"]}>บัตรประจำตัวดิจิตอล <span className={styles.eng}>Digital ID Card</span> </div>
                         <div className={styles["card-info"]}>เลขบัตรประจำตัว</div>
                         <div className={`${styles["card-info"]} ${styles.eng}`}>Identification Number</div>
@@ -48,11 +48,11 @@ export default function Card() {
                         <div className={`${styles["card-info"]} ${styles.eng}`}> Date of Expiry </div>
                         
                         
-                        <Image className={styles["card-info"]} src={profileImage} width={110} alt="Profile picture"/>
+                        <Image className={styles["card-info"]} src={profileImage} width={110} alt="Profile picture" priority={true}/>
                         <div className={styles["card-info"]}> XXXX-XX-XXXXXXXX </div>
 
-                        <Image className={styles["card-info"]} src={chip} alt="Card chip" width={60}/>
-                        <Image src={stamp} className={styles["stamp"]} alt="stamp" width={0} height={0}/>
+                        <Image className={styles["card-info"]} src={chip} alt="Card chip" width={60} priority={true}/>
+                        <Image src={stamp} className={styles["stamp"]} alt="stamp" width={0} height={0} priority={true}/>
                     </div>
                 </div>
             </div>
