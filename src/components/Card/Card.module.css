@@ -23,7 +23,8 @@
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden; /* Hide when object flipped ons its back */
     box-shadow : 0 1px 10px #5F5F5D;
-    padding: 0.6rem;
+    padding-top: 0.6rem;
+    padding-right: 0.6rem;
     color: var(--card-text);
     background-color: var(--card-bg);
 }   
@@ -149,6 +150,7 @@
 .card-info:nth-child(15) { /* Date of Issue */
     grid-row: 15;
     grid-column: 2 / span 2;
+    padding-bottom: 0.6rem;
 }
 
 .card-info:nth-child(16) { /* 26 มี.ค 2576  */
@@ -198,8 +200,18 @@
     width: 250px;
 }
 
+.barcode {
+    grid-row: 5 / -1;
+    grid-column: 1 ;
+    align-self: center;
+    height: 100%;
+    background: var(--card-barcode-bg);
+    padding: 0.4rem 0 1rem 1.2rem;
+    margin-right: 1rem;
+}
+
 .green {
-    color: var(--card-eng-text);
+    color: #396555;
 }
 
 .red {

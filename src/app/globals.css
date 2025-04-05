@@ -30,7 +30,8 @@
 
   --card-bg: #B5A882;
   --card-text: #993D3D;
-  --card-eng-text: #396555;
+  --card-eng-text: #4C2929;
+  --card-barcode-bg: #A78729;
 }
 
 .unselect {

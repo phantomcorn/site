@@ -4,6 +4,7 @@ import profileImage from "@/../public/media.jpg"
 import chip from "@/../public/chip.png"
 import stamp from "@/../public/stamp.PNG"
 import logo from "@/../public/logo.png"
+import barcode from "@/../public/barcode.svg"
 
 export default function Card() {
     return (
@@ -53,6 +54,7 @@ export default function Card() {
 
                         <Image className={styles["card-info"]} src={chip} alt="Card chip" width={60} priority={true}/>
                         <Image src={stamp} className={styles["stamp"]} alt="stamp" width={0} height={0} priority={true}/>
+                        <Image src={barcode} className={styles["barcode"]} alt="barcode" width={0} height={0} priority={true}/>
                     </div>
                 </div>
             </div>
