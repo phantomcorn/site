@@ -9,6 +9,8 @@ import ReachMeArrow from "@/../public/ReachMeArrow.svg"
 import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper"
 import Image from "next/image"
 
+import { Fragment } from 'react'
+
 export default function About() {
     
     const backgroundRef = useRef(null)
@@ -61,10 +63,10 @@ export default function About() {
                 </div>
                 <div className={styles["child-break"]}/>
                 {media.map((item, i) => (
-                    <>
-                        <TextDisperse variant={`variant${i + 1}`} key={`media${i+1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>
+                    <Fragment key={`media${i+1}`}>
+                        <TextDisperse variant={`variant${i + 1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>
                         {i === 1 && <div className={styles["child-break"]}/>}
-                    </>
+                    </Fragment>
                 ))}
                 
             </div>
