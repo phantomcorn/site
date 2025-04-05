@@ -18,17 +18,13 @@ export default function Slideshow({src}) {
         }
     },[])
 
-    useEffect(() => {
-
-    },[imgIndex])
-
     return (
         <div className={styles.slideshow}>
             <AnimatePresence>
                 {src && src.media?.map((img, i) => 
                     <motion.img 
                         className={`${styles.media}`} 
-                        initial={{opacity: 0}}
+                        initial={{ opacity: 1 }}
                         animate={{ opacity: i == imgIndex ? 1 : 0 }}
                         exit={{ opacity: 0 }}
                         key={src.alt + (i + 1)}
