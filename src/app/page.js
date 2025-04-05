@@ -42,7 +42,7 @@ export default function Home() {
       dial4: {
         deg: 0,
         color: "#894E38",
-        text: "e.t.c",
+        text: "Coming soon",
         route: "/etc"
       }
     }
