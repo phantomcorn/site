@@ -4,6 +4,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background: var(--primary-one);
 }
 
 .grid {
@@ -21,7 +23,6 @@
     align-content: center;
     grid-auto-flow: dense;
 
-    background: var(--primary-one);
 }
 
 
