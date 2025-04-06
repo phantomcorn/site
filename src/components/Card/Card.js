@@ -5,6 +5,8 @@ import chip from "@/../public/chip.png"
 import stamp from "@/../public/stamp.png"
 import logo from "@/../public/logo.png"
 import barcode from "@/../public/barcode.svg"
+import signature from "@/../public/sig.png"
+import stamp_signature from "@/../public/stamp_sig.png"
 
 export default function Card() {
     return (
@@ -48,14 +50,23 @@ export default function Card() {
                         <div className={styles["card-info"]}> วันบัตรหมดอายุ </div>
                         <div className={`${styles["card-info"]} ${styles.eng}`}> 26 Mar. 2033 </div>
                         <div className={`${styles["card-info"]} ${styles.eng}`}> Date of Expiry </div>
+
+                        <div className={`${styles["card-info"]} ${styles.eng}`}> ร้อยตำรวจโท </div>
+                        <div className={`${styles["card-info"]}`}> (Childish Jambino) </div>
+                        <div className={`${styles["card-info"]} ${styles.eng}`}> เจ้าพนักงานออกบัตร </div>
                         
+                        <div className={styles["card-info"]}> XXXX-XX-XXXXXXXX </div>
                         
                         <Image className={styles["card-info"]} src={profileImage} width={110} alt="Profile picture" priority={true}/>
-                        <div className={styles["card-info"]}> XXXX-XX-XXXXXXXX </div>
-
+                        
                         <Image className={styles["card-info"]} src={chip} alt="Card chip" width={60} priority={true}/>
+
+                        <Image src={stamp_signature} className={styles["stamp_sig"]} alt="signature" width={0} height={0} priority={true}/>
+                        <Image src={signature} className={styles.sig} alt="signature" width={0} height={0} priority={true}/>
                         <Image src={stamp} className={styles.stamp} alt="stamp" width={0} height={0} priority={true}/>
                         <Image src={barcode} className={styles.barcode} alt="barcode" width={0} height={0} priority={true}/>
+
+                       
                     </div>
                 </div>
             </div>

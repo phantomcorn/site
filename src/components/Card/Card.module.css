@@ -179,24 +179,45 @@
     grid-column: 8;
 }
 
-.card-info:nth-child(20) { /* Image */
-    grid-row: 9 / span 6;
-    grid-column: end;
-    align-self: center;
+
+.card-info:nth-child(20) { /* ร้อยตำรวจโท */
+    grid-row: 12;
+    grid-column: 5 / span 2;
+    z-index: 1; 
 }
 
-.card-info:nth-child(21) { /*  XXXX-XX-XXXXXXXX */
+.card-info:nth-child(21) { /* (Childish Jambino) */
+    grid-row: 14 ;
+    grid-column: 4 / span 4;
+    justify-self: center;
+    z-index: 1; 
+}
+
+.card-info:nth-child(22) { /* เจ้าพนักงานออกบัตร */
+    grid-row: 15 ;
+    grid-column: 4 / span 4;
+    justify-self: center;
+}
+
+.card-info:nth-child(23) { /*  XXXX-XX-XXXXXXXX */
     grid-row: 15;
     grid-column: end;
     font-size: 0.5rem;
     align-self: center;
 }
 
-.card-info:nth-child(22) { /* Chip */
+.card-info:nth-child(24) { /* Image */
+    grid-row: 9 / span 6;
+    grid-column: end;
+    align-self: center;
+}
+
+.card-info:nth-child(25) { /* Chip */
     grid-row: 5 / span 5;
     grid-column: 2 / span 2;
     align-self: center;
 }
+
 
 .stamp {
     position: absolute;
@@ -214,6 +235,22 @@
     background: var(--card-barcode-bg);
     padding: 0.4rem 0 1rem 1.2rem;
     margin-right: 1rem;
+}
+
+.stamp_sig{
+    position: absolute;
+    width: 100px;
+    height: auto;
+    top: 72%;
+    left: 37%
+}
+
+.sig{
+    position: absolute;
+    width: 70px;
+    height: auto;
+    top: 72%;
+    left: 46%
 }
 
 .green {
