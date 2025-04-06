@@ -28,12 +28,12 @@ export function TransitionWrapper({ children }) {
 
     function routePush(path) {
         setKey(path)
-        setTimeout(() => router.push(path), 500)
+        setTimeout(() => router.push(path), 400)
     }
 
     function routeBack() {
         setKey("/")
-        setTimeout(() => router.back(), 500)
+        setTimeout(() => router.back(), 400)
     }
   
 
