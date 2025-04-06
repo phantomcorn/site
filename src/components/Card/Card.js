@@ -2,7 +2,7 @@ import styles from "./Card.module.css"
 import Image from 'next/image'
 import profileImage from "@/../public/media.jpg"
 import chip from "@/../public/chip.png"
-import stamp from "@/../public/stamp.PNG"
+import stamp from "@/../public/stamp.png"
 import logo from "@/../public/logo.png"
 import barcode from "@/../public/barcode.svg"
 
