@@ -31,6 +31,12 @@
 
 .card-back {
     transform: rotateY(180deg); /* Flip so the back is facing the correct way */
+    padding: 0.6rem;
+    color : var(--card-eng-text);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .card:hover .card-inner {
@@ -216,4 +222,9 @@
 
 .red {
     color : var(--card-text);
+}
+
+.card-back > div {
+    display: flex;
+    justify-content: space-around;
 }

@@ -8,17 +8,18 @@ import barcode from "@/../public/barcode.svg"
 
 export default function Card() {
     return (
-        <div className={styles["card"]}>
+        <div className={styles.card}>
             <div className={styles["card-inner"]}>
                 <div className={styles["card-back"]}>
                     
                     Hi - I'm JJ.
+                    <div>
 
-                    <div className={styles.green}> Great listener <br/> Health conscious <br/> Tidy (most of the time) <br/> Easygoing (with boundaries) </div>
-                    <div className={styles.red}> Spider <br/> Yapper (it drains my energy) </div>
-                   
+                        <div className={`${styles.green}`}> Great listener <br/> Health conscious <br/> Tidy (most of the time) <br/> Easygoing <br/> Sober-sipping </div>
+                        <div className={`${styles.red}`}> Spider <br/> Yapper (energy--) </div>
+                    </div>
 
-                    Catch me in the corner at social events.
+                    Catch me at social events corner.
 
                 </div>
                 <div className={styles["card-front"]}>
@@ -53,8 +54,8 @@ export default function Card() {
                         <div className={styles["card-info"]}> XXXX-XX-XXXXXXXX </div>
 
                         <Image className={styles["card-info"]} src={chip} alt="Card chip" width={60} priority={true}/>
-                        <Image src={stamp} className={styles["stamp"]} alt="stamp" width={0} height={0} priority={true}/>
-                        <Image src={barcode} className={styles["barcode"]} alt="barcode" width={0} height={0} priority={true}/>
+                        <Image src={stamp} className={styles.stamp} alt="stamp" width={0} height={0} priority={true}/>
+                        <Image src={barcode} className={styles.barcode} alt="barcode" width={0} height={0} priority={true}/>
                     </div>
                 </div>
             </div>
