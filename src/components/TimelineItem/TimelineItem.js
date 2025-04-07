@@ -3,7 +3,7 @@ import style from "./TimelineItem.module.css"
 export default function TimelineItem({data}) {
 
     return (
-        <div className={style["timeline-item"]}>
+        <div className={style.timelineItem}>
             <div className={style.header}>
                 <div> 
                     <div className={style.role}>{data.role} </div>
