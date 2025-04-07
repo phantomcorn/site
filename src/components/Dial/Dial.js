@@ -43,6 +43,7 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"})
         oldY.current = e.clientY //Position to last move
     }
 
+    /* -------------------------------------- Mobile ------------------------------------------------ */ 
 
     const getTouchAngle = (touch) => {
         const rect = dial.current.getBoundingClientRect();
@@ -76,6 +77,7 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"})
   
         setDeg(id, Math.min(360, currDeg + delta));
     };
+     /* --------------------------------------------------------------------------------------------- */ 
 
     useEffect(() => {
         if (dial.current) {
