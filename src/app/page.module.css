@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 
-.title-one {
+.titleOne {
   --title-one-opacity: 100%;
   --title-one-blur: blur(0px);
 
@@ -36,7 +36,7 @@
   filter: var(--title-one-blur)
 }
 
-.title-two {
+.titleTwo {
   --title-two-opacity: 0%;
   --title-two-blur: blur(0px);
 
@@ -45,7 +45,7 @@
 }
 
 
-.dial-group {
+.dialGroup {
   height: 50%;
   width: 100%;
   display: flex;

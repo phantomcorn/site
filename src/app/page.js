@@ -108,11 +108,11 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <div className={styles.morph}>
-        <div ref={titleRef1} className={`${styles.title} unselect ${styles["title-one"]}`}> jaywithnoay</div>
-        <div ref={titleRef2} className={`${styles.title} unselect ${styles["title-two"]}`} onClick={navigate}> {activeDial? dials[activeDial].text : ""} </div>
+        <div ref={titleRef1} className={`${styles.title} unselect ${styles.titleOne}`}> jaywithnoay</div>
+        <div ref={titleRef2} className={`${styles.title} unselect ${styles.titleTwo}`} onClick={navigate}> {activeDial? dials[activeDial].text : ""} </div>
       </div>
      
-      <div className={styles["dial-group"]}> 
+      <div className={styles.dialGroup}> 
         <Dial deg={dials["dial1"].deg} setDeg={updateDegree} id="dial1" variant="color1" activeDial={activeDial}></Dial>
         <Dial deg={dials["dial2"].deg} setDeg={updateDegree} id="dial2" variant="color2" activeDial={activeDial}></Dial>
         <Dial deg={dials["dial3"].deg} setDeg={updateDegree} id="dial3" variant="color3" activeDial={activeDial}></Dial>
