@@ -1,5 +1,5 @@
 "use client"
-import styles from "./Timeline.module.css"
+import styles from "./Timeline.module.scss"
 import { useEffect, useRef, useState } from "react"
 export default function Timeline({children, setActiveView}) {
 
@@ -92,12 +92,6 @@ export default function Timeline({children, setActiveView}) {
                             className={styles.timelineMarkerPoint} 
                             onClick={(e) => onClick(e, i)}
                         />
-                        {/* <svg width="8" height="10" viewBox="-4 0 8 10">
-                            <path
-                                stroke="transparent"
-                                strokeWidth="0"
-                            />
-                        </svg>           */}
                         <svg width="16" height="12" viewBox="-6 0 12 9">
                             <path
                                 stroke="transparent"

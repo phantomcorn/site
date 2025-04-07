@@ -19,31 +19,30 @@
   position: relative;  /* Needed for absolute positioning of .title */
 
   filter: url(#threshold); /* Gooey filter */
+
+  .title {
+    position: absolute;
+    color: var(--title-color);
+    font-size: 50px;
+    cursor: pointer;
+  }
+  
+  .titleOne {
+    --title-one-opacity: 100%;
+    --title-one-blur: blur(0px);
+  
+    opacity: var(--title-one-opacity);
+    filter: var(--title-one-blur)
+  }
+  
+  .titleTwo {
+    --title-two-opacity: 0%;
+    --title-two-blur: blur(0px);
+  
+    opacity: var(--title-two-opacity);
+    filter: var(--title-two-blur)
+  }
 }
-
-.title {
-  position: absolute;
-  color: var(--title-color);
-  font-size: 50px;
-  cursor: pointer;
-}
-
-.titleOne {
-  --title-one-opacity: 100%;
-  --title-one-blur: blur(0px);
-
-  opacity: var(--title-one-opacity);
-  filter: var(--title-one-blur)
-}
-
-.titleTwo {
-  --title-two-opacity: 0%;
-  --title-two-blur: blur(0px);
-
-  opacity: var(--title-two-opacity);
-  filter: var(--title-two-blur)
-}
-
 
 .dialGroup {
   height: 50%;

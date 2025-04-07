@@ -1,4 +1,4 @@
-import styles from "./PortfolioProject.module.css"
+import styles from "./PortfolioProject.module.scss"
 import Slideshow from "../Slideshow/Slideshow"
 import Button from "../Button/Button"
 import Image from "next/image"
@@ -21,7 +21,7 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
         if (!pageActive.copy.type) {
             return pageActive.copy
         } else if (pageActive.copy.type === "media") {
-            return  <Image  className={styles["copy-media"]}
+            return  <Image  className={styles.copyMedia}
                             src={pageActive.copy.src} 
                             alt={pageActive.alt + " copy"}
                             width={pageActive.copy.width}

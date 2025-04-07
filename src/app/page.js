@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/navigation"
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import Dial from "@/components/Dial/Dial";
 import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper";
 

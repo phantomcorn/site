@@ -2,7 +2,7 @@
 import Button from "@/components/Button/Button"
 import PortfolioPage from "@/components/PortfolioProject/PortfolioProject";
 import { useState, useRef, useEffect } from "react";
-import styles from "./page.module.css"
+import styles from "./page.module.scss"
 import gsap from "gsap"
 
 import projects from "@/components/PortfolioProject/Projects"

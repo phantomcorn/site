@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef} from "react";
-import styles from "./Dial.module.css";
+import styles from "./Dial.module.scss";
 
 export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"}) {
 

@@ -9,17 +9,13 @@
     display: flex;
     justify-content: space-between;
     font-size: 2rem;
-}
 
-.header > div {
-    display: flex;
-    flex-direction: column;
-}
+    > div:nth-child(1) {
+        display: flex;
+        flex-direction: column;
+    }
 
-.role {
-    font-size: 2.5rem;
+    .role {
+        font-size: 2.5rem;
+    }
 }
-
-/* .place {
-    font-size: 2rem;
-} */

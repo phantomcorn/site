@@ -1,4 +1,4 @@
-import styles from "./Card.module.css"
+import styles from "./Card.module.scss"
 import Image from 'next/image'
 import profileImage from "@/../public/media.jpg"
 import chip from "@/../public/chip.png"

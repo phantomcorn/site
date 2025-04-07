@@ -1,7 +1,7 @@
 "use client"
 import Card from "@/components/Card/Card"
 import TextDisperse from "@/components/DisperseText/DisperseText"
-import styles from "./page.module.css"
+import styles from "./page.module.scss"
 import gsap from "gsap"
 import { useRef } from "react"
 import BackArrow from "@/components/BackArrow/BackArrow"

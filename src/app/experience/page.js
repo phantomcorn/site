@@ -2,7 +2,7 @@
 import { useState } from "react"
 import Timeline from "@/components/Timeline/Timeline" 
 import TimelineItem from "@/components/TimelineItem/TimelineItem"
-import styles from "./page.module.css"
+import styles from "./page.module.scss"
 import BackArrow from "@/components/BackArrow/BackArrow"
 import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper"
 
