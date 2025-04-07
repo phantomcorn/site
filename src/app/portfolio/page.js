@@ -43,22 +43,32 @@ export default function Portfolio() {
         routeBack()
     }
 
+    const preload = (title) => { /* Preload images on button hover */
+
+        if (!projects[title].preloaded) {
+            projects[title].media?.map((imgSrc) => {
+                const img = new Image()
+                img.src = imgSrc
+            })
+        }
+    }
+
     return (
         <div className={styles.page}>
             
             <div ref={gridRef} className={`${styles.grid} unselect`} >
                 <Button back onClick={onBackClick}/>
-                <Button variant="color1" onClick={(e) => showMenu(e, "imaudible")}> ImAudible Gallery </Button>
-                <Button variant="color4" onClick={(e) => showMenu(e, "oasis-residence")}> Oasis Residence </Button>
+                <Button variant="color1" onClick={(e) => showMenu(e, "imaudible")} onMouseEnter={() => preload("imaudible")}> ImAudible Gallery </Button>
+                <Button variant="color4" onClick={(e) => showMenu(e, "oasis-residence")} onMouseEnter={() => preload("oasis-residence")}> Oasis Residence </Button>
                 {[...Array(11)].map((_, index) => (
                     <Button key={index}/> 
                 ))}
-                <Button variant="color3" onClick={(e) => showMenu(e, "tonamn-portfolio")}> Tonamn Porfolio </Button>
+                <Button variant="color3" onClick={(e) => showMenu(e, "tonamn-portfolio")} onMouseEnter={() => preload("tonamn-portfolio")}> Tonamn Porfolio </Button>
 
                 {[...Array(11)].map((_, index) => (
                     <Button key={index}/> 
                 ))}
-                <Button variant="color3" onClick={(e) => showMenu(e, "askdoc")}> AskDoc </Button>
+                <Button variant="color3" onClick={(e) => showMenu(e, "askdoc")} onMouseEnter={() => preload("askdoc")}> AskDoc </Button>
                 {[...Array(4)].map((_, index) => (
                     <Button key={index}/> 
                 ))}
