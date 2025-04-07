@@ -16,14 +16,14 @@
     position: absolute;
 }
 
-.dial-inner {
+.dialInner {
     width: 4.5rem;
     height: 4.5rem;
     background-color: var(--primary-one);
     border-radius: 50%;
 }
 
-.dial-outer-active {
+.dialOuterActive {
 
     width: 6rem;
     aspect-ratio: 1;
@@ -37,7 +37,7 @@
     -webkit-mask: radial-gradient(circle, white 70%, transparent 71%);
 }
 
-.dial-outer {
+.dialOuter {
     width: 6rem;
     height: 6rem;
     background-color: var(--primary-two);
@@ -52,11 +52,11 @@
     transform-origin: 50% 50%;
 }
 
-.handle-off {
+.handleOff {
     transition: transform 2s;
 }
 
-.handle-on {
+.handleOn {
     transition: transform 0.1s;
 }
 

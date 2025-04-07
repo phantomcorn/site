@@ -51,13 +51,13 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"})
     },[deg])
 
     //Add additional class depending on whether dial is active
-    const activeStyle = id === activeDial ? styles["handle-on"] : styles["handle-off"]
+    const activeStyle = id === activeDial ? styles.handleOn : styles.handleOff
 
     return (
         <div className={styles.dial} onMouseDown={onMouseDown} ref={dial}>
-            <div className={styles["dial-outer"]}/>
-            <div className={styles["dial-outer-active"]}/>
-            <div className={styles["dial-inner"]}/>
+            <div className={styles.dialOuter}/>
+            <div className={styles.dialOuterActive}/>
+            <div className={styles.dialInner}/>
             <div className={`${styles.handle} ${styles[variant]} ${activeStyle}`}/>
         </div>
     )
