@@ -8,7 +8,7 @@
     flex-shrink: 0; /* Prevent shrinking */
 }
 
-.card-inner {
+.cardInner {
     width: 100%;
     height: 100%;
     position: relative;
@@ -16,7 +16,7 @@
     transform-style: preserve-3d;
 }
 
-.card-inner > * {
+.cardInner > * {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -29,7 +29,7 @@
     background-color: var(--card-bg);
 }   
 
-.card-back {
+.cardBack {
     transform: rotateY(180deg); /* Flip so the back is facing the correct way */
     padding: 0.6rem;
     color : var(--card-eng-text);
@@ -39,11 +39,11 @@
     justify-content: space-around;
 }
 
-.card:hover .card-inner {
+.card:hover .cardInner {
     transform: rotateY(-180deg);
 }
   
-.card-front-grid {
+.cardFrontGrid {
     display: grid;
     width: 100%;
     height: 100%;
@@ -57,7 +57,7 @@
     color: var(--card-eng-text);
 }
 
-.card-info:nth-child(1) { /* Logo */ 
+.cardInfo:nth-child(1) { /* Logo */ 
     grid-column: 1 / span 2;
     grid-row: 1 / span 3;
     /* background: blue; */
@@ -66,153 +66,153 @@
     justify-self: center;
 }
 
-.card-info:nth-child(2) { /* บัตรประจำตัวอิเล็กทรอนนิค Digital ID */ 
+.cardInfo:nth-child(2) { /* บัตรประจำตัวอิเล็กทรอนนิค Digital ID */ 
     grid-row: 1 ;
     grid-column: 3 / -1 ;
     font-size: 1rem;
 }
 
-.card-info:nth-child(3) { /* เลขบัตรประจำตัว */ 
+.cardInfo:nth-child(3) { /* เลขบัตรประจำตัว */ 
     grid-row: 2 ;
     grid-column: 3 / end ;
 }
 
-.card-info:nth-child(n + 3) {
+.cardInfo:nth-child(n + 3) {
     font-size: 0.7rem;
 }
 
-.card-info:nth-child(n + 3) > span {
+.cardInfo:nth-child(n + 3) > span {
     font-size: 0.9rem;
 }
 
-.card-info:nth-child(4) { /* Identification Number */ 
+.cardInfo:nth-child(4) { /* Identification Number */ 
     grid-row: 3 ;
     grid-column: 3 / end ;
 }
 
-.card-info:nth-child(5) { /* X XXXX XXXXX 74 2 */ 
+.cardInfo:nth-child(5) { /* X XXXX XXXXX 74 2 */ 
     grid-row: 2 / span 2 ;
     grid-column: 6 / end ;
     font-size: 0.9rem;
 }
 
-.card-info:nth-child(6) { /* ชื่อตัวและชื่อสกุล <span>นาย พันธกรณ์ ปรุศุดำเกิง</span> */
+.cardInfo:nth-child(6) { /* ชื่อตัวและชื่อสกุล <span>นาย พันธกรณ์ ปรุศุดำเกิง</span> */
     grid-row: 4;
     grid-column: 2 / end;
 }
 
-.card-info:nth-child(6) > span { /* นาย พันธกรณ์ ปรุศุดำเกิง */
+.cardInfo:nth-child(6) > span { /* นาย พันธกรณ์ ปรุศุดำเกิง */
     font-size: 1.1rem;
 }
 
-.card-info:nth-child(7) { /* Name Mr. Phantakorn */
+.cardInfo:nth-child(7) { /* Name Mr. Phantakorn */
     grid-row: 5;
     grid-column: 4 / -1;
     align-self: center;
 }
 
-.card-info:nth-child(8) { /* Last name Prarusudamkerng */
+.cardInfo:nth-child(8) { /* Last name Prarusudamkerng */
     grid-row: 6;
     grid-column: 4 / -1;
 }
 
 
-.card-info:nth-child(9) { /* เกิดวันที่ 19 ส.ค. 2544 */
+.cardInfo:nth-child(9) { /* เกิดวันที่ 19 ส.ค. 2544 */
     grid-row: 7 / span 2;
     grid-column: 5 / -1;
     align-self: center;
 }
 
 
-.card-info:nth-child(10) { /* Date of Birth 19 Aug. 2001 */
+.cardInfo:nth-child(10) { /* Date of Birth 19 Aug. 2001 */
     grid-row: 9;
     grid-column: 5 / -1;
     align-self: center;
 }
 
 
-.card-info:nth-child(11) { /* ที่อยู่ XX XXXX XXXX XXXX */
+.cardInfo:nth-child(11) { /* ที่อยู่ XX XXXX XXXX XXXX */
     grid-row: 10 / span 2;
     grid-column: 2 / span 5;
     font-size: 0.8rem;
     align-self: flex-end;
 }
 
-.card-info:nth-child(12) { /* 15 มี.ค 2568  */
+.cardInfo:nth-child(12) { /* 15 มี.ค 2568  */
     grid-row: 12;
     grid-column: 2 / span 2;
 }
 
-.card-info:nth-child(13) { /* วันออกบัตร */
+.cardInfo:nth-child(13) { /* วันออกบัตร */
     grid-row: 13;
     grid-column: 2 / span 2;
 }
 
-.card-info:nth-child(14) { /* 15 Mar. 2025 */
+.cardInfo:nth-child(14) { /* 15 Mar. 2025 */
     grid-row: 14;
     grid-column: 2 / span 3;
 }
 
-.card-info:nth-child(15) { /* Date of Issue */
+.cardInfo:nth-child(15) { /* Date of Issue */
     grid-row: 15;
     grid-column: 2 / span 2;
     padding-bottom: 0.6rem;
 }
 
-.card-info:nth-child(16) { /* 26 มี.ค 2576  */
+.cardInfo:nth-child(16) { /* 26 มี.ค 2576  */
     grid-row: 12;
     grid-column: 8;
 }
 
-.card-info:nth-child(17) { /* วันบัตรหมดอายุ */
+.cardInfo:nth-child(17) { /* วันบัตรหมดอายุ */
     grid-row: 13;
     grid-column: 8;
 }
 
-.card-info:nth-child(18) { /* 26 Mar. 2033 */
+.cardInfo:nth-child(18) { /* 26 Mar. 2033 */
     grid-row: 14;
     grid-column: 8;
 }
 
-.card-info:nth-child(19) { /* Date of Expiry */
+.cardInfo:nth-child(19) { /* Date of Expiry */
     grid-row: 15;
     grid-column: 8;
 }
 
 
-.card-info:nth-child(20) { /* ร้อยตำรวจโท */
+.cardInfo:nth-child(20) { /* ร้อยตำรวจโท */
     grid-row: 12;
     grid-column: 5 / span 2;
     z-index: 1; 
 }
 
-.card-info:nth-child(21) { /* (Childish Jambino) */
+.cardInfo:nth-child(21) { /* (Childish Jambino) */
     grid-row: 14 ;
     grid-column: 4 / span 4;
     justify-self: center;
     z-index: 1; 
 }
 
-.card-info:nth-child(22) { /* เจ้าพนักงานออกบัตร */
+.cardInfo:nth-child(22) { /* เจ้าพนักงานออกบัตร */
     grid-row: 15 ;
     grid-column: 4 / span 4;
     justify-self: center;
 }
 
-.card-info:nth-child(23) { /*  XXXX-XX-XXXXXXXX */
+.cardInfo:nth-child(23) { /*  XXXX-XX-XXXXXXXX */
     grid-row: 15;
     grid-column: end;
     font-size: 0.5rem;
     align-self: center;
 }
 
-.card-info:nth-child(24) { /* Image */
+.cardInfo:nth-child(24) { /* Image */
     grid-row: 9 / span 6;
     grid-column: end;
     align-self: center;
 }
 
-.card-info:nth-child(25) { /* Chip */
+.cardInfo:nth-child(25) { /* Chip */
     grid-row: 5 / span 5;
     grid-column: 2 / span 2;
     align-self: center;
@@ -237,7 +237,7 @@
     margin-right: 1rem;
 }
 
-.stamp_sig{
+.stampSig{
     position: absolute;
     width: 100px;
     height: auto;
@@ -261,7 +261,7 @@
     color : var(--card-text);
 }
 
-.card-back > div {
+.cardBack > div {
     display: flex;
     justify-content: space-around;
 }
