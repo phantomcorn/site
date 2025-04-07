@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import Timeline from "@/components/Timeline/Timeline" 
 import TimelineItem from "@/components/TimelineItem/TimelineItem"
 import styles from "./page.module.scss"
@@ -8,8 +8,11 @@ import { useTransitionContext } from "@/components/TransitionWrapper/TransitionW
 
 export default function Experience() {
 
+    const [scrollPos , setScrollPos] = useState(0)
     const [activeView, setActiveView] = useState(<></>)
     const {routeBack} = useTransitionContext()
+    const markerContainerRef = useRef() //markerRef's parent
+
 
     const onBackClick = (e) => {
         e.preventDefault()
@@ -61,7 +64,11 @@ export default function Experience() {
                 <BackArrow/>
             </div>
             <div className={styles.view}>{activeView ? activeView : startView}</div>
-            <Timeline setActiveView={setActiveView}>
+            <Timeline 
+                setActiveView={setActiveView} 
+                scrollPos={scrollPos} 
+                setScrollPos={setScrollPos} 
+                markerContainerRef={markerContainerRef}>
                 {experiences.map((exp, i) => 
                     <TimelineItem key={`timeline-item${i + 1}`} data={exp}/>
                 )}

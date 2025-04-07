@@ -1,16 +1,14 @@
 "use client"
 import styles from "./Timeline.module.scss"
 import { useEffect, useRef, useState } from "react"
-export default function Timeline({children, setActiveView}) {
+export default function Timeline({children, setActiveView, scrollPos, setScrollPos, markerContainerRef}) {
 
-    const [scrollPos , setScrollPos] = useState(0)
     const [markerIdx, setMarkerIdx] = useState({curr: -1, next: 0}) 
     const [markerPositions, setMarkerPositions] = useState([]) //Compute and store marker position based on markerRefs
     const [markerParentWidth, setMarkerParentWidth] = useState() //Compute parent width 
 
     const timelineProgressRef = useRef() 
     const markerRefs = useRef([])
-    const markerParentRef = useRef() //markerRef's parent
     
     const onClick = (e, curr) => {
         e.preventDefault()
@@ -19,7 +17,7 @@ export default function Timeline({children, setActiveView}) {
     }
     
     useEffect(() => {
-        const maxWidth = markerParentRef.current?.getBoundingClientRect().width //Width of `timeline-items` (in px)
+        const maxWidth = markerContainerRef.current?.getBoundingClientRect().width //Width of `timeline-items` (in px)
         setMarkerParentWidth(maxWidth) //cannot use (below) markerParentWidth yet
 
         const markerPositions = markerRefs.current.map((ref) => {
@@ -82,7 +80,7 @@ export default function Timeline({children, setActiveView}) {
 
     return (
         <div className={styles.timeline}>
-            <div ref={markerParentRef} className={styles.timelineMarkers}>
+            <div ref={markerContainerRef} className={styles.timelineMarkers}>
                 {children && children.map((_,i) => 
                     <div key={`timeline-marker${i + 1}`} 
                          ref={(el) => markerRefs.current[i] = el} // Assign ref dynamically
