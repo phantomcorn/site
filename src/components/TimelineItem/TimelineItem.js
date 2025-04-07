@@ -1,4 +1,4 @@
-import style from "./TimelineItem.module.css"
+import style from "./TimelineItem.module.scss"
 
 export default function TimelineItem({data}) {
 
@@ -7,7 +7,7 @@ export default function TimelineItem({data}) {
             <div className={style.header}>
                 <div> 
                     <div className={style.role}>{data.role} </div>
-                    <div className={style.place}>{data.place} </div>
+                    <div>{data.place} </div>
                 </div>
                 <div> {data.start}-{data.end} </div>
             </div>
