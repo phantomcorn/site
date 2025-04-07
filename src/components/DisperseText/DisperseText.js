@@ -2,8 +2,7 @@
 import {motion} from "framer-motion"
 import { useState } from "react"
 import { disperse } from "./animation"
-
-import style from "./DisperseText.module.css"
+import style from "./DisperseText.module.scss"
 
 export default function TextDisperse({children, setBackground, variant = "variant1", onClick}) {
 
