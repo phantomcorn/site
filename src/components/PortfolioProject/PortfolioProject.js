@@ -32,9 +32,9 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
 
 
     return (
-        <div ref={ref} className={`${styles["portfolio-page"]}`} 
+        <div ref={ref} className={styles.portfolioPage} 
         >
-            <div className={styles["textbox"]}>
+            <div className={styles.textbox}>
                 {getCopy()}
                 <div>
                     <Button onClick={onClick} back/>
@@ -43,8 +43,8 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
             </div>
             {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>}
             {pageActive.type === "demo" && 
-                <div className={styles["yt-shorts-container"]}>
-                    <iframe className={styles["yt-shorts"]} src={pageActive.media} allowFullScreen> </iframe>
+                <div>
+                    <iframe className={styles.ytShorts} src={pageActive.media} allowFullScreen> </iframe>
                 </div>}
         </div>
     )
