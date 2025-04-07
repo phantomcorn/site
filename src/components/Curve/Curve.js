@@ -1,9 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { usePathname } from 'next/navigation';
 import { text, curve, translate } from './anim';
-import styles from "./Curve.module.css"
+import styles from "./Curve.module.scss"
 import { useTransitionContext } from '../TransitionWrapper/TransitionWrapper';
 
 const anim = (variants) => {
