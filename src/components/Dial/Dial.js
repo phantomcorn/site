@@ -8,25 +8,25 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"})
     const oldY = useRef(null)
     const dragging = useRef(false)
 
-    const onMouseDown = (e) => {
+    const handleMouseDown = (e) => {
         e.preventDefault()
         dragging.current = true
         // console.log("dragging starts")
         oldY.current = e.clientY
         //otherwise mouseUp is only triggered when cursor within element
-        window.addEventListener("mouseup", onMouseUp)
-        window.addEventListener("mousemove", onMouseMove)
+        window.addEventListener("mouseup", handleMouseUp)
+        window.addEventListener("mousemove", handleMouseMove)
     }
 
-    const onMouseUp = (e) => {
+    const handleMouseUp = (e) => {
         // console.log("dragging ends")
        dragging.current = false
 
-        window.removeEventListener("mouseup", onMouseUp)
-        window.removeEventListener("mousemove", onMouseMove)
+        window.removeEventListener("mouseup", handleMouseUp)
+        window.removeEventListener("mousemove", handleMouseMove)
     }
 
-    const onMouseMove = (e) => {
+    const handleMouseMove = (e) => {
 
         if (!dragging.current) return 
         const offset = e.clientY - oldY.current
@@ -54,7 +54,10 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"})
     const activeStyle = id === activeDial ? styles.handleOn : styles.handleOff
 
     return (
-        <div className={styles.dial} onMouseDown={onMouseDown} ref={dial}>
+        <div ref={dial}
+            className={styles.dial} 
+            onMouseDown={handleMouseDown} 
+            >
             <div className={styles.dialOuter}/>
             <div className={styles.dialOuterActive}/>
             <div className={styles.dialInner}/>
