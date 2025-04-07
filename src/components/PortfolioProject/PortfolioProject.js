@@ -25,7 +25,7 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
                             src={pageActive.copy.src} 
                             alt={pageActive.alt + " copy"}
                             width={pageActive.copy.width}
-                            height={pageActive.height}/>
+                            height={pageActive.copy.height}/>
         }
     }
 
