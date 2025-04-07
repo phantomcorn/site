@@ -24,15 +24,15 @@
     flex-direction: column;
     justify-content: space-between;
     row-gap: 5rem;
+
+    > div {
+        display: flex;
+        column-gap: 5rem;
+        justify-content: space-around;
+    }
 }
 
-.textbox > div {
-    display: flex;
-    column-gap: 5rem;
-    justify-content: space-around;
-}
-
-.copy-media {
+.copyMedia {
     width: 100%;
     height: auto;
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react"
-import styles from "./Slideshow.module.css"
+import styles from "./Slideshow.module.scss"
 import {motion, AnimatePresence} from "framer-motion"
 
 export default function Slideshow({src}) {
@@ -20,7 +20,7 @@ export default function Slideshow({src}) {
             <div className={styles.slideshow}>
                 <AnimatePresence mode="wait">
                     <motion.img
-                        className={`${styles.media}`} 
+                        className={styles.media} 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1, transition: {duration: 1.5, ease: "easeIn"} }}
                         exit={{opacity: 0, transition: {duration: 1.5, ease: "easeOut"}}}
