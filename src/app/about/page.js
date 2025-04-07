@@ -51,21 +51,21 @@ export default function About() {
     
     return (
         <div className={styles.page}>
-            <div className={styles["backarrow-container"]} onClick={onBackClick}>
+            <div className={styles.backarrowContainer} onClick={onBackClick}>
                 <BackArrow/>
             </div>
             <Card/>
-            <div className={styles["media-container"]}>
+            <div className={styles.mediaContainer}>
                 <div className={`${styles.brick} ${styles.reach} unselect`}> Reach </div>
                 <div className={`${styles.brick} ${styles.me} unselect`}> Me </div>
-                <div className={`${styles.brick} ${styles["reach-me-arrow"]} unselect`}> 
+                <div className={`${styles.brick} ${styles.reachMeArrow} unselect`}> 
                     <Image draggable="false" src={ReachMeArrow} width={0} height={0} alt="Reach me arrow"/> 
                 </div>
-                <div className={styles["child-break"]}/>
+                <div className={styles.childBreak}/>
                 {media.map((item, i) => (
                     <Fragment key={`media${i+1}`}>
                         <TextDisperse variant={`variant${i + 1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>
-                        {i === 1 && <div className={styles["child-break"]}/>}
+                        {i === 1 && <div className={styles.childBreak}/>}
                     </Fragment>
                 ))}
                 
