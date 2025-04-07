@@ -1,4 +1,4 @@
-import styles from "./Button.module.css";
+import styles from "./Button.module.scss";
 import BackArrow from "../BackArrow/BackArrow";
 export default function Button({ variant = "color1", children, back = false, ...props}) {
 

@@ -1,4 +1,4 @@
-import styles from "./BackArrow.module.css"
+import styles from "./BackArrow.module.scss"
 export default function BackArrow() {
 
     return (
