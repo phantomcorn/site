@@ -43,6 +43,40 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"})
         oldY.current = e.clientY //Position to last move
     }
 
+
+    const getTouchAngle = (touch) => {
+        const rect = dial.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const dx = touch.clientX - centerX;
+        const dy = touch.clientY - centerY;
+
+        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+        const normalisedAngle = ((angle + 360 + 90) % 360) /* Adjust to our axis */
+        return normalisedAngle;
+    };
+
+    const handleTouchStart = (e) => {
+        const touch = e.touches[0];
+        const angle = getTouchAngle(touch);
+        setDeg(id, angle);
+    };
+    
+    const handleTouchMove = (e) => {
+        if (deg === null) return;
+        const touch = e.touches[0];
+        const currentAngle = getTouchAngle(touch);
+        const delta = currentAngle - deg;
+
+        const degStr = dial.current?.style.getPropertyValue("--deg") // "180deg"
+        const currDeg = parseInt(degStr.split("deg")[0])
+        if (Math.abs(delta) > 100) { /* Prevent moving into dead zone (360 -> 0 and 360 <- 0) */
+            return
+        }
+  
+        setDeg(id, Math.min(360, currDeg + delta));
+    };
+
     useEffect(() => {
         if (dial.current) {
             // Need setting otherwise cant get
@@ -57,6 +91,8 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"})
         <div ref={dial}
             className={styles.dial} 
             onMouseDown={handleMouseDown} 
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
             >
             <div className={styles.dialOuter}/>
             <div className={styles.dialOuterActive}/>
