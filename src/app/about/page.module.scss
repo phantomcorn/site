@@ -26,35 +26,35 @@
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-}
 
-.brick {
-    background: var(--secondary-four);
-    border-radius: 2rem;
-    padding: 1rem;
-    display: inline-block;
-    transform-origin: bottom left
-}
+    .brick {
+        background: var(--secondary-four);
+        border-radius: 2rem;
+        padding: 1rem;
+        display: inline-block;
+        transform-origin: bottom left
+    }
 
-.reach {
-    width: 19rem;
-    transform: translate(9rem, 0.8rem) rotate(-33deg) 
-}
-
-.me {
-    text-align: end;
-    width: 19rem;
-}
-
-.reachMeArrow > img {
-    width: auto;
-    height: 100%;
-    scale: 0.7;
-    transform: rotate(-45deg);
-}
-
-.me, .reachMeArrow {
-    transform: translateX(4.5rem);
+    .reach {
+        width: 19rem;
+        transform: translate(9rem, 0.8rem) rotate(-33deg) 
+    }
+    
+    .me {
+        text-align: end;
+        width: 19rem;
+    }
+    
+    .reachMeArrow > img {
+        width: auto;
+        height: 100%;
+        scale: 0.7;
+        transform: rotate(-45deg);
+    }
+    
+    .me, .reachMeArrow {
+        transform: translateX(4.5rem);
+    }
 }
 
 .childBreak {
