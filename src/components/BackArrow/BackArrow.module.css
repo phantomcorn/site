@@ -1,8 +1,8 @@
-.backarrow-svg:hover path {
+.backarrowSvg:hover path {
     fill: var(--secondary-four-three);
 }
 
-.backarrow-path {
+.backarrowPath {
     d: var(--backarrow);
     fill: var(--secondary-three-three);
 }
