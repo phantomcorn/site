@@ -82,14 +82,14 @@ export default function Timeline({children, setActiveView}) {
 
     return (
         <div className={styles.timeline}>
-            <div ref={markerParentRef} className={styles["timeline-markers"]}>
+            <div ref={markerParentRef} className={styles.timelineMarkers}>
                 {children && children.map((_,i) => 
                     <div key={`timeline-marker${i + 1}`} 
                          ref={(el) => markerRefs.current[i] = el} // Assign ref dynamically
-                         className={`${styles["timeline-marker"]} ${(markerIdx.curr !== -1 && markerIdx.curr === i) ? styles["timeline-marker-active"] : styles["timeline-marker-off"]}`}
+                         className={`${styles.timelineMarker} ${(markerIdx.curr !== -1 && markerIdx.curr === i) ? styles.timelineMarkerActive : styles.timelineMarkerOff}`}
                     >   
                         <div 
-                            className={styles["timeline-marker-point"]} 
+                            className={styles.timelineMarkerPoint} 
                             onClick={(e) => onClick(e, i)}
                         />
                         {/* <svg width="8" height="10" viewBox="-4 0 8 10">
@@ -107,8 +107,8 @@ export default function Timeline({children, setActiveView}) {
                     </div>
                 )}
             </div>
-            <div className={styles["timeline-bar"]}>
-                <div ref={timelineProgressRef} className={styles["timeline-bar-progress"]}></div>
+            <div className={styles.timelineBar}>
+                <div ref={timelineProgressRef} className={styles.timelineBarProgress}></div>
             </div>
             
         </div>

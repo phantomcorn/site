@@ -10,7 +10,7 @@
     --timeline: var(--secondary-four-two);
 }
 
-.timeline-bar {
+.timelineBar {
     position: relative;
     height: 10px;
     width: 100%;
@@ -19,7 +19,7 @@
     overflow: hidden;
 }
 
-.timeline-bar-progress {
+.timelineBarProgress {
     position: absolute;
     top: 0;
     left: 0;
@@ -30,13 +30,13 @@
     transition: 0.1s;
 }
 
-.timeline-markers {
+.timelineMarkers {
     display: flex;
     justify-content: space-around;
     z-index: 1;
 }
 
-.timeline-marker {
+.timelineMarker {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -44,7 +44,7 @@
     row-gap: 0.2rem;
 }
 
-.timeline-marker-point {
+.timelineMarkerPoint {
     height: 1rem;
     width: 1rem;
     border-radius: 50%;
@@ -52,17 +52,17 @@
     cursor: pointer;
 }
 
-.timeline-marker-active > .timeline-marker-point {
+.timelineMarkerActive > .timelineMarkerPoint {
     background: var(--progress-color); /* On */
 }
 
-.timeline-marker-active > svg > path {
+.timelineMarkerActive > svg > path {
     d: var(--experience-checkpoint-on);
     fill: var(--progress-color);
     transition: fill 1s, d 0.2s;
 }
 
-.timeline-marker-off > svg > path {
+.timelineMarkerOff > svg > path {
     d: var(--experience-checkpoint-off);
     fill:  var(--timeline);;
     transition: fill 1s, d 0.2s;
