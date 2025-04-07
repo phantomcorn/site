@@ -58,6 +58,25 @@ export default function Experience() {
 
     const startView = <div className={styles.viewIntro}> Start scrolling... </div>
 
+    useEffect(() => {
+
+        const handleWheel = (e) => {
+            setScrollPos((prev) => {
+                if (Math.abs(e.deltaY) > 0) {
+                    const newScrollPos = prev + (e.deltaY * 0.6)
+                    return (Math.max(0,Math.min(maxWidth, newScrollPos))) 
+                } else {
+                    return prev
+                }
+            })
+        }
+
+        window.addEventListener("wheel", handleWheel)
+        return () => {
+            window.removeEventListener("wheel", handleWheel)
+        }
+    }, [])
+
     return (
         <div className={styles.page}>
             <div className={styles.backarrowContainer} onClick={onBackClick}>
