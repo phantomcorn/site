@@ -53,11 +53,11 @@ export default function Experience() {
         }
     ]
 
-    const startView = <div className={styles["view-intro"]}> Start scrolling... </div>
+    const startView = <div className={styles.viewIntro}> Start scrolling... </div>
 
     return (
         <div className={styles.page}>
-            <div className={styles["backarrow-container"]} onClick={onBackClick}>
+            <div className={styles.backarrowContainer} onClick={onBackClick}>
                 <BackArrow/>
             </div>
             <div className={styles.view}>{activeView ? activeView : startView}</div>
