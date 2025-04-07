@@ -1,6 +1,5 @@
 "use client"
 import Button from "@/components/Button/Button"
-import Menu from "@/components/Menu/Menu";
 import PortfolioPage from "@/components/PortfolioProject/PortfolioProject";
 import { useState, useRef, useEffect } from "react";
 import styles from "./page.module.css"
@@ -16,7 +15,8 @@ export default function Portfolio() {
     const [pageActive, setPageActive] = useState(null)
     const portPageRef = useRef()
     const gridRef = useRef()
-    const showMenu = (e, title) => {
+    
+    const showProject = (e, title) => {
         e.preventDefault()
         setPageActive(projects[title])
     }
@@ -58,21 +58,21 @@ export default function Portfolio() {
             
             <div ref={gridRef} className={`${styles.grid} unselect`} >
                 <Button back onClick={onBackClick}/>
-                <Button variant="color1" onClick={(e) => showMenu(e, "imaudible")} onMouseEnter={() => preload("imaudible")}> ImAudible Gallery </Button>
-                <Button variant="color4" onClick={(e) => showMenu(e, "oasis-residence")} onMouseEnter={() => preload("oasis-residence")}> Oasis Residence </Button>
+                <Button variant="color1" onClick={(e) => showProject(e, "imaudible")} onMouseEnter={() => preload("imaudible")}> ImAudible Gallery </Button>
+                <Button variant="color4" onClick={(e) => showProject(e, "oasis-residence")} onMouseEnter={() => preload("oasis-residence")}> Oasis Residence </Button>
                 {[...Array(11)].map((_, index) => (
                     <Button key={index}/> 
                 ))}
-                <Button variant="color3" onClick={(e) => showMenu(e, "tonamn-portfolio")} onMouseEnter={() => preload("tonamn-portfolio")}> Tonamn Porfolio </Button>
+                <Button variant="color3" onClick={(e) => showProject(e, "tonamn-portfolio")} onMouseEnter={() => preload("tonamn-portfolio")}> Tonamn Porfolio </Button>
 
                 {[...Array(11)].map((_, index) => (
                     <Button key={index}/> 
                 ))}
-                <Button variant="color3" onClick={(e) => showMenu(e, "askdoc")} onMouseEnter={() => preload("askdoc")}> AskDoc </Button>
+                <Button variant="color3" onClick={(e) => showProject(e, "askdoc")} onMouseEnter={() => preload("askdoc")}> AskDoc </Button>
                 {[...Array(4)].map((_, index) => (
                     <Button key={index}/> 
                 ))}
-                <Button variant="color2" onClick={(e) => showMenu(e, "broked")}> Broked </Button>
+                <Button variant="color2" onClick={(e) => showProject(e, "broked")}> Broked </Button>
                 {[...Array(16)].map((_, index) => (
                     <Button key={index}/>
                 ))}
