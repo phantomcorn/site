@@ -1,3 +1,5 @@
+@import "./../../app/breakpoints.scss";
+
 .media {
     cursor: pointer;
     display: inline-flex;
@@ -31,4 +33,25 @@
     background: var(--secondary-one-four);
     justify-content: flex-end;
     /* transform: translateX(4rem) rotate(-5deg); */
+}
+
+@include respond-below($bp-xs) {
+
+    .variant1, .variant2, .variant3, .variant4 {
+        color: white;
+    }
+
+    .variant1 {
+        align-self: flex-end;
+    }
+    .variant2 {
+        align-self: flex-start;
+    }
+    .variant3 {
+        align-self: flex-start;
+    }
+    .variant4 {
+        align-self: center;
+    }
+
 }
