@@ -1,3 +1,5 @@
+@import "./../../app/breakpoints.scss";
+
 .dial {
     width: 10vw;
     height: 10vh;
@@ -72,4 +74,38 @@
 
 .color4 {
     background: var(--secondary-four);
+}
+
+@include respond-below($bp-xs) {
+    .dial {
+        position: absolute;
+    }
+
+    .dial:nth-child(1) { /* Top Left */
+        left: 0;
+        top: 0;
+        margin-left: 100px;
+        margin-top: 100px;
+    }
+
+    .dial:nth-child(2) { /* Top Right */
+        right: 0;
+        top: 0;
+        margin-right: 100px;
+        margin-top: 100px;
+    }
+
+    .dial:nth-child(3) { /* Bottom Left */
+        left: 0;
+        bottom: 0;
+        margin-left: 100px;
+        margin-bottom: 100px;
+    }
+
+    .dial:nth-child(4) { /* Bottom Right */
+        right: 0;
+        bottom: 0;
+        margin-right: 100px;
+        margin-bottom: 100px;
+    }
 }
