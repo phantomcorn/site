@@ -1,4 +1,4 @@
-
+@import "./../../app/breakpoints.scss";
 .card {
     width: 34rem;
     height: 19rem;
@@ -263,4 +263,13 @@
 
 .eng {
     color: var(--card-eng-text);
+}
+
+
+@include respond-below($bp-xs)  {
+
+    .card {
+        margin-top: 50%;
+        transform: rotate(90deg);
+    }
 }
