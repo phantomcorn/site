@@ -1,3 +1,4 @@
+@import "./../breakpoints.scss";
 .page {
     width: 100vw;
     height: 100vh;
@@ -29,3 +30,8 @@
     cursor: pointer;
 }
 
+@include respond-below($bp-xs)  {
+    .view {
+        padding: 4rem;
+    }
+}
