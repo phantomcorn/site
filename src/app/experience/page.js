@@ -5,6 +5,7 @@ import TimelineItem from "@/components/TimelineItem/TimelineItem"
 import styles from "./page.module.scss"
 import BackArrow from "@/components/BackArrow/BackArrow"
 import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper"
+import useSwipe from "@/components/Timeline/useSwipe"
 
 export default function Experience() {
 
@@ -12,7 +13,7 @@ export default function Experience() {
     const [activeView, setActiveView] = useState(<></>)
     const {routeBack} = useTransitionContext()
     const markerContainerRef = useRef() //markerRef's parent
-
+    const {handleTouchStart, handleTouchEnd, setThreshold} = useSwipe({setScrollPos})
 
     const onBackClick = (e) => {
         e.preventDefault()
@@ -59,7 +60,7 @@ export default function Experience() {
     const startView = <div className={styles.viewIntro}> Start scrolling... </div>
 
     useEffect(() => {
-
+        const maxWidth = markerContainerRef.current?.getBoundingClientRect().width 
         const handleWheel = (e) => {
             setScrollPos((prev) => {
                 if (Math.abs(e.deltaY) > 0) {
@@ -70,7 +71,7 @@ export default function Experience() {
                 }
             })
         }
-
+        setThreshold(maxWidth) /* set maxWidth here (for mobile swipe)*/
         window.addEventListener("wheel", handleWheel)
         return () => {
             window.removeEventListener("wheel", handleWheel)
@@ -78,7 +79,9 @@ export default function Experience() {
     }, [])
 
     return (
-        <div className={styles.page}>
+        <div className={styles.page}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}>
             <div className={styles.backarrowContainer} onClick={onBackClick}>
                 <BackArrow/>
             </div>
