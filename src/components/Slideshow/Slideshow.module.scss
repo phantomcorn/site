@@ -1,3 +1,4 @@
+@import "./../../app/breakpoints.scss";
 .slideshow {
     position: relative;
     width: 50%;
@@ -12,3 +13,11 @@
     }    
 }
 
+
+@include respond-below($bp-lg) {
+
+    .slideshow {
+        width: 100%;
+        height: 40%;
+    }
+}
