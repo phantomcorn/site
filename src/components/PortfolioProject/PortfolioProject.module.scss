@@ -1,3 +1,4 @@
+@import "./../../app/breakpoints.scss";
 .portfolioPage {
     position: absolute;
     width: 100%;
@@ -35,4 +36,20 @@
 .copyMedia {
     width: 100%;
     height: auto;
+}
+
+@include respond-below($bp-lg) {
+    .portfolioPage {
+        flex-direction: column-reverse;
+        padding: 0 3rem;
+
+        .textbox {
+            width: 100%;
+
+            > div {
+                justify-content: space-between;
+                column-gap: 0;
+            }
+        }
+    }
 }
