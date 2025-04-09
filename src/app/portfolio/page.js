@@ -61,20 +61,29 @@ export default function Portfolio() {
                 <Button variant="color1" onClick={(e) => showProject(e, "imaudible")} onMouseEnter={() => preload("imaudible")}> ImAudible Gallery </Button>
                 <Button variant="color4" onClick={(e) => showProject(e, "oasis-residence")} onMouseEnter={() => preload("oasis-residence")}> Oasis Residence </Button>
                 {[...Array(11)].map((_, index) => (
-                    <Button key={index}/> 
+                    <div className={styles.fake}>
+                        <Button key={index}/>
+                    </div>
+
                 ))}
                 <Button variant="color3" onClick={(e) => showProject(e, "tonamn-portfolio")} onMouseEnter={() => preload("tonamn-portfolio")}> Tonamn Porfolio </Button>
 
                 {[...Array(11)].map((_, index) => (
-                    <Button key={index}/> 
+                    <div className={styles.fake}>
+                        <Button key={index}/> 
+                    </div>
                 ))}
                 <Button variant="color3" onClick={(e) => showProject(e, "askdoc")} onMouseEnter={() => preload("askdoc")}> AskDoc </Button>
                 {[...Array(4)].map((_, index) => (
-                    <Button key={index}/> 
+                    <div className={styles.fake}>
+                        <Button key={index}/>
+                    </div>
                 ))}
                 <Button variant="color2" onClick={(e) => showProject(e, "broked")}> Broked </Button>
-                {[...Array(16)].map((_, index) => (
-                    <Button key={index}/>
+                {[...Array(17)].map((_, index) => (
+                    <div className={styles.fake}>
+                        <Button key={index}/>
+                    </div>
                 ))}
             </div>
             {pageActive && <PortfolioPage ref={portPageRef} pageActive={pageActive} setPageActive={setPageActive}></PortfolioPage>}
