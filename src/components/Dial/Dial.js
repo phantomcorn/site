@@ -71,7 +71,7 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"})
 
         const degStr = dial.current?.style.getPropertyValue("--deg") // "180deg"
         const currDeg = parseInt(degStr.split("deg")[0])
-        if (Math.abs(delta) > 100) { /* Prevent moving into dead zone (360 -> 0 and 360 <- 0) */
+        if (Math.abs(delta) > 50) { /* Prevent moving into dead zone (360 -> 0 and 360 <- 0) */
             return
         }
   
