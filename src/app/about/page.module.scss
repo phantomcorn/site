@@ -87,6 +87,10 @@
         align-items: center;
         flex-wrap: nowrap;
 
+        .brick {
+            color: white; /* for Safari mobile browser */
+        }
+
         .reach {
             width: 10rem;
             transform: translate(2rem,3.5rem) rotate(-33deg) 
