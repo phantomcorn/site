@@ -13,7 +13,7 @@ export default function Experience() {
     const [activeView, setActiveView] = useState(<></>)
     const {routeBack} = useTransitionContext()
     const markerContainerRef = useRef() //markerRef's parent
-    const {handleTouchStart, handleTouchEnd, setThreshold} = useSwipe({setScrollPos})
+    const {handleTouchStart, handleTouchEnd, setMaxWidth, setMarkerPos} = useSwipe({setScrollPos})
 
     const onBackClick = (e) => {
         e.preventDefault()
@@ -71,7 +71,7 @@ export default function Experience() {
                 }
             })
         }
-        setThreshold(maxWidth) /* set maxWidth here (for mobile swipe)*/
+        setMaxWidth(maxWidth) /* set maxWidth here (for mobile swipe)*/
         window.addEventListener("wheel", handleWheel)
         return () => {
             window.removeEventListener("wheel", handleWheel)
@@ -90,7 +90,8 @@ export default function Experience() {
                 setActiveView={setActiveView} 
                 scrollPos={scrollPos} 
                 setScrollPos={setScrollPos} 
-                markerContainerRef={markerContainerRef}>
+                markerContainerRef={markerContainerRef} 
+                setMarkerPos={setMarkerPos}>
                 {experiences.map((exp, i) => 
                     <TimelineItem key={`timeline-item${i + 1}`} data={exp}/>
                 )}
