@@ -1,7 +1,13 @@
 "use client"
 import styles from "./Timeline.module.scss"
 import { useEffect, useRef, useState } from "react"
-export default function Timeline({children, setActiveView, scrollPos, setScrollPos, markerContainerRef}) {
+export default function Timeline({
+    children, 
+    setActiveView, 
+    scrollPos, 
+    setScrollPos, 
+    markerContainerRef, 
+    setMarkerPos}) {
 
     const [markerIdx, setMarkerIdx] = useState({curr: -1, next: 0}) 
     const [markerPositions, setMarkerPositions] = useState([]) //Compute and store marker position based on markerRefs
@@ -13,10 +19,10 @@ export default function Timeline({children, setActiveView, scrollPos, setScrollP
     const onClick = (e, curr) => {
         e.preventDefault()
         setScrollPos(markerPositions[curr].left * markerParentWidth)
-        setMarkerIdx((_) => ({curr: curr, next: curr + 1}))
+        // setMarkerIdx((_) => ({curr: curr, next: curr + 1}))
     }
     
-    useEffect(() => {
+    useEffect(() => { /* Compute any value required for timeline interaction */
         const maxWidth = markerContainerRef.current?.getBoundingClientRect().width //Width of `timeline-items` (in px)
         setMarkerParentWidth(maxWidth) //cannot use (below) markerParentWidth yet
 
@@ -31,6 +37,7 @@ export default function Timeline({children, setActiveView, scrollPos, setScrollP
             return null;
         }).filter(Boolean);
         setMarkerPositions(markerPositions)
+        setMarkerPos(markerPositions) /* Required for mobile swipe */
 
     }, [])
 
