@@ -11,11 +11,13 @@ export default function TimelineItem({data}) {
                 </div>
                 <div> {data.start}-{data.end} </div>
             </div>
-            {data.desc?.map((d, i) => 
-                <div key={`desc${i+1}`}>
-                    {d}
-                </div>)
-            } 
+            <div className={style.descList}>
+                {data.desc?.map((d, i) => 
+                    <div key={`desc${i+1}`}>
+                        {d}
+                    </div>)
+                } 
+            </div> 
         </div>
     )
 }

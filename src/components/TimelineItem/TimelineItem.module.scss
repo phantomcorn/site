@@ -22,6 +22,13 @@
     }
 }
 
+.descList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+    overflow: scroll;
+}
+
 @include respond-below($bp-xs) {
     .timelineItem {
         font-size: 1.1rem;
@@ -33,5 +40,10 @@
         .role {
             font-size: 2rem;
         }
+    }
+
+
+    .descList {
+        row-gap: 1.5rem;
     }
 }
