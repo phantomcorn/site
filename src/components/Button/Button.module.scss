@@ -1,3 +1,5 @@
+@import "./../../app/breakpoints.scss";
+
 .button {
     aspect-ratio: 2.2 / 1;
     width: 11rem;
@@ -37,4 +39,12 @@
 
 .color4 {
     color: var(--secondary-four);
+}
+
+@include respond-below($bp-xs)  {
+    .button {
+        height: 4rem;
+        width: 8.8rem;
+        font-size: 18px;
+    }
 }
