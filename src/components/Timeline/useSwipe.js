@@ -1,6 +1,8 @@
 import { useRef } from "react";
 export default function useSwipe({setScrollPos}) {
 
+    const SWIPE_THRESHOLD = 300; /* Time between finger touch & release (ms) */
+    const touchStartTime = useRef(null)
     const touchStart = useRef({y: null})
     const maxWidth = useRef(null)
     const markerPos = useRef(null)
@@ -17,6 +19,7 @@ export default function useSwipe({setScrollPos}) {
     const handleTouchStart = (e) => {
         const touch = e.touches[0];
         touchStart.current.y = touch.clientY;
+        touchStartTime.current = Date.now()
     };
     
     const handleTouchEnd = (e) => {
@@ -24,18 +27,23 @@ export default function useSwipe({setScrollPos}) {
         const touch = e.changedTouches[0];
         const dir = touch.clientY - touchStart.current.y
 
-        if (!maxWidth.current && !markerPos.current) return
-        if (dir < 0) {
-            /* Swipe up (Forward) */
-            if (currIndex.current === -1) currIndex.current = 0 /* Swipe start */
-            else currIndex.current = Math.min(markerPos.current.length - 1, currIndex.current + 1)
-        } else {
-            /* Swipe down (Backward) */
-            if (currIndex.current === -1) return /* Swipe start (do nothing) */
-            currIndex.current = Math.max(0, currIndex.current - 1)
-        }
-    
-        setScrollPos(markerPos.current[currIndex.current].left * maxWidth.current)
+        const t = Date.now() - touchStartTime.current
+
+        if (t < SWIPE_THRESHOLD) {
+            /* Swipe motion */
+            if (!maxWidth.current && !markerPos.current) return
+            if (dir < 0) {
+                /* Swipe up (Forward) */
+                if (currIndex.current === -1) currIndex.current = 0 /* Swipe start */
+                else currIndex.current = Math.min(markerPos.current.length - 1, currIndex.current + 1)
+            } else {
+                /* Swipe down (Backward) */
+                if (currIndex.current === -1) return /* Swipe start (do nothing) */
+                currIndex.current = Math.max(0, currIndex.current - 1)
+            }
+
+            setScrollPos(markerPos.current[currIndex.current].left * maxWidth.current)
+        }    
     };
 
     return {handleTouchStart, handleTouchEnd, setMaxWidth, setMarkerPos}
