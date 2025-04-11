@@ -75,13 +75,16 @@ export default function Timeline({
         }
     }, [markerIdx])
 
+    const markerPathOn = "M 0 0 C -2 0 -2 7 -6 9 H 6 C 2 7 2 0 0 0 Z"
+    const markerPathOff = "M 0 9 C 0 9 -6 9 -6 9 H 6 C 6 9 0 9 0 9 Z";
+
     return (
         <div className={styles.timeline}>
             <div ref={markerContainerRef} className={styles.timelineMarkers}>
                 {children && children.map((_,i) => 
                     <div key={`timeline-marker${i + 1}`} 
                          ref={(el) => markerRefs.current[i] = el} // Assign ref dynamically
-                         className={`${styles.timelineMarker} ${(markerIdx.curr !== -1 && markerIdx.curr === i) ? styles.timelineMarkerActive : styles.timelineMarkerOff}`}
+                         className={`${styles.timelineMarker} ${markerIdx.curr === i ? styles.timelineMarkerOn : styles.timelineMarkerOff}`}
                     >   
                         <div 
                             className={styles.timelineMarkerPoint} 
@@ -89,6 +92,7 @@ export default function Timeline({
                         />
                         <svg width="16" height="12" viewBox="-6 0 12 9">
                             <path
+                                d={markerIdx.curr === i ? markerPathOn : markerPathOff}
                                 stroke="transparent"
                                 strokeWidth="0"
                             />

@@ -19,10 +19,7 @@
   --title-color: var(--primary-two);
 
   --bg-transition-color: var(--primary-two);
-  /* --experience-checkpoint-on: path("M 0 0 Q -2 0 -2 1 C -2 3 -1 4 -1 6 C -1 10 -4 10 -4 10 H 4 C 4 10 1 10 1 6 C 1 4 2 3 2 1 Q 2 0 0 0 Z");
-  --experience-checkpoint-off: path("M 0 10 Q -2 10 -2 10 C -2 10 0 10 -1 10 C -2 10 -4 10 -4 10 H 4 C 4 10 2 10 1 10 C 0 10 2 10 2 10 Q 2 10 0 10 Z"); */
-  --experience-checkpoint-on: path("M 0 0 C -2 0 -2 7 -6 9 H 6 C 2 7 2 0 0 0 Z");
-  --experience-checkpoint-off: path("M 0 9 C 0 9 -6 9 -6 9 H 6 C 6 9 0 9 0 9 Z");
+  
   --timeline-progress: 0%;
   --progress-color: var(--secondary-four-three);
 
