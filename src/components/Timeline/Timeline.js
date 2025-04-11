@@ -18,8 +18,9 @@ export default function Timeline({
     
     const onClick = (e, curr) => {
         e.preventDefault()
-        setScrollPos(markerPositions[curr].left * markerParentWidth)
-        // setMarkerIdx((_) => ({curr: curr, next: curr + 1}))
+        if (markerIdx.curr !== curr){
+            setScrollPos(markerPositions[curr].left * markerParentWidth)
+        }
     }
     
     useEffect(() => { /* Compute any value required for timeline interaction */
@@ -44,22 +45,26 @@ export default function Timeline({
     useEffect(() => {        
         if (!markerParentWidth) return
         const scrollFraction = (scrollPos / markerParentWidth) //[0,1]
-        // console.log(scrollFraction)
-        // Update marker base on progress
-        if (markerPositions.length > 0) {
-            if (markerIdx.next !== markerPositions.length && scrollFraction >= markerPositions[markerIdx.next].left) {
-                setMarkerIdx((prev) => {
-                    const newMarkerIdx = Math.min(markerPositions.length, prev.curr + 1)
-                    return {curr: newMarkerIdx, next: newMarkerIdx + 1}
-                })
-            } else if (markerIdx.curr !== -1 && scrollFraction < markerPositions[markerIdx.curr].left) {
-                setMarkerIdx((prev) => {
-                    const newMarkerIdx = prev.curr - 1
-                    return {curr: newMarkerIdx, next: newMarkerIdx + 1}
-                })
-            } 
-            timelineProgressRef.current.style.setProperty("--timeline-progress", `${scrollFraction * 100}%`)  
+
+        if (markerPositions.length === 0) return /* DOM element not rendering */
+
+        
+        /* Adjust current marker position based on scrollFraction */
+        let newCurr = markerIdx.curr;
+        for (let i = 0; i < markerPositions.length; i++) {
+            if (scrollFraction >= markerPositions[i].left) {
+                newCurr = i;
+            } else {
+                break;
+            }
         }
+
+        if (newCurr !== markerIdx.curr) {
+            setMarkerIdx({ curr: newCurr, next: newCurr + 1 });
+        }
+
+        timelineProgressRef.current.style.setProperty("--timeline-progress", `${scrollFraction * 100}%`)  
+        
     }, [scrollPos])
 
     useEffect(() => {
