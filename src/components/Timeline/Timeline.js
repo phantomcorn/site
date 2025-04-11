@@ -50,7 +50,7 @@ export default function Timeline({
 
         
         /* Adjust current marker position based on scrollFraction */
-        let newCurr = markerIdx.curr;
+        let newCurr = -1;
         for (let i = 0; i < markerPositions.length; i++) {
             if (scrollFraction >= markerPositions[i].left) {
                 newCurr = i;
@@ -58,7 +58,7 @@ export default function Timeline({
                 break;
             }
         }
-
+        
         if (newCurr !== markerIdx.curr) {
             setMarkerIdx({ curr: newCurr, next: newCurr + 1 });
         }
