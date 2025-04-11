@@ -57,7 +57,7 @@ export default function Experience() {
         }
     ]
 
-    const startView = <div className={styles.viewIntro}> Start scrolling... </div>
+    const startView = <div className={styles.viewIntro}> Swipe(up/down)... </div>
 
     useEffect(() => {
         const maxWidth = markerContainerRef.current?.getBoundingClientRect().width 
