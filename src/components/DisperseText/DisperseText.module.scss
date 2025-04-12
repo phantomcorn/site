@@ -9,26 +9,26 @@
     box-sizing: border-box;
 }
 
-.variant1 {
-    color: var(--secondary-one);
-    background: var(--secondary-one);
+.github {
+    color: var(--github-bg-color);
+    background: var(--github-bg-color);
     /* transform: rotate(-5deg); */
 }
 
-.variant2 {
-    color: var(--secondary-one-two);
-    background: var(--secondary-one-two);
+.linkedin {
+    color: var(--linkedin-bg-color);
+    background: var(--linkedin-bg-color);
     justify-content: flex-end;
     /* transform: translateX(2rem) rotate(-10deg); */
 }
 
-.variant3 {
-    color: var(--secondary-one-three);
-    background: var(--secondary-one-three);
+.instagram {
+    background: var(--instagram-bg-gradient-color);
+    color: transparent;
     /* transform: translateX(-2rem) rotate(10deg); */
 }
 
-.variant4 {
+.email{
     color: var(--secondary-one-four);
     background: var(--secondary-one-four);
     justify-content: flex-end;
@@ -37,20 +37,20 @@
 
 @include respond-below($bp-xs) {
 
-    .variant1, .variant2, .variant3, .variant4 {
+    .github, .linkedin, .instagram, .email {
         color: white;
     }
 
-    .variant1 {
+    .github{
         align-self: flex-end;
     }
-    .variant2 {
+    .linkedin {
         align-self: flex-start;
     }
-    .variant3 {
+    .instagram {
         align-self: flex-start;
     }
-    .variant4 {
+    .email{
         align-self: center;
     }
 
