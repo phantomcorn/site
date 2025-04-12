@@ -22,6 +22,6 @@
     pointer-events: none;
     left: 0;
     top: 0;
-    z-index: 1; /* Since we are not using Component to change page, We need the transition to happen above our page */
+    z-index: 2; /* Since we are not using Component to change page, We need the transition to happen above our page */
     fill: var(--bg-transition-color);
 }
