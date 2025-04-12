@@ -67,11 +67,7 @@ export const transforms = [
   ]
   
   export const disperse = (variant) => {
-    let endColor
-    if (variant === "github") endColor = "#ffffff"
-    else if (variant === "instagram" || 
-            variant === "linkedin") endColor = "#ffffff"
-
+    const openColor = "#ffffff"
     return {
         open: (i) => ({
             x: transforms[i].x + "em",
@@ -79,7 +75,7 @@ export const transforms = [
             rotateZ: transforms[i].rotationZ,
             transition: {duration: 0.75, ease: [0.33, 1, 0.68, 1]},
             zIndex: 1,
-            color: endColor
+            color: openColor
         }),
         closed: {
             x: 0,
