@@ -10,27 +10,28 @@
 }
 
 .github {
-    color: var(--github-bg-color);
+    color: transparent;
     background: var(--github-bg-color);
     /* transform: rotate(-5deg); */
 }
 
 .linkedin {
-    color: var(--linkedin-bg-color);
+    color: transparent;
     background: var(--linkedin-bg-color);
     justify-content: flex-end;
     /* transform: translateX(2rem) rotate(-10deg); */
 }
 
 .instagram {
-    background: var(--instagram-bg-gradient-color);
     color: transparent;
+    background: var(--instagram-bg-color);
+
     /* transform: translateX(-2rem) rotate(10deg); */
 }
 
 .email{
-    color: var(--secondary-one-four);
-    background: var(--secondary-one-four);
+    color: transparent;
+    background: var(--email-bg-color);
     justify-content: flex-end;
     /* transform: translateX(4rem) rotate(-5deg); */
 }
