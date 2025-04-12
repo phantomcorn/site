@@ -23,18 +23,22 @@ export default function About() {
     const media = [
         { 
             alt: "Github",
+            className: "github",
             link: "https://github.com/phantomcorn/"
         },
         { 
             alt: "LinkedIn",
+            className: "linkedin",
             link: "https://www.linkedin.com/in/phantakorn-prarusudamkerng-6bb73b207/"
         },
         { 
             alt: "Instagram",
+            className: "instagram",
             link: "https://www.instagram.com/jaywithnoay/"
         },
         { 
             alt: "Email",
+            className: "email",
             link: "mailto:jj.phantakorn@outlook.com"
         }
     ]
@@ -64,7 +68,7 @@ export default function About() {
                 <div className={styles.childBreak}/>
                 {media.map((item, i) => (
                     <Fragment key={`media${i+1}`}>
-                        <TextDisperse variant={`variant${i + 1}`} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>
+                        <TextDisperse variant={item.className} onClick={(e) => onClick(e, item.link)} setBackground={setBackground}>{item.alt}</TextDisperse>
                         {i === 1 && <div className={styles.childBreak}/>}
                     </Fragment>
                 ))}

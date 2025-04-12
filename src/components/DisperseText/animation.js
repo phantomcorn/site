@@ -66,19 +66,23 @@ export const transforms = [
     }
   ]
   
-  export const disperse = {
-    open: (i) => ({
-      x: transforms[i].x + "em",
-      y: transforms[i].y + "em",
-      rotateZ: transforms[i].rotationZ,
-      transition: {duration: 0.75, ease: [0.33, 1, 0.68, 1]},
-      zIndex: 1
-    }),
-    closed: {
-      x: 0,
-      y: 0,
-      rotateZ: 0,
-      transition: {duration: 0.75, ease: [0.33, 1, 0.68, 1]},
-      zIndex: 0
+  export const disperse = (variant) => {
+    const openColor = "#ffffff"
+    return {
+        open: (i) => ({
+            x: transforms[i].x + "em",
+            y: transforms[i].y + "em",
+            rotateZ: transforms[i].rotationZ,
+            transition: {duration: 0.75, ease: [0.33, 1, 0.68, 1]},
+            zIndex: 1,
+            color: openColor
+        }),
+        closed: {
+            x: 0,
+            y: 0,
+            rotateZ: 0,
+            transition: {duration: 0.75, ease: [0.33, 1, 0.68, 1]},
+            zIndex: 0
+        }
     }
   }
