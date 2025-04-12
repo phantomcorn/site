@@ -14,7 +14,7 @@ export default function TextDisperse({children, setBackground, variant = "varian
             chars.push(<motion.span 
                             className="unselect"
                             custom={i} 
-                            variants={disperse} 
+                            variants={disperse(variant)} 
                             animate={isAnimated? "open" : "closed"} 
                             key={char + i}>
                                 {char}
