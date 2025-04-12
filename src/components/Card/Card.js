@@ -36,8 +36,8 @@ export default function Card() {
                         <div className={styles.cardInfo}> ชื่อตัวและชื่อสกุล <span>นาย พันธกรณ์ ปรุศุดำเกิง </span></div>
                         <div className={`${styles.cardInfo} ${styles.eng}`}> Name <span>Mr. Phantakorn</span></div>
                         <div className={`${styles.cardInfo} ${styles.eng}`}> Last name <span>Prarusudamkerng</span></div>
-                        <div className={styles.cardInfo}> เกิดวันที่ <span>19 ส.ค. 2544 </span></div>
-                        <div className={`${styles.cardInfo} ${styles.eng}`}> Date of Birth <span>19 Aug. 2001 </span></div>
+                        <div className={styles.cardInfo}> เกิดวันที่ <span>XX XXX 2544 </span></div>
+                        <div className={`${styles.cardInfo} ${styles.eng}`}> Date of Birth <span>XX XXX 2001 </span></div>
                 
                         <div className={styles.cardInfo}> ที่อยู่ XX XXXX XXXX XXXX กรุงเทพมหานคร</div>
 
