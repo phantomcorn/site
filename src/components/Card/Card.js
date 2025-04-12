@@ -15,13 +15,18 @@ export default function Card() {
                 <div className={styles.cardBack}>
                     
                     Hi - I'm JJ.
-                    <div>
 
-                        <div className={`${styles.green}`}> Great listener <br/> Health conscious <br/> Tidy (most of the time) <br/> Easygoing <br/> Sober-sipping </div>
+                    <p>I'm a Fullstack Developer leaning 60:40 towards frontend. The languages I code most often in are React.js, Next.js and JavaScript and my main framework is the MERN stack.
+                        I consume fashion as a hobbby. Also catch me at social events corner.
+                    </p>
+                    <div> More about me </div>
+                    <div>
+                        
+                        <div className={`${styles.green}`}> Great listener <br/> Health conscious <br/> Tidy (most of the time) <br/> Chill guy <br/> Sober-sipping </div>
                         <div className={`${styles.red}`}> Spider <br/> Yapper (energy--) </div>
                     </div>
 
-                    Catch me at social events corner.
+             
 
                 </div>
                 <div className={styles.cardFront}>
