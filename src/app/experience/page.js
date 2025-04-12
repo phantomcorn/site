@@ -57,7 +57,7 @@ export default function Experience() {
         }
     ]
 
-    const startView = <div className={styles.viewIntro}> Swipe(up/down)... </div>
+    const startView = <div className={`${styles.viewIntro} unselect`}/>
 
     useEffect(() => {
         const maxWidth = markerContainerRef.current?.getBoundingClientRect().width 

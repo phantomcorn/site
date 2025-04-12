@@ -16,11 +16,16 @@
 }
 
 .viewIntro {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
     font-size: 2rem;
-    transform: rotate(-4deg) translateY(300%);
+    transform: rotate(-20deg);
+    right: 16%;
+    bottom: 15%;
+    z-index: 1;
+}
+
+.viewIntro::after {
+    content: "Scroll..."
 }
 
 .backarrowContainer {
@@ -33,5 +38,14 @@
 @include respond-below($bp-xs)  {
     .view {
         padding: 4rem;
+    }
+
+    .viewIntro {
+        right: 7%;
+        bottom: 13%;
+    }
+
+    .viewIntro::after {
+        content: "Swipe..."
     }
 }
