@@ -24,6 +24,10 @@
     flex-direction: column;
     justify-content: space-between;
     row-gap: 5rem;
+    font-size: 1.2rem;
+    white-space: pre-line; /* adding \n => start new line */
+
+    color: var(--secondary-one);
 
     > div {
         display: flex;
@@ -44,7 +48,7 @@
 
         .textbox {
             width: 100%;
-
+            font-size: 1rem;
             > div {
                 justify-content: space-between;
                 column-gap: 0;

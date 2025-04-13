@@ -64,7 +64,7 @@ const projects = {
             student may seek urgent help where the question requires further elaboration or difficult 
             to explain on Imperial forum (EdStem) or even ones that require practical examples in order to 
             get the gist of the problem.
-
+            \n
             Solution: MERN stack web app to assist non-computing students with 
             computing-related assignments. Assisting is done via matching system followed by an in-person meetup.`
     }
