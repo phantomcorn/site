@@ -49,6 +49,28 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
                     <img src={src} className={styles.portfolioImage}></img>
                 ))
             }
+            {pageActive.type === "fyp" && 
+                pageActive.media.map((src, idx) => {
+
+                    let firstIndex = idx === 0
+                    if (firstIndex) {
+                        return (
+                            <div className={styles.report}>
+                                <a href="./report.pdf" target="_blank" rel="noreferrer"
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        cursor: "default"
+                                    }}>
+                                    <img className={styles.portfolioImage} src={src} style={{cursor:"pointer"}}/>
+                                </a>
+                            </div>
+                        )
+                    }
+
+                    return(<img src={src} className={styles.portfolioImage}></img>)
+                })
+            }
             {pageActive.type === "demo" && 
                 <div>
                     <iframe className={styles.ytShorts} src={pageActive.media} allowFullScreen> </iframe>

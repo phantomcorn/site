@@ -38,8 +38,9 @@ const projects = {
         copy: "This app was created in order to track budgets. The creator had a curiousity whether his money actually disappeared into thin air so he created this app in order to test out the following theorem."
     },
     "imaudible": {
-        type: "web",
-        media: ["https://res.cloudinary.com/dmg2dllnz/image/upload/v1744003058/ia_0_yjhf2w.avif",
+        type: "fyp",
+        media: ["https://res.cloudinary.com/dmg2dllnz/image/upload/v1765703694/imaudible_fygqls.avif",
+                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1744003058/ia_0_yjhf2w.avif",
                 "https://res.cloudinary.com/dmg2dllnz/image/upload/v1744003058/ia_1_kmj0nm.avif",
                 "https://res.cloudinary.com/dmg2dllnz/image/upload/v1744003058/ia_2_cui2ju.avif",
                 "https://res.cloudinary.com/dmg2dllnz/image/upload/v1744003058/ia_3_wwcjpz.avif",

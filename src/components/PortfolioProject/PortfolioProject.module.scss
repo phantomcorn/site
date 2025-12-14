@@ -24,6 +24,16 @@
     width: 45%; 
 }
 
+.report {
+    flex-basis: 100%;
+    width: auto;
+
+    .portfolioImage {
+        max-width: 800px;
+        width: 25%; 
+    }
+}
+
 .ytShorts {
     width: 100%;
     max-width: 315px; /* Mobile */
