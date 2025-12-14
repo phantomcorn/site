@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import styles from "./page.module.scss";
 import Dial from "@/components/Dial/Dial";
 import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper";
+import { ArrowRight } from "lucide-react";
 
 const filterConst = {
   opacity: 0.4,
@@ -108,7 +109,7 @@ export default function Home() {
     <div className={styles.page}>
       <div className={styles.morph}>
         <div ref={titleRef1} className={`${styles.title} unselect ${styles.titleOne}`}> jaywithnoay</div>
-        <div ref={titleRef2} className={`${styles.title} unselect ${styles.titleTwo}`} onClick={navigate}> {activeDial? dials[activeDial].text : ""} </div>
+        <div ref={titleRef2} className={`${styles.title} unselect ${styles.titleTwo}`} onClick={navigate}> {activeDial? dials[activeDial].text : ""} <ArrowRight size="40"/></div>
       </div>
      
       <div className={styles.dialGroup}> 
