@@ -1,15 +1,27 @@
 @import "./../../app/breakpoints.scss";
 .portfolioPage {
-    position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0;
 
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    column-gap: 5rem;
-    padding: 0 5rem;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+
+.nav {
+    position: static;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.portfolioImage {
+    max-width: 800px;
+    width: 45%; 
 }
 
 .ytShorts {
@@ -43,7 +55,7 @@
 
 @include respond-below($bp-lg) {
     .portfolioPage {
-        flex-direction: column-reverse;
+        flex-direction: column;
         padding: 0 3rem;
 
         .textbox {

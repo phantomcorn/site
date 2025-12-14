@@ -32,16 +32,23 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
 
 
     return (
-        <div ref={ref} className={styles.portfolioPage} 
-        >
-            <div className={styles.textbox}>
-                {getCopy()}
-                <div>
-                    <Button onClick={onClick} back/>
-                    {pageActive.type !== "demo" && <Button onClick={onClickSource}> {pageActive.src ? "Source" : "Visit site"} </Button>}
-                </div>
+        <div ref={ref} className={styles.portfolioPage}>
+            <div className={styles.nav}>
+                <Button onClick={onClick} back/>
+                {pageActive.type !== "demo" && <Button onClick={onClickSource}> {pageActive.src ? "Source" : "Visit site"} </Button>}
             </div>
-            {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>}
+            <div style={{fontWeight: "bold"}}>Context: </div>
+            <div className={styles.textbox}>
+               
+                {getCopy()}
+                
+            </div>
+            {/* {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>} */}
+            {pageActive.type === "web" && 
+                pageActive.media.map((src, idx) => (
+                    <img src={src} className={styles.portfolioImage}></img>
+                ))
+            }
             {pageActive.type === "demo" && 
                 <div>
                     <iframe className={styles.ytShorts} src={pageActive.media} allowFullScreen> </iframe>

@@ -24,6 +24,19 @@
         grid-auto-flow: dense;
 
     }
+
+    .outerShell {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+        overflow-y: scroll;
+    }
+
+    .innerShell {
+        overflow-y: scroll;
+    }
 }
 
 

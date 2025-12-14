@@ -32,9 +32,11 @@ export default function Portfolio() {
         if (portPageRef.current) {
             gsap.to(portPageRef.current, {
                 autoAlpha: pageActive ? 1 : 0,
+                zIndex: pageActive ? 1 : -1,
                 ease: "power1.inOut",
                 duration: 0.2
             })
+        
         }
     }, [pageActive])
 
@@ -86,7 +88,14 @@ export default function Portfolio() {
                     </div>
                 ))}
             </div>
-            {pageActive && <PortfolioPage ref={portPageRef} pageActive={pageActive} setPageActive={setPageActive}></PortfolioPage>}
+            {/* Allow scrolling inside container without affecting parent*/}
+            <div className={styles.outerShell} ref={portPageRef}>
+                <div className={styles.innerShell}>
+                    {pageActive && <PortfolioPage pageActive={pageActive} setPageActive={setPageActive}></PortfolioPage>}
+                </div>
+            </div>
         </div>
+            
+        
     )
 }
