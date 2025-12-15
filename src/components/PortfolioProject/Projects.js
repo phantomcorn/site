@@ -44,7 +44,7 @@ const projects = {
                 "https://res.cloudinary.com/dmg2dllnz/image/upload/v1744003058/ia_1_kmj0nm.avif",
                 "https://res.cloudinary.com/dmg2dllnz/image/upload/v1744003058/ia_2_cui2ju.avif",
                 "https://res.cloudinary.com/dmg2dllnz/image/upload/v1744003058/ia_3_wwcjpz.avif",
-                "https://res.cloudinary.com/dmg2dllnz/image/upload/v1744003058/ia_4_erckfq.avif"],
+        ],
         width: 3840,
         height: 2240,
         site: "https://imaudible.netlify.app/",
@@ -84,13 +84,7 @@ const projects = {
             "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769872/nvfact_dg_11_ur7chu.png"
         ],
         alt: "NVFACT design guideline media",
-        copy: `Problem: A non-computing 
-            student may seek urgent help where the question requires further elaboration or difficult 
-            to explain on Imperial forum (EdStem) or even ones that require practical examples in order to 
-            get the gist of the problem.
-            \n
-            Solution: MERN stack web app to assist non-computing students with 
-            computing-related assignments. Assisting is done via matching system followed by an in-person meetup.`
+        copy: `NVFACT is a joint venture attempt at localising smart factory solution in Thailand with Moornmo, a leading smart factory company from Korea. The guideline takes inspiration from Apple's minimal and creative aesthetic. The use of color is taken based off of Moornmo's current logo adjusted in shades. Logo designed by tonnam.`
 
     },
 }
