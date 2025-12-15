@@ -69,8 +69,13 @@ export default function Portfolio() {
 
                 ))}
                 <Button variant="color3" onClick={(e) => showProject(e, "tonamn-portfolio")} onMouseEnter={() => preload("tonamn-portfolio")}> Tonamn Porfolio </Button>
-
-                {[...Array(11)].map((_, index) => (
+                {[...Array(2)].map((_, index) => (
+                    <div className={styles.fake}>
+                        <Button key={index}/> 
+                    </div>
+                ))}
+                <Button variant="color3" onClick={(e) => showProject(e, "nvfact_dg")} onMouseEnter={() => preload("nvfact_dg")}> NVFACT </Button>
+                {[...Array(8)].map((_, index) => (
                     <div className={styles.fake}>
                         <Button key={index}/> 
                     </div>

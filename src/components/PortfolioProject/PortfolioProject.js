@@ -37,16 +37,24 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
                 <Button onClick={onClick} back/>
                 {pageActive.type !== "demo" && <Button onClick={onClickSource}> {pageActive.src ? "Source" : "Visit site"} </Button>}
             </div>
-            <div style={{fontWeight: "bold"}}>Context: </div>
-            <div className={styles.textbox}>
-               
-                {getCopy()}
+            <div className={styles.header}>
+                <div style={{fontWeight: "bold"}}>Context: </div>
+                <div className={styles.textbox}>
                 
+                    {getCopy()}
+                    
+                </div>
             </div>
             {/* {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>} */}
             {pageActive.type === "web" && 
                 pageActive.media.map((src, idx) => (
-                    <img src={src} className={styles.portfolioImage}></img>
+                    <img src={src} className={styles.imgLandscape}></img>
+                ))
+            }
+
+            {pageActive.type === "design_guideline" && 
+                pageActive.media.map((src, idx) => (
+                    <img src={src} className={styles.imgPortrait}></img>
                 ))
             }
             {pageActive.type === "fyp" && 
@@ -62,13 +70,13 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
                                         justifyContent: "center",
                                         cursor: "default"
                                     }}>
-                                    <img className={styles.portfolioImage} src={src} style={{cursor:"pointer"}}/>
+                                    <img className={styles.imgLandscape} src={src} style={{cursor:"pointer"}}/>
                                 </a>
                             </div>
                         )
                     }
 
-                    return(<img src={src} className={styles.portfolioImage}></img>)
+                    return(<img src={src} className={styles.imgLandscape}></img>)
                 })
             }
             {pageActive.type === "demo" && 

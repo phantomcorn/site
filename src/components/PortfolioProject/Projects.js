@@ -68,7 +68,31 @@ const projects = {
             \n
             Solution: MERN stack web app to assist non-computing students with 
             computing-related assignments. Assisting is done via matching system followed by an in-person meetup.`
-    }
+    },
+    "nvfact_dg" : {
+        type: "design_guideline",
+        media: ["https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769868/nvfact_dg_1_w7c1vj.png",
+            "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769868/nvfact_dg_2_leiidf.png",
+            "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769869/nvfact_dg_3_rhwexu.png",
+            "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769869/nvfact_dg_4_jxcvlo.png",
+            "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769869/nvfact_dg_5_xgkp58.png",
+            "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769869/nvfact_dg_6_yxdp7f.png",
+            "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769870/nvfact_dg_7_ot6vzq.png",
+            "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769870/nvfact_dg_8_mnjuyl.png",
+            "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769871/nvfact_dg_9_dcrayv.png",
+            "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769871/nvfact_dg_10_kjxx2g.png",
+            "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769872/nvfact_dg_11_ur7chu.png"
+        ],
+        alt: "NVFACT design guideline media",
+        copy: `Problem: A non-computing 
+            student may seek urgent help where the question requires further elaboration or difficult 
+            to explain on Imperial forum (EdStem) or even ones that require practical examples in order to 
+            get the gist of the problem.
+            \n
+            Solution: MERN stack web app to assist non-computing students with 
+            computing-related assignments. Assisting is done via matching system followed by an in-person meetup.`
+
+    },
 }
 
 export default projects
