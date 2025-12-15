@@ -84,7 +84,7 @@ const projects = {
             "https://res.cloudinary.com/dmg2dllnz/image/upload/v1765769872/nvfact_dg_11_ur7chu.png"
         ],
         alt: "NVFACT design guideline media",
-        copy: `NVFACT is a joint venture attempt at localising smart factory solution in Thailand with Moornmo, a leading smart factory company from Korea. The guideline takes inspiration from Apple's minimal and creative aesthetic. The use of color is taken based off of Moornmo's current logo adjusted in shades. Logo designed by tonnam.`
+        copy: `NVFACT is a joint venture attempt at localising smart factory solution in Thailand with Moornmo, a leading smart factory company from Korea. The guideline takes inspiration from Apple's minimal and creative aesthetic. The use of color is taken based off of Moornmo's current logo adjusted in shades. Logo designed by @tonnamvasikanond.`
 
     },
 }
