@@ -54,6 +54,27 @@ export default function Experience() {
                 "Hosts meetings for pair programming sessions and SED",
                 "Managed work through Jira’s ticketing system"
             ]    
+        },
+        {
+            role: "Intern",
+            place: "DCM (Digital Corporate Management)",
+            start: "June 2025",
+            end: "September 2025",
+            desc: [
+                "Lead design and development of SME Mate web application including user flow, Figma Hi-Fi and frontend development"
+            ]
+        },
+        {
+            role: "CTO",
+            place: "NVFACT Co. Ltd.",
+            start: "September 2025",
+            end: "December 2025",
+            desc: [
+                "Joint venture partnering with Korean company focusing on smart factory solution",
+                "Collaborated in development including frontend and backend",
+                "Lead development in AI chatbot using RAG and prompt engineering",
+                "Created design guideline and web hi-fi prototype"
+            ]
         }
     ]
 
