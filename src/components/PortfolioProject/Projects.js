@@ -9,7 +9,7 @@ const projects = {
         width: 3840,
         height: 2240,
         alt: "Oasis residence media",
-        site: "https://oasisresidences.netlify.app/",
+        site: "https://oasisresidence.netlify.app/",
         copy: '"It ain\'t much but it\'s honest work." \n A web development based on a friend\'s figma Hi-Fi.'
     },
     "tonamn-portfolio": {
