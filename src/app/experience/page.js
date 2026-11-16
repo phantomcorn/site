@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import styles from "./page.module.scss"
 import Button from "@/components/Button/Button"
 import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper"
@@ -60,6 +60,39 @@ const experiences = [
    sliding to the bottom edge by the end of the page so the last role is always reached */
 const FILL_LINE = 0.6
 
+/* A role's bullet points: every role shows the same few lines until "See more" is pressed */
+function Description({lines}) {
+
+    const [expanded, setExpanded] = useState(false)
+    const [overflows, setOverflows] = useState(true) // does the text need a "See more" at all
+    const listRef = useRef(null)
+
+    useEffect(() => {
+        const measure = () => {
+            const list = listRef.current
+            if (!list || expanded) return // only the collapsed list can tell us whether text is cut off
+            setOverflows(list.scrollHeight > list.clientHeight + 1)
+        }
+
+        measure()
+        window.addEventListener("resize", measure)
+        return () => window.removeEventListener("resize", measure)
+    }, [expanded])
+
+    return (
+        <>
+            <ul ref={listRef} className={`${styles.desc} ${expanded ? styles.descOpen : ""}`}>
+                {lines.map((line) => <li key={line}>{line}</li>)}
+            </ul>
+            {(overflows || expanded) &&
+                <button type="button" className={styles.more} onClick={() => setExpanded(!expanded)} aria-expanded={expanded}>
+                    {expanded ? "See less" : "See more"}
+                </button>
+            }
+        </>
+    )
+}
+
 export default function Experience() {
 
     const {routeBack} = useTransitionContext()
@@ -85,16 +118,19 @@ export default function Experience() {
 
             /* A role's dot lights up once the fill reaches it */
             list.querySelectorAll("[data-role]").forEach((role, i) => {
-                role.toggleAttribute("data-reached", i === 0 || role.offsetTop + 28 <= fill)
+                role.toggleAttribute("data-reached", i === 0 || role.offsetTop + 16 <= fill)
             })
         }
 
         update()
         window.addEventListener("scroll", update, {passive: true})
         window.addEventListener("resize", update)
+        const resized = new ResizeObserver(update) // "See more" changes the height of the list
+        resized.observe(list)
         return () => {
             window.removeEventListener("scroll", update)
             window.removeEventListener("resize", update)
+            resized.disconnect()
         }
     }, [])
 
@@ -115,9 +151,7 @@ export default function Experience() {
                                 <div className={styles.when}>{exp.start} - {exp.end}</div>
                             </div>
                             <div className={styles.place}>{exp.place}</div>
-                            <ul className={styles.desc}>
-                                {exp.desc.map((line) => <li key={line}>{line}</li>)}
-                            </ul>
+                            <Description lines={exp.desc}/>
                         </li>
                     ))}
                 </ol>

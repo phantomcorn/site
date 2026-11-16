@@ -29,7 +29,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    row-gap: 1.5rem;
+    row-gap: 3rem;
     padding-left: 3.2rem;
     list-style: none;
 }
@@ -57,20 +57,12 @@
 
 .role {
     position: relative;
-    padding: 1.4rem 2rem 1.6rem;
-    border: solid 10px var(--primary-two);
-    border-radius: 2.5rem;
-    transition: border-color 0.2s;
-}
-
-.role:hover {
-    border-color: var(--progress-color);
 }
 
 .dot {
     position: absolute;
-    left: calc(-3.2rem - 10px + 0.9rem + 2px - 0.6rem); /* centred on the spine */
-    top: 1.4rem;
+    left: calc(-3.2rem + 0.9rem + 2px - 0.6rem); /* centred on the spine */
+    top: 0.55rem;
     width: 1.2rem;
     height: 1.2rem;
     box-sizing: border-box;
@@ -111,12 +103,38 @@
     font-size: 1.2rem;
 }
 
+/* Collapsed: every description is exactly this many lines tall */
 .desc {
+    --lines: 3;
+
     margin-top: 0.9rem;
     padding-left: 1.2rem;
     list-style: disc;
     font-size: 1.05rem;
     line-height: 1.6;
+    max-height: calc(var(--lines) * 1.6em);
+    overflow: hidden;
+}
+
+.descOpen {
+    max-height: none;
+}
+
+.more {
+    margin-top: 0.5rem;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--secondary-four);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.more:hover {
+    color: var(--progress-color);
 }
 
 @include respond-below($bp-xs)  {
@@ -132,15 +150,9 @@
         left: 0.4rem;
     }
 
-    .role {
-        padding: 1rem 1.2rem 1.2rem;
-        border-width: 8px;
-        border-radius: 2rem;
-    }
-
     .dot {
-        left: calc(-2.2rem - 8px + 0.4rem + 2px - 0.6rem);
-        top: 1rem;
+        left: calc(-2.2rem + 0.4rem + 2px - 0.6rem);
+        top: 0.3rem;
     }
 
     .title {
