@@ -67,6 +67,13 @@ $row-height: calc(100dvh - #{$nav-clearance} - 2rem);
         scroll-margin-top: $nav-clearance;
     }
 
+    /* On its own row, About sits in the middle of the page as one block the width of the ID card */
+    .about {
+        width: 100%;
+        max-width: 34rem;
+        margin: 0 auto;
+    }
+
     .viewport {
         flex: none;
         overflow: visible;

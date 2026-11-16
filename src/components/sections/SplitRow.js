@@ -89,7 +89,7 @@ export default function SplitRow() {
         <div ref={wrapRef} id="about" className={styles.wrap}>
             <div ref={rowRef} className={styles.row}>
 
-                <section ref={aboutRef} className={styles.column} aria-label="About">
+                <section ref={aboutRef} className={`${styles.column} ${styles.about}`} aria-label="About">
                     <h2 className={`${sectionStyles.label} unselect`}>About</h2>
                     <AboutSection/>
                 </section>
