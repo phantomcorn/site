@@ -1,7 +1,6 @@
 "use client";
-import { AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, useRef } from "react";
 import Curve from "../Curve/Curve";
 import { createContext, useContext } from 'react';
 
@@ -23,19 +22,64 @@ const transitionColor = {
 export function TransitionWrapper({ children }) {
 
     const router = useRouter()
+    const pathname = usePathname()
     const [fromExternal, setFromExternal] = useState(false);
-    const [key, setKey] = useState("home")
+    const [target, setTarget] = useState(pathname) // route the curtain is labelled/coloured for
+    const [covering, setCovering] = useState(false) // true while the curtain is coming up / waiting for the route
+    const [curveKey, setCurveKey] = useState(0) // bump to replay the reveal from a fully covered screen
+
+    const coveringRef = useRef(false)
+    const pendingNavigation = useRef(null) // runs once the curtain fully covers the page
+    const prevPathname = useRef(pathname)
+    const hasInternalHistory = useRef(false) // true once we have pushed a route ourselves
+
+    function cover(path, navigate) {
+        if (coveringRef.current) return // a transition is already running
+        coveringRef.current = true
+        pendingNavigation.current = navigate
+        setTarget(path)
+        setCovering(true)
+    }
 
     function routePush(path) {
-        setKey(path)
-        setTimeout(() => router.push(path), 400)
+        if (path === pathname) return
+        router.prefetch(path)
+        cover(path, () => {
+            hasInternalHistory.current = true
+            router.push(path)
+        })
     }
 
     function routeBack() {
-        setKey("/")
-        setTimeout(() => router.back(), 400)
+        if (pathname === "/") return
+        cover("/", () => {
+            // Landed here directly (deep link / refresh): there is no home entry to go back to
+            if (hasInternalHistory.current) router.back()
+            else router.replace("/")
+        })
     }
-  
+
+    function onCovered() {
+        const navigate = pendingNavigation.current
+        pendingNavigation.current = null
+        navigate?.()
+    }
+
+    /* The route actually changed: this is the only thing that lifts the curtain */
+    useLayoutEffect(() => {
+        if (prevPathname.current === pathname) return
+        prevPathname.current = pathname
+        pendingNavigation.current = null
+        setTarget(pathname)
+
+        if (coveringRef.current) {
+            coveringRef.current = false
+            setCovering(false)
+        } else {
+            // Browser back/forward: the page swapped without a cover, so replay the reveal over it
+            setCurveKey((k) => k + 1)
+        }
+    }, [pathname])
 
     useLayoutEffect(() => {
         let isExternal = false
@@ -55,22 +99,19 @@ export function TransitionWrapper({ children }) {
     }, []);
 
     const value = {
-        key, 
-        setKey, 
-        routePush, 
-        routeBack, 
-        transitionColor, 
-        fromExternal, 
+        key: target,
+        routePush,
+        routeBack,
+        transitionColor,
+        fromExternal,
         setFromExternal
     }
 
     return (
         <TransitionContext.Provider value={value}>
-            <AnimatePresence mode="wait">
-                <Curve key={key}>
-                    {children}   
-                </Curve>
-            </AnimatePresence>
-        </TransitionContext.Provider> 
+            {/* The curtain is a sibling of the page, so pages are never remounted by a transition */}
+            <Curve key={curveKey} path={target} covering={covering} onCovered={onCovered}/>
+            {children}
+        </TransitionContext.Provider>
     );
 }
