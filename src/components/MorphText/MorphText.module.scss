@@ -1,0 +1,14 @@
+.morph {
+    position: relative; /* Needed for absolute positioning of the two texts */
+    height: 1.3em;
+    font-weight: 400;
+    filter: url(#threshold); /* Gooey filter (defined in layout.js) */
+
+    span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        line-height: 1.3;
+        white-space: nowrap;
+    }
+}

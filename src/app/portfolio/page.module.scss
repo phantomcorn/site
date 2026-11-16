@@ -4,74 +4,32 @@
     min-height: 100dvh;
     display: flex;
     justify-content: center;
-    padding: 3rem 2rem;
+    padding: 2.5rem 2rem 3rem;
     box-sizing: border-box;
 
     background: var(--primary-one);
 }
 
-/* Project list | open project */
+/* Back button, tuner, then the open project */
 .layout {
-    display: grid;
-    grid-template-columns: 11rem minmax(0, 1fr);
-    column-gap: 4rem;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.8rem;
     width: 100%;
-    max-width: 76rem;
-}
-
-.rail {
-    position: sticky; /* list stays in view while a long project scrolls */
-    top: 3rem;
-    max-height: calc(100dvh - 6rem);
-    overflow-y: auto;
-    scrollbar-width: none;
+    max-width: 64rem;
+    min-width: 0;
 }
 
 .back {
-    margin-bottom: 1.4rem;
-}
-
-.projects {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
+    align-self: flex-start;
 }
 
 @include respond-below($bp-md)  {
     .page {
-        padding: 1.5rem 0;
+        padding: 1.5rem 1.5rem 2.5rem;
     }
 
     .layout {
-        grid-template-columns: minmax(0, 1fr);
-        row-gap: 1.5rem;
-
-        > * {
-            padding: 0 1.5rem;
-        }
-    }
-
-    .rail {
-        position: static;
-        max-height: none;
-        overflow: visible;
-        padding: 0;
-    }
-
-    .back {
-        margin: 0 1.5rem 1rem;
-    }
-
-    /* Pills scroll sideways above the project */
-    .projects {
-        flex-direction: row;
-        overflow-x: auto;
-        padding: 0 1.5rem 0.4rem;
-        scrollbar-width: none;
-
-        > * {
-            flex-shrink: 0;
-        }
+        row-gap: 1.3rem;
     }
 }

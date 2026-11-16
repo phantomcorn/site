@@ -2,7 +2,7 @@ import styles from "./PortfolioProject.module.scss"
 import Slideshow from "../Slideshow/Slideshow"
 import Button from "../Button/Button"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import MorphText from "../MorphText/MorphText"
 
 const typeLabels = {
     web: "Web",
@@ -14,9 +14,10 @@ const typeLabels = {
 /*
     The open project: title, type, summary, media and actions.
     projectKey: key in Projects.js (restarts the slideshow when the project changes)
-    onNext: opens the next project in the list
+    titleFrom / titleTo / titleFraction / titleColor: the title morphs between two project names while the tuner is between them
+    tuning: the needle has not settled yet, so the content below still belongs to the previous project
 */
-export default function PortfolioProject({project, projectKey, onNext}) {
+export default function PortfolioProject({project, projectKey, titleFrom, titleTo, titleFraction, titleColor, tuning}) {
 
     const link = project.site || project.src
 
@@ -41,21 +42,22 @@ export default function PortfolioProject({project, projectKey, onNext}) {
 
     return (
         <div className={styles.project}>
-            <h1 className={`${styles.title} ${styles[project.variant]}`}>{project.title}</h1>
-            {typeLabels[project.type] && <div className={styles.type}>{typeLabels[project.type]}</div>}
-            <div className={styles.summary}>{getCopy()}</div>
+            <MorphText className={styles.title} from={titleFrom} to={titleTo} fraction={titleFraction} color={titleColor}/>
+            <div className={`${styles.body} ${tuning ? styles.tuning : ""}`}>
+                {typeLabels[project.type] && <div className={styles.type}>{typeLabels[project.type]}</div>}
+                <div className={styles.summary}>{getCopy()}</div>
 
-            {project.type === "demo"
-                ? <iframe className={styles.video} src={project.media?.[0]} title={project.alt} allowFullScreen/>
-                : <Slideshow key={projectKey} media={project.media} alt={project.alt}/>
-            }
+                {project.type === "demo"
+                    ? <iframe className={styles.video} src={project.media?.[0]} title={project.alt} allowFullScreen/>
+                    : <Slideshow key={projectKey} media={project.media} alt={project.alt}/>
+                }
 
-            <div className={styles.actions}>
-                <div className={styles.links}>
-                    {link && <Button variant="color4" onClick={(e) => open(e, link)}> {project.site ? "Visit site" : "Source"} </Button>}
-                    {project.type === "fyp" && <Button variant="color1" onClick={(e) => open(e, "./report.pdf")}> Report </Button>}
+                <div className={styles.actions}>
+                    <div className={styles.links}>
+                        {link && <Button variant="color4" onClick={(e) => open(e, link)}> {project.site ? "Visit site" : "Source"} </Button>}
+                        {project.type === "fyp" && <Button variant="color1" onClick={(e) => open(e, "./report.pdf")}> Report </Button>}
+                    </div>
                 </div>
-                <Button variant="color1" onClick={onNext}> Next <ArrowRight size={20} style={{marginLeft: "0.4rem"}}/> </Button>
             </div>
         </div>
     )

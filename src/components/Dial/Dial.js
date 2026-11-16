@@ -2,7 +2,15 @@
 import { useEffect, useRef} from "react";
 import styles from "./Dial.module.scss";
 
-export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"}) {
+/*
+    onRelease (optional): called when the user lets go of the dial
+    className (optional): extra class for the dial, to size/position it outside the home page
+*/
+export default function Dial({ id, deg, setDeg, activeDial, variant = "color1", onRelease, className = ""}) {
+
+    /* Window listeners are attached on mouse down, so read the latest callback through a ref */
+    const onReleaseRef = useRef(onRelease)
+    onReleaseRef.current = onRelease
 
     const dial = useRef(null)
     const oldY = useRef(null)
@@ -24,6 +32,7 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"})
 
         window.removeEventListener("mouseup", handleMouseUp)
         window.removeEventListener("mousemove", handleMouseMove)
+        onReleaseRef.current?.()
     }
 
     const handleMouseMove = (e) => {
@@ -91,10 +100,11 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1"})
 
     return (
         <div ref={dial}
-            className={styles.dial} 
+            className={`${styles.dial} ${className}`} 
             onMouseDown={handleMouseDown} 
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
+            onTouchEnd={() => onReleaseRef.current?.()}
             >
             <div className={styles.dialOuter}/>
             <div className={styles.dialOuterActive}/>
