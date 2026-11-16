@@ -1,22 +1,13 @@
 @import "./../../app/breakpoints.scss";
 
+/* No divider lines: sections are told apart by their different widths and the large gap between them */
 .section {
     width: 100%;
     max-width: 64rem;
-    margin: 7rem auto 0;
+    margin: 10rem auto 0;
     padding: 0 2rem;
     box-sizing: border-box;
-    scroll-margin-top: 6.5rem; /* nav jumps stop with the divider just below the fixed nav */
-}
-
-/* Divider: a thick rounded bar (same weight as the pill borders) closes the section above */
-.section::before {
-    content: "";
-    display: block;
-    height: 10px;
-    margin-bottom: 3rem;
-    border-radius: 10px;
-    background: var(--primary-two);
+    scroll-margin-top: 7rem; /* nav jumps stop with the heading just below the fixed nav */
 }
 
 .label {
@@ -28,14 +19,8 @@
 
 @include respond-below($bp-md) {
     .section {
-        margin-top: 5rem;
+        margin-top: 7rem;
         padding: 0 1.5rem;
-        scroll-margin-top: 5.5rem;
-    }
-
-    .section::before {
-        height: 8px;
-        margin-bottom: 2.2rem;
     }
 
     .label {

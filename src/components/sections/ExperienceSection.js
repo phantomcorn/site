@@ -101,7 +101,18 @@ export default function ExperienceSection() {
 
         const update = () => {
             const top = list.getBoundingClientRect().top
-            const fill = Math.max(0, Math.min(list.offsetHeight, window.innerHeight * FILL_LINE - top))
+            let line = window.innerHeight * FILL_LINE
+
+            /* Inside the pinned About/Experience row the list scrolls within a window (SplitRow.js):
+               measure against that window, sliding the line to its bottom edge by the end of the list */
+            const box = list.closest("[data-timeline-viewport]")
+            if (box && box.clientHeight < list.offsetHeight) {
+                const window_ = box.getBoundingClientRect()
+                const scrolled = Math.max(0, Math.min(1, (window_.top - top) / (list.offsetHeight - window_.height)))
+                line = window_.top + window_.height * (FILL_LINE + (1 - FILL_LINE) * scrolled)
+            }
+
+            const fill = Math.max(0, Math.min(list.offsetHeight, line - top))
             list.style.setProperty("--timeline-fill", `${fill}px`)
 
             /* A role's dot lights up once the fill reaches it */

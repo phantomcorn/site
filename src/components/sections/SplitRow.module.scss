@@ -1,0 +1,90 @@
+@import "./../../app/breakpoints.scss";
+
+$nav-clearance: 7rem;   /* room for the fixed nav above the pinned row */
+$row-height: calc(100dvh - #{$nav-clearance} - 2rem);
+
+/* Taller than the row by however much the experience list overflows (--extra, set in SplitRow.js):
+   that extra height is the stretch of page scrolling during which the row stays pinned */
+.wrap {
+    --extra: 0px;
+
+    width: 100%;
+    max-width: 64rem;
+    height: calc(#{$row-height} + var(--extra));
+    margin: 4rem auto 0;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    scroll-margin-top: $nav-clearance; /* nav jumps land with the row exactly where it pins */
+}
+
+/* About | Experience: the gutter between the columns is the separator */
+.row {
+    position: sticky;
+    top: $nav-clearance;
+    height: $row-height;
+    display: grid;
+    grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+    column-gap: 4rem;
+}
+
+/* Both columns are exactly the row's height */
+.column {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* The experience column's window onto the list */
+.viewport {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    /* fade the list in and out at the window's edges, so it reads as continuing */
+    mask-image: linear-gradient(to bottom, transparent 0, black 1.2rem, black calc(100% - 3rem), transparent 100%);
+}
+
+.content {
+    padding: 1.2rem 0 1rem;
+    will-change: transform;
+}
+
+/* Stacked: About, then Experience, each as tall as its content. Nothing is pinned. */
+@include respond-below($bp-lg) {
+    .wrap {
+        height: auto;
+    }
+
+    .row {
+        position: static;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        row-gap: 7rem;
+    }
+
+    .column {
+        scroll-margin-top: $nav-clearance;
+    }
+
+    .viewport {
+        flex: none;
+        overflow: visible;
+        mask-image: none;
+    }
+
+    .content {
+        padding: 0;
+    }
+}
+
+@include respond-below($bp-md) {
+    .wrap {
+        margin-top: 2rem;
+        padding: 0 1.5rem;
+    }
+
+    .row {
+        row-gap: 5.5rem;
+    }
+}

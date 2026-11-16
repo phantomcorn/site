@@ -11,25 +11,34 @@ export default function Nav({sections}) {
 
     const [active, setActive] = useState(null)
 
-    /* Track which section sits in the middle band of the screen */
+    /* The current section is the last one whose top has passed the middle of the screen */
     useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) setActive(entry.target.id)
+        const update = () => {
+            const line = window.innerHeight * 0.45
+            let current = null
+            sections.forEach(({id}) => {
+                const el = document.getElementById(id)
+                if (!el || el.hasAttribute("data-nav-inactive")) return // SplitRow.js: not yet the section in focus
+                if (el.getBoundingClientRect().top <= line) current = id
             })
-        }, {rootMargin: "-45% 0px -50% 0px"})
+            setActive(current)
+        }
 
-        const hero = document.getElementById("top")
-        const targets = sections.map(({id}) => document.getElementById(id)).filter(Boolean)
-        if (hero) targets.push(hero)
-        targets.forEach((el) => observer.observe(el))
-
-        return () => observer.disconnect()
+        update()
+        window.addEventListener("scroll", update, {passive: true})
+        window.addEventListener("resize", update)
+        return () => {
+            window.removeEventListener("scroll", update)
+            window.removeEventListener("resize", update)
+        }
     }, [sections])
 
     const jump = (e, id) => {
         e.preventDefault()
-        document.getElementById(id)?.scrollIntoView({behavior: "smooth", block: "start"})
+        const el = document.getElementById(id)
+        /* A section inside the pinned row cannot be scrolled to on its own: go to the start of the row */
+        const target = el?.closest("[data-pinned]") ?? el
+        target?.scrollIntoView({behavior: "smooth", block: "start"})
         window.history.replaceState(null, "", id === "top" ? window.location.pathname : `#${id}`)
     }
 

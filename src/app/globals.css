@@ -53,6 +53,11 @@ body {
   overflow-x: hidden;
 }
 
+body {
+  /* clip, not hidden: hidden turns body into a scroll container, which stops position: sticky from pinning */
+  overflow-x: clip;
+}
+
 html {
   /* Root only: on body (a scroll container because of overflow-x) it stops the wheel from reaching the page scroller */
   overscroll-behavior: none;
