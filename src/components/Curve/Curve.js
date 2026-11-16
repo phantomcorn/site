@@ -72,21 +72,26 @@ const SVG = ({height, width, fillColor, covering}) => {
 
     const {fromExternal, setFromExternal} = useTransitionContext()
 
-    const initialPath = `
-        M0 300
-        Q${width/2} 0 ${width} 300
-        L${width} ${height + 300}
-        Q${width/2} ${height + 600} 0 ${height + 300}
-        L0 0
-    `
+    /*
+        The curtain keeps the same curved top and bottom edge for the whole transition;
+        only the bottom edge slides, so it never flattens into a straight cut.
+        (Edges are in svg px; the svg itself moves between top: -27vh and -100vh)
+    */
+    const bulge = 150 // how far the middle of an edge leads/trails its sides
 
-    const targetPath = `
-        M0 300
-        Q${width/2} 0 ${width} 300
-        L${width} ${height}
-        Q${width/2} ${height} 0 ${height}
-        L0 0
-    `
+    // Top edge: sides sit just above the top of the screen when the svg rests at -27vh, on any viewport height
+    const topSide = 0.27 * height - 2
+    const topBulge = Math.min(bulge, topSide) // keep the peak inside the svg box
+    const topEdge = `M0 ${topSide} Q${width/2} ${topSide - 2 * topBulge} ${width} ${topSide}`
+
+    // Bottom edge: sides at `y`, middle hanging `bulge` px lower
+    const bottomEdge = (y) => `L${width} ${y} Q${width/2} ${y + 2 * bulge} 0 ${y} L0 ${topSide}`
+
+    // Covering: bottom edge well below the screen
+    const initialPath = `${topEdge} ${bottomEdge(height + 300)}`
+
+    // Revealed (svg at -100vh): lowest point of the bottom edge is exactly at the top of the screen
+    const targetPath = `${topEdge} ${bottomEdge(height - bulge)}`
 
     const handleOnAnimationComplete = (definition) => {
         if (definition === "reveal" && fromExternal) setFromExternal(false)
