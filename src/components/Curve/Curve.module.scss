@@ -12,6 +12,7 @@
     z-index: 3; /* Want text above our transition */
     transform: translateX(-50%);
     text-align: center;
+    pointer-events: none; /* Invisible label must not swallow scroll/clicks meant for the page */
 }
 
 
