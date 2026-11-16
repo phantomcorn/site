@@ -8,6 +8,9 @@ import gsap from "gsap"
 import projects from "@/components/PortfolioProject/Projects"
 import { useTransitionContext } from "@/components/TransitionWrapper/TransitionWrapper";
 
+const GRID_CELLS = 7 * 7 /* columns x rows of .grid in page.module.scss */
+const projectKeys = Object.keys(projects)
+
 export default function Portfolio() {
 
     const {routeBack} = useTransitionContext()
@@ -60,36 +63,16 @@ export default function Portfolio() {
             
             <div ref={gridRef} className={`${styles.grid} unselect`} >
                 <Button back onClick={onBackClick}/>
-                <Button variant="color1" onClick={(e) => showProject(e, "imaudible")} onMouseEnter={() => preload("imaudible")}> ImAudible Gallery </Button>
-                <Button variant="color4" onClick={(e) => showProject(e, "oasis-residence")} onMouseEnter={() => preload("oasis-residence")}> Oasis Residence </Button>
-                {[...Array(11)].map((_, index) => (
-                    <div className={styles.fake}>
-                        <Button key={index}/>
-                    </div>
-
+                {/* Projects sit one after another, in the order they are declared in Projects.js */}
+                {projectKeys.map((key) => (
+                    <Button key={key} variant={projects[key].variant} onClick={(e) => showProject(e, key)} onMouseEnter={() => preload(key)}>
+                        {projects[key].title}
+                    </Button>
                 ))}
-                <Button variant="color3" onClick={(e) => showProject(e, "tonamn-portfolio")} onMouseEnter={() => preload("tonamn-portfolio")}> Tonamn Porfolio </Button>
-                {[...Array(2)].map((_, index) => (
-                    <div className={styles.fake}>
-                        <Button key={index}/> 
-                    </div>
-                ))}
-                <Button variant="color3" onClick={(e) => showProject(e, "nvfact_dg")} onMouseEnter={() => preload("nvfact_dg")}> NVFACT </Button>
-                {[...Array(8)].map((_, index) => (
-                    <div className={styles.fake}>
-                        <Button key={index}/> 
-                    </div>
-                ))}
-                <Button variant="color3" onClick={(e) => showProject(e, "askdoc")} onMouseEnter={() => preload("askdoc")}> AskDoc </Button>
-                {[...Array(4)].map((_, index) => (
-                    <div className={styles.fake}>
-                        <Button key={index}/>
-                    </div>
-                ))}
-                <Button variant="color2" onClick={(e) => showProject(e, "broked")}> Broked </Button>
-                {[...Array(17)].map((_, index) => (
-                    <div className={styles.fake}>
-                        <Button key={index}/>
+                {/* Empty pills fill the rest of the grid */}
+                {[...Array(Math.max(0, GRID_CELLS - 1 - projectKeys.length))].map((_, index) => (
+                    <div key={`fake${index}`} className={styles.fake}>
+                        <Button/>
                     </div>
                 ))}
             </div>

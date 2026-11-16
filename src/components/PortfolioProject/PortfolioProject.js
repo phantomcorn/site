@@ -47,18 +47,18 @@ export default function PortfolioPage({pageActive, setPageActive, ref}) {
             </div>
             {/* {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>} */}
             {pageActive.type === "web" && 
-                pageActive.media.map((src, idx) => (
+                pageActive.media?.map((src, idx) => (
                     <img src={src} className={styles.imgLandscape}></img>
                 ))
             }
 
             {pageActive.type === "design_guideline" && 
-                pageActive.media.map((src, idx) => (
+                pageActive.media?.map((src, idx) => (
                     <img src={src} className={styles.imgPortrait}></img>
                 ))
             }
             {pageActive.type === "fyp" && 
-                pageActive.media.map((src, idx) => {
+                pageActive.media?.map((src, idx) => {
 
                     let firstIndex = idx === 0
                     if (firstIndex) {
