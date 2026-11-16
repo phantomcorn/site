@@ -1,27 +1,4 @@
-@import "./../breakpoints.scss";
-.page {
-    width: 100vw;
-    min-height: 100dvh;
-    display: flex;
-    justify-content: center;
-    padding: 2.5rem 2rem 4rem;
-    box-sizing: border-box;
-    background: var(--primary-one);
-    color: var(--secondary-one);
-}
-
-.layout {
-    display: flex;
-    flex-direction: column;
-    row-gap: 2rem;
-    width: 100%;
-    max-width: 56rem;
-}
-
-.back {
-    align-self: flex-start;
-}
-
+@import "./../../app/breakpoints.scss";
 /* Roles stacked along a vertical timeline */
 .list {
     --timeline-fill: 0px; /* set from page.js as the page scrolls */
@@ -32,6 +9,7 @@
     row-gap: 3rem;
     padding-left: 3.2rem;
     list-style: none;
+    color: var(--secondary-one);
 }
 
 .spine {
@@ -138,10 +116,6 @@
 }
 
 @include respond-below($bp-xs)  {
-    .page {
-        padding: 1.5rem 1.2rem 3rem;
-    }
-
     .list {
         padding-left: 2.2rem;
     }

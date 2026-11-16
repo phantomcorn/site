@@ -15,9 +15,9 @@ const morphStyle = (amount) => ({ /* amount: 1 = fully shown, 0 = gone */
 */
 export default function MorphText({from, to, fraction, color, className = ""}) {
     return (
-        <h1 className={`${styles.morph} ${className}`} style={{color}} aria-label={fraction < 0.5 ? from : to}>
+        <h3 className={`${styles.morph} ${className}`} style={{color}} aria-label={fraction < 0.5 ? from : to}>
             <span aria-hidden="true" style={morphStyle(1 - fraction)}>{from}</span>
             <span aria-hidden="true" style={morphStyle(fraction)}>{to}</span>
-        </h1>
+        </h3>
     )
 }

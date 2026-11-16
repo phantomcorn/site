@@ -1,74 +1,47 @@
 @import "./breakpoints.scss";
 
 .page {
-  height: 100dvh;
   width: 100vw;
+  min-height: 100dvh;
+  padding-bottom: 8rem;
+  box-sizing: border-box;
   background: var(--primary-one);
+}
+
+.hero {
+  min-height: 70dvh;
+  padding: 7rem 2rem 0;
+  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  row-gap: 8rem;
-  position: relative;
-
- 
+  row-gap: 1.2rem;
+  text-align: center;
 }
 
-.morph {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;      
-  width: 100%;  
-  height: 40vh;
-  position: relative;  /* Needed for absolute positioning of .title */
+.title {
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--title-color);
+}
 
-  filter: url(#threshold); /* Gooey filter */
+.tagline {
+  font-size: 1.2rem;
+  color: var(--secondary-one);
+}
+
+@include respond-below($bp-sm) {
+  .hero {
+    min-height: 60dvh;
+  }
 
   .title {
-    position: absolute;
-    color: var(--title-color);
-    font-size: 50px;
-    cursor: pointer;
+    font-size: 3rem;
   }
-  
-  .titleOne {
-    --title-one-opacity: 100%;
-    --title-one-blur: blur(0px);
-  
-    opacity: var(--title-one-opacity);
-    filter: var(--title-one-blur)
-  }
-  
-  .titleTwo {
-    --title-two-opacity: 0%;
-    --title-two-blur: blur(0px);
-  
-    opacity: var(--title-two-opacity);
-    filter: var(--title-two-blur)
-  }
-}
 
-.dialGroup {
-  height: 50%;
-  width: 100%;
-  display: flex;
-  column-gap: 5rem;
-  justify-content: center;
-}
-
-
-@include respond-below($bp-xs) {
-
-  .page {
-    row-gap: 0;
-  }
-  .morph {
-    height: 100%;
-    align-items: center;
-  } 
-
-  .dialGroup {
-    display: inline-block;
-    height: 0;
+  .tagline {
+    font-size: 1rem;
   }
 }

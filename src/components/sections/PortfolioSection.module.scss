@@ -1,0 +1,15 @@
+@import "./../../app/breakpoints.scss";
+
+/* Tuner, then the open project */
+.layout {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.8rem;
+    min-width: 0;
+}
+
+@include respond-below($bp-md)  {
+    .layout {
+        row-gap: 1.3rem;
+    }
+}

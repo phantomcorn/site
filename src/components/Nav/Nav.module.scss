@@ -1,0 +1,64 @@
+@import "./../../app/breakpoints.scss";
+
+/* Fixed (not sticky): body is a scroll container because of overflow-x, which stops sticky from sticking */
+.nav {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1; /* above the page, below the transition curtain */
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 2rem;
+    width: calc(100% - 4rem);
+    max-width: 60rem;
+    padding: 0.6rem 1.8rem;
+    box-sizing: border-box;
+
+    border: solid 8px var(--primary-two);
+    border-radius: 100px;
+    background: var(--primary-one);
+    font-size: 1rem;
+}
+
+.name {
+    color: var(--secondary-four);
+}
+
+.links {
+    display: flex;
+    column-gap: 1.8rem;
+}
+
+.link {
+    color: var(--secondary-one);
+    text-decoration: underline 2px transparent;
+    text-underline-offset: 6px;
+    transition: text-decoration-color 0.2s;
+}
+
+.link:hover,
+.linkOn {
+    text-decoration-color: var(--dial-active);
+}
+
+@include respond-below($bp-sm) {
+    .nav {
+        justify-content: center;
+        width: calc(100% - 1.5rem);
+        padding: 0.5rem 1rem;
+        border-width: 6px;
+        font-size: 0.85rem;
+    }
+
+    /* Not enough room for the name and four labels */
+    .name {
+        display: none;
+    }
+
+    .links {
+        column-gap: 1.1rem;
+    }
+}

@@ -1,0 +1,56 @@
+@import "./../../app/breakpoints.scss";
+
+/* A dashed line across the whole screen: each brick is one dash.
+   Breaks out of the section's centred column to span the full viewport width. */
+.mediaContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35em;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 0 2rem;
+    box-sizing: border-box;
+    font-size: clamp(2rem, 3.3vw, 4.5rem);
+}
+
+/* Doubled class: must beat DisperseText's own padding/radius/alignment for the link bricks */
+.mediaContainer.mediaContainer > * {
+    flex: 1 1 auto; /* dashes share the row; longer words get longer dashes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    padding: 0.5em 0.45em;
+    border-radius: 0.7em;
+    white-space: nowrap;
+}
+
+.brick {
+    background: var(--secondary-four);
+    color: white;
+}
+
+/* Dims the whole screen while a link is hovered.
+   z-index 0: above the page, but below the hovered letters (DisperseText lifts them to z-index 1),
+   so the scattered white letters stay bright on top of the dim. */
+.background {
+    background-color: black;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+}
+
+@include respond-below($bp-md)  {
+    .mediaContainer {
+        padding: 0 1.5rem;
+        font-size: 2.2rem;
+    }
+}
+
+@include respond-below($bp-xs)  {
+    .mediaContainer {
+        font-size: 1.9rem;
+    }
+}

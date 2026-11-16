@@ -13,11 +13,6 @@ export default function Card() {
         <div className={styles.card}>
             <div className={styles.cardInner}>
                 <div className={styles.cardBack}>
-                    
-                    Hi - I'm JJ.
-                    <p>I'm a Fullstack Developer 60:40 leaning towards frontend. The languages I code most often in are React.js, Next.js and JavaScript and my main framework is the MERN stack.
-                        I consume fashion as a hobbby. Also catch me at social events corner.
-                    </p>
                     <div> More about me </div>
                     <div>
                         

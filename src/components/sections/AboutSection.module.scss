@@ -1,0 +1,35 @@
+@import "./../../app/breakpoints.scss";
+
+/* ID card | intro */
+.about {
+    display: flex;
+    align-items: center;
+    column-gap: 3rem;
+}
+
+.intro {
+    flex: 1;
+    min-width: 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--secondary-one);
+}
+
+@include respond-below($bp-lg) {
+    .about {
+        flex-direction: column;
+        row-gap: 2.5rem;
+    }
+
+    .intro {
+        flex: none;
+        max-width: 34rem;
+    }
+}
+
+@include respond-below($bp-xs) {
+    .intro {
+        margin-top: 50%; /* Card is rotated on mobile (Card.module.scss) and offset by the same amount */
+        font-size: 1rem;
+    }
+}

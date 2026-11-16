@@ -10,6 +10,7 @@
     max-height: 48vh; /* leaves room for the thumbnails and actions without scrolling */
     border-radius: 0.6rem;
     overflow: hidden;
+    isolation: isolate; /* keep the images' z-index inside the stage */
     background: color-mix(in srgb, var(--primary-two) 55%, transparent);
 
     .media {
