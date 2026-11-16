@@ -2,50 +2,152 @@
 .page {
     width: 100vw;
     min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 2rem 4rem;
+    box-sizing: border-box;
     background: var(--primary-one);
+    color: var(--secondary-one);
 }
 
-.view {
-    width: 100%;
-    height: auto;
+.layout {
     display: flex;
-    justify-content: flex-start;
     flex-direction: column;
-    padding: 10rem;
+    row-gap: 2rem;
+    width: 100%;
+    max-width: 56rem;
+}
+
+.back {
+    align-self: flex-start;
+}
+
+/* Roles stacked along a vertical timeline */
+.list {
+    --timeline-fill: 0px; /* set from page.js as the page scrolls */
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    padding-left: 3.2rem;
+    list-style: none;
+}
+
+.spine {
+    position: absolute;
+    left: 0.9rem;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 2px;
+    background: var(--primary-two);
+    overflow: hidden;
+}
+
+.spine::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: var(--timeline-fill);
+    background: var(--progress-color);
+}
+
+.role {
+    position: relative;
+    padding: 1.4rem 2rem 1.6rem;
+    border: solid 10px var(--primary-two);
+    border-radius: 2.5rem;
+    transition: border-color 0.2s;
+}
+
+.role:hover {
+    border-color: var(--progress-color);
+}
+
+.dot {
+    position: absolute;
+    left: calc(-3.2rem - 10px + 0.9rem + 2px - 0.6rem); /* centred on the spine */
+    top: 1.4rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    box-sizing: border-box;
+    border: solid 3px var(--primary-one);
+    border-radius: 50%;
+    background: var(--primary-two);
+    transition: background 0.2s;
+}
+
+.role:hover .dot,
+.role[data-reached] .dot {
+    background: var(--progress-color);
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap; /* dates drop under the title when they don't fit beside it */
+    column-gap: 1.5rem;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.25;
     color: var(--secondary-four);
 }
 
-.viewIntro {
-    position: absolute;
-    font-size: 2rem;
-    transform: rotate(-20deg);
-    right: 16%;
-    bottom: 15%;
-    z-index: 1;
+.when {
+    font-size: 1rem;
+    white-space: nowrap;
+    color: var(--secondary-four);
 }
 
-.viewIntro::after {
-    content: "Scroll..."
+.place {
+    margin-top: 0.2rem;
+    font-size: 1.2rem;
 }
 
-.backarrowContainer {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    cursor: pointer;
+.desc {
+    margin-top: 0.9rem;
+    padding-left: 1.2rem;
+    list-style: disc;
+    font-size: 1.05rem;
+    line-height: 1.6;
 }
 
 @include respond-below($bp-xs)  {
-    .view {
-        padding: 4rem;
+    .page {
+        padding: 1.5rem 1.2rem 3rem;
     }
 
-    .viewIntro {
-        right: 7%;
-        bottom: 13%;
+    .list {
+        padding-left: 2.2rem;
     }
 
-    .viewIntro::after {
-        content: "Swipe..."
+    .spine {
+        left: 0.4rem;
+    }
+
+    .role {
+        padding: 1rem 1.2rem 1.2rem;
+        border-width: 8px;
+        border-radius: 2rem;
+    }
+
+    .dot {
+        left: calc(-2.2rem - 8px + 0.4rem + 2px - 0.6rem);
+        top: 1rem;
+    }
+
+    .title {
+        font-size: 1.4rem;
+    }
+
+    .desc {
+        font-size: 0.95rem;
     }
 }
