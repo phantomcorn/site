@@ -22,13 +22,12 @@ const projects = {
                 "https://res.cloudinary.com/dmg2dllnz/image/upload/v1744002645/askdoc_5_cnigbb.avif"],
         src: "https://github.com/phantomcorn/AskDoc",
         alt: "AskDoc media",
-        copy: `Problem: A non-computing 
-            student may seek urgent help where the question requires further elaboration or difficult 
-            to explain on Imperial forum (EdStem) or even ones that require practical examples in order to 
-            get the gist of the problem.
-            \n
-            Solution: MERN stack web app to assist non-computing students with 
-            computing-related assignments. Assisting is done via matching system followed by an in-person meetup.`
+        /* "\n" starts a new line on the page; line breaks in this file do not */
+        copy: "Problem: A non-computing student may seek urgent help where the question requires further elaboration or difficult " +
+              "to explain on Imperial forum (EdStem) or even ones that require practical examples in order to get the gist of the problem." +
+              "\n\n" +
+              "Solution: MERN stack web app to assist non-computing students with computing-related assignments. " +
+              "Assisting is done via matching system followed by an in-person meetup."
     },
 
     "cat": {
@@ -44,7 +43,8 @@ const projects = {
             "https://res.cloudinary.com/dmg2dllnz/image/upload/v1794806359/cat_6_grbyff.avif"
         ],
         alt: "Cyber Attack Toolchain media",
-        copy: "Top teams to score above 80% in the project."
+        copy: "Containerized web app (React + Kotlin) for analyzing network vulnerabilities, with a topology builder and attack graph visualization. Top teams to score above 80% in the project.",
+        copy_wid: "End-to-end integration, designed REST APIs to support graph retrieval from Neo4j and graph visualization"
     },
     "imaudible": {
         title: "ImAudible Gallery",
@@ -133,7 +133,6 @@ const projects = {
         title: "Pyro Cryo",
         variant: "color4", /* Button colour on the portfolio grid */
         type: "web",
-        
         copy: "Stripe-style payment gateway written in Java Spring Boot. Easily integrate your server to ours through RESTful APIs. Includes blockchain watcher, confirms payment and handles chain reorganization."
     }
 }

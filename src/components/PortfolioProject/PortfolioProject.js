@@ -2,87 +2,61 @@ import styles from "./PortfolioProject.module.scss"
 import Slideshow from "../Slideshow/Slideshow"
 import Button from "../Button/Button"
 import Image from "next/image"
+import { ArrowRight } from "lucide-react"
 
-export default function PortfolioPage({pageActive, setPageActive, ref}) {
+const typeLabels = {
+    web: "Web",
+    fyp: "Final year project",
+    design_guideline: "Design guideline",
+    demo: "Demo"
+}
 
-    const onClick = (e) => {
+/*
+    The open project: title, type, summary, media and actions.
+    projectKey: key in Projects.js (restarts the slideshow when the project changes)
+    onNext: opens the next project in the list
+*/
+export default function PortfolioProject({project, projectKey, onNext}) {
+
+    const link = project.site || project.src
+
+    const open = (e, url) => {
         e.preventDefault()
         e.stopPropagation()
-        setPageActive(null)
-    }
-
-    const onClickSource = (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        window.open(pageActive.site, "_blank");
+        window.open(url, "_blank", "noopener")
     }
 
     const getCopy = () => {
-        if (!pageActive.copy.type) {
-            return pageActive.copy
-        } else if (pageActive.copy.type === "media") {
+        if (!project.copy) return null
+        if (!project.copy.type) {
+            return project.copy
+        } else if (project.copy.type === "media") {
             return  <Image  className={styles.copyMedia}
-                            src={pageActive.copy.src} 
-                            alt={pageActive.alt + " copy"}
-                            width={pageActive.copy.width}
-                            height={pageActive.copy.height}/>
+                            src={project.copy.src}
+                            alt={project.alt + " copy"}
+                            width={project.copy.width}
+                            height={project.copy.height}/>
         }
     }
 
-
-
     return (
-        <div ref={ref} className={styles.portfolioPage}>
-            <div className={styles.nav}>
-                <Button onClick={onClick} back/>
-                {pageActive.type !== "demo" && <Button onClick={onClickSource}> {pageActive.src ? "Source" : "Visit site"} </Button>}
-            </div>
-            <div className={styles.header}>
-                <div style={{fontWeight: "bold"}}>Context: </div>
-                <div className={styles.textbox}>
-                
-                    {getCopy()}
-                    
+        <div className={styles.project}>
+            <h1 className={`${styles.title} ${styles[project.variant]}`}>{project.title}</h1>
+            {typeLabels[project.type] && <div className={styles.type}>{typeLabels[project.type]}</div>}
+            <div className={styles.summary}>{getCopy()}</div>
+
+            {project.type === "demo"
+                ? <iframe className={styles.video} src={project.media?.[0]} title={project.alt} allowFullScreen/>
+                : <Slideshow key={projectKey} media={project.media} alt={project.alt}/>
+            }
+
+            <div className={styles.actions}>
+                <div className={styles.links}>
+                    {link && <Button variant="color4" onClick={(e) => open(e, link)}> {project.site ? "Visit site" : "Source"} </Button>}
+                    {project.type === "fyp" && <Button variant="color1" onClick={(e) => open(e, "./report.pdf")}> Report </Button>}
                 </div>
+                <Button variant="color1" onClick={onNext}> Next <ArrowRight size={20} style={{marginLeft: "0.4rem"}}/> </Button>
             </div>
-            {/* {pageActive.type === "web" && <Slideshow src={pageActive}></Slideshow>} */}
-            {pageActive.type === "web" && 
-                pageActive.media?.map((src, idx) => (
-                    <img src={src} className={styles.imgLandscape}></img>
-                ))
-            }
-
-            {pageActive.type === "design_guideline" && 
-                pageActive.media?.map((src, idx) => (
-                    <img src={src} className={styles.imgPortrait}></img>
-                ))
-            }
-            {pageActive.type === "fyp" && 
-                pageActive.media?.map((src, idx) => {
-
-                    let firstIndex = idx === 0
-                    if (firstIndex) {
-                        return (
-                            <div className={styles.report}>
-                                <a href="./report.pdf" target="_blank" rel="noreferrer"
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        cursor: "default"
-                                    }}>
-                                    <img className={styles.imgLandscape} src={src} style={{cursor:"pointer"}}/>
-                                </a>
-                            </div>
-                        )
-                    }
-
-                    return(<img src={src} className={styles.imgLandscape}></img>)
-                })
-            }
-            {pageActive.type === "demo" && 
-                <div>
-                    <iframe className={styles.ytShorts} src={pageActive.media} allowFullScreen> </iframe>
-                </div>}
         </div>
     )
 }
