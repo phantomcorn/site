@@ -97,7 +97,14 @@
     margin: 0 !important;
     width: 6rem !important;
     height: 6rem !important;
-    touch-action: none; /* dragging the dial must not scroll the page */
+    touch-action: none; /* turning the dial must not scroll the page */
+    -webkit-touch-callout: none; /* no long-press menu on phones */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* The handle follows the finger directly: the Dial's own easing would make it trail behind */
+.knob > * {
+    transition: none !important;
 }
 
 @include respond-below($bp-lg) {
@@ -107,6 +114,11 @@
 }
 
 @include respond-below($bp-md) {
+    /* Bigger knob for fingers */
+    .knob {
+        zoom: 1.35;
+    }
+
     .housing {
         flex-direction: column;
         gap: 0.5rem;
