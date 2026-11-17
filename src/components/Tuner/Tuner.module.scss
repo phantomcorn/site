@@ -107,27 +107,72 @@
     transition: none !important;
 }
 
+/* Arrows stand in for the dial on iPad-sized screens and smaller */
+.arrow {
+    display: none;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    padding: 0;
+    border: solid 7px var(--primary-two);
+    border-radius: 50%;
+    background: var(--primary-one);
+    color: var(--secondary-four);
+    cursor: pointer;
+    touch-action: none; /* holding an arrow must not scroll or zoom the page */
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.arrow:active {
+    border-color: var(--dial-active);
+}
+
+/* Nothing further in this direction */
+.arrowEnd {
+    opacity: 0.4;
+    cursor: default;
+}
+
 @include respond-below($bp-lg) {
     .station {
         font-size: 0.85rem;
     }
+
+    /* [<] scale [>] */
+    .housing {
+        gap: 1.5rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .knobWrap {
+        display: none;
+    }
+
+    .arrow {
+        display: flex;
+    }
+
+    .arrowLeft {
+        order: -1;
+    }
 }
 
 @include respond-below($bp-md) {
-    /* Bigger knob for fingers */
-    .knob {
-        zoom: 1.35;
-    }
-
+    /* Scale on top, the two arrows beneath it at either end */
     .housing {
-        flex-direction: column;
-        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.6rem;
         padding: 1rem 1.2rem 1.2rem;
         border-width: 8px;
         border-radius: 2.5rem;
     }
 
     .scale {
+        order: -2;
         flex: none;
         width: 100%;
         height: 3.4rem;
