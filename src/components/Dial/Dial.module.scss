@@ -4,7 +4,7 @@
     width: 10vw;
     height: 10vh;
     position: relative;
-    cursor: ns-resize;
+    cursor: grab;
 
     /* Centering the text */
     display: flex;
@@ -54,6 +54,10 @@
     .handleOn {
         transition: transform 0.1s;
     }
+}
+
+.dial:active {
+    cursor: grabbing;
 }
 
 .dial > * {

@@ -3,90 +3,94 @@ import { useEffect, useRef} from "react";
 import styles from "./Dial.module.scss";
 
 /*
+    A knob you turn: grab it anywhere and drag around its centre, clockwise to increase.
+    The same gesture works with a mouse and with a finger.
+
+    deg: current angle [0, 360]
+    setDeg(id, deg): called while the dial is being turned
     onRelease (optional): called when the user lets go of the dial
-    className (optional): extra class for the dial, to size/position it outside the home page
+    className (optional): extra class for the dial, to size/position it
 */
 export default function Dial({ id, deg, setDeg, activeDial, variant = "color1", onRelease, className = ""}) {
 
-    /* Window listeners are attached on mouse down, so read the latest callback through a ref */
+    /* Window listeners are attached when a turn starts, so read the latest props through refs */
     const onReleaseRef = useRef(onRelease)
     onReleaseRef.current = onRelease
+    const setDegRef = useRef(setDeg)
+    setDegRef.current = setDeg
+    const degRef = useRef(deg)
+    degRef.current = deg
 
     const dial = useRef(null)
-    const oldY = useRef(null)
-    const dragging = useRef(false)
+    const lastAngle = useRef(null) // where the pointer was around the dial at the last move
+    const turned = useRef(0)       // the dial's angle during the current turn
+
+    /* Angle of a point around the dial's centre: 0 at the top, growing clockwise */
+    const angleAt = (clientX, clientY) => {
+        const rect = dial.current.getBoundingClientRect();
+        const dx = clientX - (rect.left + rect.width / 2);
+        const dy = clientY - (rect.top + rect.height / 2);
+        return (Math.atan2(dy, dx) * (180 / Math.PI) + 90 + 360) % 360
+    }
+
+    const startTurn = (clientX, clientY) => {
+        lastAngle.current = angleAt(clientX, clientY)
+        turned.current = degRef.current
+    }
+
+    const turnTo = (clientX, clientY) => {
+        if (lastAngle.current === null) return
+
+        const angle = angleAt(clientX, clientY)
+        let delta = angle - lastAngle.current
+        /* Crossing the top (359 -> 0) is a small step, not a full turn backwards */
+        if (delta > 180) delta -= 360
+        if (delta < -180) delta += 360
+        lastAngle.current = angle
+
+        turned.current = Math.max(0, Math.min(360, turned.current + delta)) // the dial stops at both ends
+        setDegRef.current(id, turned.current)
+    }
+
+    const endTurn = () => {
+        if (lastAngle.current === null) return
+        lastAngle.current = null
+        onReleaseRef.current?.()
+    }
+
+    /* -------------------------------------- Mouse ------------------------------------------------- */
 
     const handleMouseDown = (e) => {
         e.preventDefault()
-        dragging.current = true
-        // console.log("dragging starts")
-        oldY.current = e.clientY
+        startTurn(e.clientX, e.clientY)
         //otherwise mouseUp is only triggered when cursor within element
         window.addEventListener("mouseup", handleMouseUp)
         window.addEventListener("mousemove", handleMouseMove)
     }
 
-    const handleMouseUp = (e) => {
-        // console.log("dragging ends")
-       dragging.current = false
+    const handleMouseMove = (e) => {
+        turnTo(e.clientX, e.clientY)
+    }
 
+    const handleMouseUp = () => {
         window.removeEventListener("mouseup", handleMouseUp)
         window.removeEventListener("mousemove", handleMouseMove)
-        onReleaseRef.current?.()
+        endTurn()
     }
 
-    const handleMouseMove = (e) => {
-
-        if (!dragging.current) return 
-        const offset = e.clientY - oldY.current
-
-        //Get current degree
-        const degStr = dial.current?.style.getPropertyValue("--deg") // "180deg"
-        const currDeg = parseInt(degStr.split("deg")[0])
-
-        //Unexpected behaviour when using deg
-        const newDeg = currDeg + 2 * -offset 
-        const newDegNorm = Math.max(0, Math.min(360, newDeg)) //Cap newDeg between [0,360]
-
-        setDeg(id, newDegNorm)
-        oldY.current = e.clientY //Position to last move
-    }
-
-    /* -------------------------------------- Mobile ------------------------------------------------ */ 
-
-    const getTouchAngle = (touch) => {
-        const rect = dial.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const dx = touch.clientX - centerX;
-        const dy = touch.clientY - centerY;
-
-        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-        const normalisedAngle = ((angle + 360 + 90) % 360) /* Adjust to our axis */
-        return normalisedAngle;
-    };
+    /* -------------------------------------- Touch ------------------------------------------------- */
 
     const handleTouchStart = (e) => {
         const touch = e.touches[0];
-        const angle = getTouchAngle(touch);
-        setDeg(id, angle);
+        startTurn(touch.clientX, touch.clientY)
     };
-    
-    const handleTouchMove = (e) => {
-        if (deg === null) return;
-        const touch = e.touches[0];
-        const currentAngle = getTouchAngle(touch);
-        const delta = currentAngle - deg;
 
-        const degStr = dial.current?.style.getPropertyValue("--deg") // "180deg"
-        const currDeg = parseInt(degStr.split("deg")[0])
-        if (Math.abs(delta) > 50) { /* Prevent moving into dead zone (360 -> 0 and 360 <- 0) */
-            return
-        }
-  
-        setDeg(id, Math.min(360, currDeg + delta));
+    const handleTouchMove = (e) => {
+        const touch = e.touches[0];
+        turnTo(touch.clientX, touch.clientY)
     };
-     /* --------------------------------------------------------------------------------------------- */ 
+
+    /* --------------------------------------------------------------------------------------------- */
 
     useEffect(() => {
         if (dial.current) {
@@ -100,11 +104,12 @@ export default function Dial({ id, deg, setDeg, activeDial, variant = "color1", 
 
     return (
         <div ref={dial}
-            className={`${styles.dial} ${className}`} 
-            onMouseDown={handleMouseDown} 
+            className={`${styles.dial} ${className}`}
+            onMouseDown={handleMouseDown}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
-            onTouchEnd={() => onReleaseRef.current?.()}
+            onTouchEnd={endTurn}
+            onTouchCancel={endTurn}
             >
             <div className={styles.dialOuter}/>
             <div className={styles.dialOuterActive}/>
